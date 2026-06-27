@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setor Elétrico Brasileiro — Mapa do Sistema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea;
+    --ink:#1b1f27; --ink-soft:#3a4150; --muted:#6b7480; --faint:#9aa2ad;
+    --line:#e7e2d8; --line-strong:#d8d2c5;
+    --hydro:#1f6f8b; --thermal:#cf7d2e; --wind:#3f9277; --solar:#e0a93b;
+    --nuclear:#8a5fb0; --accent:#1f5f9e; --accent-soft:#eaf1f8;
+    --danger:#be3c34; --danger-soft:#fbeeed; --ok:#2f7d57; --ok-soft:#ecf5ef;
+    --insight:#7a5cab; --insight-soft:#f1edf8; --warn:#b07b1f; --warn-soft:#f8f1e0;
+    --shadow:0 1px 2px rgba(27,31,39,.04),0 6px 22px rgba(27,31,39,.06);
+    --radius:14px;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- Header ---------- */
+  header.masthead{background:linear-gradient(160deg,#13202b 0%,#1a3140 55%,#1f5f9e 140%);
+    color:#eef3f7;padding:46px 0 30px;border-bottom:3px solid #102531;}
+  .kicker{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:#8fb8d6;font-weight:600;margin-bottom:12px}
+  h1.title{font-family:var(--serif);font-weight:600;font-size:40px;line-height:1.1;
+    margin:0 0 10px;letter-spacing:-.01em}
+  .subtitle{font-size:17px;color:#c5d4df;max-width:760px;margin:0 0 18px;font-weight:400}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 14px;
+    font-size:12.5px;font-weight:500;color:#dce7ef;font-family:var(--mono)}
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:#5fd0a0;box-shadow:0 0 0 3px rgba(95,208,160,.22)}
+  .head-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .chip.scope{background:transparent;color:#9bb5c8}
+
+  /* ---------- Tabs ---------- */
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.93);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line-strong);}
+  .tabrow{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+  .tabrow::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;border:none;background:none;font-family:var(--sans);
+    font-size:14px;font-weight:550;color:var(--muted);padding:15px 16px 13px;
+    cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap;
+    transition:color .15s,border-color .15s}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .tab .num{font-family:var(--mono);font-size:11px;color:var(--faint);margin-right:6px}
+  .tab.active .num{color:var(--accent)}
+
+  /* ---------- Sections ---------- */
+  main{padding:38px 0 80px}
+  .panel{display:none;animation:fade .35s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .lead{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink-soft);
+    max-width:780px;margin:0 0 30px;font-weight:400}
+  .lead b{color:var(--ink);font-weight:600}
+  h2.sec{font-family:var(--serif);font-size:27px;font-weight:600;margin:46px 0 6px;
+    letter-spacing:-.01em;display:flex;align-items:baseline;gap:12px}
+  h2.sec:first-of-type{margin-top:6px}
+  h2.sec .tag{font-family:var(--mono);font-size:12px;color:var(--accent);
+    background:var(--accent-soft);padding:3px 9px;border-radius:6px;font-weight:500}
+  .sec-sub{color:var(--muted);font-size:14.5px;margin:0 0 22px;max-width:760px}
+  h3.sub{font-size:18px;font-weight:650;margin:34px 0 10px;letter-spacing:-.01em}
+  p{margin:0 0 15px;max-width:800px}
+  p.tight{margin-bottom:8px}
+  .panel p, .panel li{color:var(--ink-soft)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(31,95,158,.3)}
+  a:hover{border-bottom-color:var(--accent)}
+
+  /* ---------- KPI grid ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px;margin:8px 0 26px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .kpi .v{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;letter-spacing:-.02em}
+  .kpi .v .u{font-size:15px;color:var(--muted);font-weight:500;margin-left:3px;font-family:var(--sans)}
+  .kpi .l{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
+  .kpi .src{font-size:10.5px;color:var(--faint);margin-top:6px;font-family:var(--mono)}
+  .kpi.hl{background:linear-gradient(165deg,#1f5f9e,#16456f);border-color:#16456f;color:#fff}
+  .kpi.hl .v{color:#fff}.kpi.hl .l{color:#cfe0ef}.kpi.hl .src{color:#9cc0dd}.kpi.hl .v .u{color:#cfe0ef}
+
+  /* ---------- Cards ---------- */
+  .cards{display:grid;gap:14px;margin:18px 0 26px}
+  .cards.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .cards.c3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow)}
+  .card h4{margin:0 0 8px;font-size:15.5px;font-weight:650;display:flex;align-items:center;gap:9px}
+  .card p{font-size:14px;margin:0;color:var(--ink-soft)}
+  .card .ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    font-size:14px;flex:0 0 auto;color:#fff;font-weight:700;font-family:var(--mono)}
+
+  /* ---------- Callouts ---------- */
+  .callout{border-radius:12px;padding:16px 18px 16px 16px;margin:20px 0;
+    border:1px solid;display:flex;gap:13px;align-items:flex-start;font-size:14.5px}
+  .callout .mk{flex:0 0 auto;font-weight:700;font-size:12px;font-family:var(--mono);
+    padding:3px 8px;border-radius:6px;letter-spacing:.04em;margin-top:1px}
+  .callout p{margin:0;color:var(--ink-soft)}
+  .callout p+p{margin-top:8px}
+  .callout.insight{background:var(--insight-soft);border-color:#dccef0}
+  .callout.insight .mk{background:var(--insight);color:#fff}
+  .callout.warn{background:var(--warn-soft);border-color:#ecd8a8}
+  .callout.warn .mk{background:var(--warn);color:#fff}
+  .callout.danger{background:var(--danger-soft);border-color:#f2ccc8}
+  .callout.danger .mk{background:var(--danger);color:#fff}
+
+  /* ---------- Tables ---------- */
+  .tbl-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:13.8px;min-width:520px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--surface-2);font-weight:650;color:var(--ink);font-size:12.5px;
+    letter-spacing:.02em;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fbfaf6}
+  td.num,th.num{text-align:right;font-family:var(--mono);font-size:13px;white-space:nowrap}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;
+    font-family:var(--sans);white-space:nowrap}
+  .pill.low{background:var(--ok-soft);color:var(--ok)}
+  .pill.mid{background:var(--warn-soft);color:var(--warn)}
+  .pill.high{background:var(--danger-soft);color:var(--danger)}
+
+  /* ---------- Charts ---------- */
+  figure{margin:22px 0 28px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 20px 16px;box-shadow:var(--shadow)}
+  figcaption{font-size:12px;color:var(--muted);margin-top:12px;font-family:var(--sans);line-height:1.5}
+  figcaption .ti{display:block;font-size:15px;color:var(--ink);font-weight:650;
+    margin-bottom:3px;font-family:var(--sans)}
+  .chart svg{display:block;width:100%;height:auto;overflow:visible}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* ---------- Flow / steps ---------- */
+  .flow{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;margin:22px 0 26px}
+  .flow .step{flex:1 1 150px;background:var(--surface);border:1px solid var(--line);
+    padding:14px 14px;position:relative;min-width:140px}
+  .flow .step:first-child{border-radius:12px 0 0 12px}
+  .flow .step:last-child{border-radius:0 12px 12px 0}
+  .flow .step .n{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600}
+  .flow .step .t{font-weight:650;font-size:14.5px;margin:3px 0 2px}
+  .flow .step .d{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .flow .step::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);
+    color:var(--faint);font-size:16px;z-index:2;background:var(--bg);padding:0 1px}
+  .flow .step:last-child::after{display:none}
+
+  /* ---------- Misc ---------- */
+  ul.clean{list-style:none;padding:0;margin:14px 0 22px}
+  ul.clean li{position:relative;padding:7px 0 7px 26px;border-bottom:1px solid var(--line);font-size:14.5px}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;
+    border-radius:50%;background:var(--accent)}
+  ul.num{counter-reset:c;list-style:none;padding:0;margin:14px 0 22px}
+  ul.num li{position:relative;padding:9px 0 9px 40px;border-bottom:1px solid var(--line);font-size:14.5px}
+  ul.num li:last-child{border-bottom:none}
+  ul.num li::before{counter-increment:c;content:counter(c);position:absolute;left:0;top:9px;
+    width:26px;height:26px;border-radius:7px;background:var(--accent-soft);color:var(--accent);
+    font-family:var(--mono);font-size:13px;font-weight:600;display:grid;place-items:center}
+  .src-note{font-size:12px;color:var(--faint);font-family:var(--mono);margin:6px 0 26px}
+  .divider{height:1px;background:var(--line);margin:38px 0}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:14px 0}
+  @media(max-width:720px){.twocol{grid-template-columns:1fr}h1.title{font-size:31px}.lead{font-size:19px}}
+
+  footer{background:#13202b;color:#9fb3c2;padding:34px 0 44px;font-size:13px}
+  footer h4{color:#e7eef3;font-size:14px;margin:0 0 10px}
+  footer a{color:#8fb8d6;border-bottom-color:rgba(143,184,214,.3)}
+  footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .badge{font-size:11px;font-family:var(--mono);background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;color:#bcd0de}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">Estudo do Sistema · Fases 1–3</div>
+    <h1 class="title">Setor Elétrico Brasileiro</h1>
+    <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
+      brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
+    <div class="head-meta">
+      <span class="chip"><span class="dot"></span>v1.0 · 26 jun 2026</span>
+      <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <div class="tabrow" id="tabrow">
+      <button class="tab active" data-t="overview"><span class="num">00</span>Visão geral</button>
+      <button class="tab" data-t="inst"><span class="num">01</span>Instituições</button>
+      <button class="tab" data-t="fisico"><span class="num">02</span>Sistema físico</button>
+      <button class="tab" data-t="mercado"><span class="num">03</span>Mercado &amp; preço</button>
+      <button class="tab" data-t="regulacao"><span class="num">04</span>Regulação econômica</button>
+      <button class="tab" data-t="mundo"><span class="num">05</span>Benchmark global</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- ============================ OVERVIEW ============================ -->
+<section class="panel active" id="overview">
+  <p class="lead">O setor elétrico só faz sentido lido em <b>três camadas que se sobrepõem</b>. Quase toda
+    confusão analítica nasce de misturá-las — tratar geradora como se fosse transmissora, ou achar que
+    metade do lucro de uma distribuidora é caixa. Quem entende as camadas entende como cada empresa
+    captura (ou destrói) valor.</p>
+
+  <div class="cards c3">
+    <div class="card">
+      <h4><span class="ico" style="background:var(--hydro)">F</span>Camada física</h4>
+      <p>Gerar, transmitir e entregar elétrons. Sujeita a hidrologia, despacho centralizado e restrições
+        de rede. É o que o <strong>ONS</strong> opera.</p>
+    </div>
+    <div class="card">
+      <h4><span class="ico" style="background:var(--thermal)">C</span>Camada comercial</h4>
+      <p>Quem compra de quem, em que ambiente (regulado/livre), a que preço (PLD), com que contrato.
+        É o que a <strong>CCEE</strong> liquida.</p>
+    </div>
+    <div class="card">
+      <h4><span class="ico" style="background:var(--accent)">R</span>Camada regulatória</h4>
+      <p>Quem define as regras (<strong>MME</strong>), fiscaliza e remunera (<strong>ANEEL</strong>),
+        planeja (<strong>EPE</strong>). Decide quanto cada elo ganha.</p>
+    </div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">TESE</span>
+    <p>Só dá para avaliar uma empresa depois de saber <strong>em qual camada ela captura valor e qual é o
+      mecanismo de remuneração</strong>: RAP por disponibilidade na transmissão; Parcela B sobre base de
+      ativos regulatória na distribuição; preço × garantia física, menos GSF, na geração. O resto é detalhe.</p>
+  </div>
+
+  <h2 class="sec">O sistema em números <span class="tag">SIN · 2025</span></h2>
+  <p class="sec-sub">Magnitude do Sistema Interligado Nacional, que atende <strong>mais de 99% da carga</strong>
+    do país. Roraima entrou no SIN em setembro de 2025 — pela primeira vez todos os 26 estados + DF estão interligados.</p>
+
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">259,5<span class="u">GW</span></div><div class="l">Capacidade instalada total (com geração distribuída)</div><div class="src">MME · fim 2025</div></div>
+    <div class="kpi"><div class="v">775,9<span class="u">TWh</span></div><div class="l">Geração total no ano</div><div class="src">EPE BEN 2026</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda instantânea (onda de calor, 26/fev)</div><div class="src">ONS · 2025</div></div>
+    <div class="kpi"><div class="v">86,8<span class="u">%</span></div><div class="l">Matriz renovável (na geração)</div><div class="src">EPE BEN 2026</div></div>
+    <div class="kpi"><div class="v">~291<span class="u">GWmês</span></div><div class="l">"Bateria" do sistema: energia armazenável em reservatórios</div><div class="src">ONS</div></div>
+    <div class="kpi"><div class="v">&gt;191<span class="u">mil km</span></div><div class="l">Linhas de transmissão (Rede Básica)</div><div class="src">MME · fim 2025</div></div>
+    <div class="kpi"><div class="v">~43<span class="u">%</span></div><div class="l">Consumo já no mercado livre (ACL)</div><div class="src">CCEE · fim 2025</div></div>
+    <div class="kpi"><div class="v">~44,8<span class="u">%</span></div><div class="l">Da receita do setor vira tributo + encargo</div><div class="src">PwC/Acende · 2024</div></div>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-matriz"></div>
+    <figcaption><span class="ti">Matriz elétrica brasileira por geração — 2025 (TWh)</span>
+      A base hídrica ainda domina (~52%), mas eólica + solar já são <strong>~26% da geração</strong>.
+      Esse crescimento é a origem dos novos problemas do sistema (curtailment, rampas, necessidade de armazenamento).
+      Fonte: EPE, Balanço Energético Nacional 2026 (ano-base 2025).</figcaption>
+  </figure>
+
+  <h2 class="sec">Como navegar este estudo</h2>
+  <div class="cards c2">
+    <div class="card"><h4>01 · Instituições</h4><p>Quem <strong>planeja, opera, regula e liquida</strong>.
+      A arquitetura de governança — e por que ONS e CCEE são entes privados.</p></div>
+    <div class="card"><h4>02 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
+      despacho por custo e a cadeia de modelos NEWAVE → DECOMP → DESSEM.</p></div>
+    <div class="card"><h4>03 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
+      o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
+    <div class="card"><h4>04 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
+      ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
+    <div class="card"><h4>05 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
+      Ibéria, preços internacionais — para criar senso crítico sobre o modelo brasileiro.</p></div>
+  </div>
+</section>
+
+<!-- ============================ INSTITUIÇÕES ============================ -->
+<section class="panel" id="inst">
+  <h2 class="sec">Quem planeja, opera, regula e liquida <span class="tag">Fase 1</span></h2>
+  <p class="sec-sub">A separação de funções é o esqueleto do setor. A regra de ouro: <strong>quem planeja não
+    decide, quem opera não precifica, quem regula não opera, e quem liquida não despacha.</strong></p>
+
+  <div class="flow">
+    <div class="step"><div class="n">POLÍTICA</div><div class="t">CNPE / MME</div><div class="d">Definem diretrizes, concedem outorgas, fixam regras dos leilões</div></div>
+    <div class="step"><div class="n">PLANEJA</div><div class="t">EPE</div><div class="d">Estuda a expansão (PDE/PNE). Estuda — não decide</div></div>
+    <div class="step"><div class="n">REGULA</div><div class="t">ANEEL</div><div class="d">Fiscaliza, fixa tarifas, promove leilões</div></div>
+    <div class="step"><div class="n">OPERA</div><div class="t">ONS</div><div class="d">Despacha geração e transmissão do SIN</div></div>
+    <div class="step"><div class="n">LIQUIDA</div><div class="t">CCEE</div><div class="d">Contabiliza e liquida o mercado de curto prazo</div></div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Função</th><th>Entidade</th><th>Natureza</th><th>O que decide / faz</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Política</strong></td><td>CNPE</td><td>Conselho da Presidência</td><td>Propõe diretrizes e políticas energéticas. Não regula nem opera. Presidido pelo Ministro de Minas e Energia.</td></tr>
+      <tr><td><strong>Política / concedente</strong></td><td>MME</td><td>Ministério</td><td>Define políticas; é o <strong>poder concedente</strong>; aprova o planejamento da EPE; fixa as regras dos leilões.</td></tr>
+      <tr><td><strong>Planejamento</strong></td><td>EPE</td><td>Empresa pública federal</td><td>Elabora os estudos (PDE decenal, PNE). <strong>Estuda, não decide</strong> — quem aprova é o MME.</td></tr>
+      <tr><td><strong>Regulação</strong></td><td>ANEEL</td><td>Autarquia especial</td><td>Regula e fiscaliza os 4 segmentos; define <strong>tarifas</strong>; administra concessões; promove os leilões. Fiscaliza ONS e CCEE.</td></tr>
+      <tr><td><strong>Operação</strong></td><td>ONS</td><td><strong>Direito privado</strong> (associação civil)</td><td>Coordena a operação física da geração e transmissão; faz o <strong>despacho por ordem de mérito de custo</strong>. Não comercializa.</td></tr>
+      <tr><td><strong>Liquidação</strong></td><td>CCEE</td><td><strong>Direito privado</strong> (associação civil)</td><td>Contabiliza e <strong>liquida</strong> o mercado de curto prazo; opera os ambientes ACR e ACL; transforma o CMO em <strong>PLD</strong>.</td></tr>
+      <tr><td><strong>Monitoramento</strong></td><td>CMSE</td><td>Comitê no MME</td><td>Acompanha a <strong>segurança de suprimento</strong>; propõe (não executa) ações preventivas, como acionar térmica por segurança.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src-note">Base legal: Lei 9.427/1996 (ANEEL) · 9.478/1997 (CNPE) · 9.648/1998 (ONS) · 10.847/2004 (EPE) · 10.848/2004 (CCEE/CMSE, "novo modelo") · Decreto 5.163/2004.</p>
+
+  <div class="callout insight">
+    <span class="mk">CONTRAINTUITIVO</span>
+    <p>Os <strong>dois operadores centrais do sistema — ONS e CCEE — são entes privados, sem fins lucrativos</strong>.
+      Não são estatais nem autarquias: são associações civis de direito privado sob fiscalização da ANEEL. O Estado
+      regula e concede, mas terceiriza a operação física e a liquidação financeira a entidades privadas dos próprios agentes.</p>
+  </div>
+
+  <h3 class="sub">Onde um poder limita o outro</h3>
+  <ul class="clean">
+    <li>A EPE <strong>estuda mas não decide</strong>: o plano de expansão só vira política quando o MME aprova, com diretrizes do CNPE.</li>
+    <li>O ONS <strong>opera mas não precifica</strong>: gera o Custo Marginal de Operação (CMO) via modelos; é a CCEE que o transforma em PLD e liquida.</li>
+    <li>O CMSE <strong>monitora mas não executa</strong>: pode recomendar acionar térmica fora da ordem de mérito por segurança, mas a decisão de política é do MME.</li>
+    <li>A ANEEL <strong>regula quem opera</strong>: fiscaliza ONS e CCEE, mas não despacha nem liquida — supervisiona quem o faz.</li>
+  </ul>
+</section>
+
+<!-- ============================ SISTEMA FÍSICO ============================ -->
+<section class="panel" id="fisico">
+  <h2 class="sec">A máquina física <span class="tag">Fase 1</span></h2>
+  <p class="sec-sub">Um sistema <strong>hidrotérmico de base hídrica</strong>, do tamanho de um continente,
+    com a maior "bateria" do mundo feita de água — e uma onda renovável que está reescrevendo suas regras.</p>
+
+  <div class="twocol">
+    <div>
+      <h3 class="sub">Por que hidrotérmico de base hídrica</h3>
+      <p>Cerca de <strong>150 hidrelétricas de médio e grande porte</strong> formam a base; as térmicas entram
+        como complemento e segurança. Os <strong>reservatórios são a bateria do sistema</strong>: armazenam as
+        águas do período úmido para o período seco, numa regulação que chega a ser <strong>plurianual</strong>.</p>
+      <p>A capacidade total de armazenamento ≈ <strong>291 GWmês</strong> — equivale a guardar cerca de
+        <strong>3,5 meses do consumo médio</strong> do país. Nenhum parque de baterias de lítio no mundo chega
+        perto; o 1º leilão de baterias (BESS) do Brasil só começa a suprir em 2028.</p>
+    </div>
+    <div>
+      <figure style="margin-top:0">
+        <div class="chart" id="chart-ear"></div>
+        <figcaption><span class="ti">Energia armazenada por subsistema (% do máximo)</span>
+          Padrão sazonal típico em abr/2026: Norte e Nordeste cheios após o período úmido; Sul quase vazio.
+          Número que muda diariamente. Fonte: ONS.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">CONTRAINTUITIVO</span>
+    <p>A <strong>"% renovável" caiu mesmo com eólica e solar batendo recordes</strong> — de 88,2% (2024) para
+      86,8% (2025). Não porque a renovável encolheu, mas porque <strong>choveu menos → menos hidro</strong>,
+      compensada por mais gás. A métrica "% renovável" esconde o risco hidrológico estrutural do sistema.</p>
+  </div>
+
+  <h3 class="sub">Os 4 submercados</h3>
+  <p>Existem quatro submercados porque há <strong>limites físicos de transmissão</strong> entre regiões que
+    impedem tratar o país como um nó único. Quando a transmissão entre eles congestiona, cada um forma um
+    <strong>PLD próprio</strong>.</p>
+  <div class="cards c2">
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">SE</span>Sudeste / Centro-Oeste</h4><p>Maior carga e maior reservatório — o centro de gravidade do sistema.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">S</span>Sul</h4><p>Hidrologia complementar (chove fora de fase com o resto). Historicamente o mais seco em armazenamento.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--solar)">NE</span>Nordeste</h4><p><strong>Virou exportador líquido quase o ano inteiro</strong>: concentra 93% da eólica nacional + muita solar.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">N</span>Norte</h4><p>Grandes hidrelétricas (Tucuruí, Belo Monte) e forte sazonalidade.</p></div>
+  </div>
+  <div class="callout warn">
+    <span class="mk">MUDANÇA ESTRUTURAL</span>
+    <p>O <strong>Nordeste, antes importador, virou exportador líquido</strong>. A inversão do fluxo histórico é
+      consequência direta da concentração de eólica e solar na região — e é a raiz tanto do gargalo de
+      transmissão quanto do <em>curtailment</em>.</p>
+  </div>
+
+  <h3 class="sub">Despacho por custo e a cadeia de modelos</h3>
+  <p>O Brasil é um dos poucos grandes sistemas do mundo com <strong>despacho centralizado por custo</strong>
+    (cost-based), e não por oferta de lances dos geradores (bid-based). O ONS despacha as térmicas em ordem
+    crescente de custo, e só quando esse custo é menor que o <strong>"valor da água"</strong>. Todo o preço de
+    curto prazo nasce de três modelos do CEPEL:</p>
+  <div class="flow">
+    <div class="step"><div class="n">5 ANOS · MENSAL</div><div class="t">NEWAVE</div><div class="d">Calcula a política ótima dos reservatórios e o "valor da água" (custo futuro)</div></div>
+    <div class="step"><div class="n">~1 ANO · SEMANAL</div><div class="t">DECOMP</div><div class="d">Base do PMO; herda a função de custo futuro do NEWAVE</div></div>
+    <div class="step"><div class="n">DIA SEGUINTE · 30 min</div><div class="t">DESSEM</div><div class="d">Define o despacho e o CMO de meia em meia hora → base do PLD horário</div></div>
+  </div>
+  <div class="callout insight">
+    <span class="mk">CHAVE</span>
+    <p>No Brasil <strong>o gerador não "oferta preço"</strong> como numa bolsa. O preço (PLD) é um subproduto
+      contábil de um modelo de otimização estatal. Guardar água tem <strong>custo de oportunidade</strong>: o
+      sistema decide entre gerar hidro barata agora ou poupar para evitar térmica cara — ou déficit — no futuro.
+      É por isso que <strong>chover muito derruba o preço</strong>, e que a disputa analítica migrou para os
+      <em>inputs</em> do modelo, não para o preço.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 class="sub">A onda renovável e os problemas que ela criou</h3>
+  <p>Eólica (~34,7 GW, 5º maior do mundo onshore) e solar (~70 GW, 2ª maior fonte da matriz) cresceram em
+    velocidade explosiva. O efeito colateral é o <strong>curtailment</strong> — o corte de geração renovável
+    pelo ONS — que está mudando de natureza.</p>
+  <figure>
+    <div class="chart" id="chart-curt"></div>
+    <figcaption><span class="ti">Curtailment por razão energética — corte por sobreoferta (GWh)</span>
+      Até 2024 os cortes eram majoritariamente por <em>confiabilidade</em> (falta de fio). O ONS projeta que
+      <strong>até 2029 ~96% dos cortes serão por razão energética</strong> — ou seja, simplesmente sobra geração.
+      Construir mais linha não resolve; só armazenamento e flexibilidade resolvem. Valor de 2024 é número de
+      fechamento do ONS; 2025 é estimativa de mercado (Volt Robotics) ainda não consolidada. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.</figcaption>
+  </figure>
+  <div class="callout warn">
+    <span class="mk">A VILÃ SILENCIOSA</span>
+    <p>A <strong>geração solar de telhado (MMGD)</strong> é a vilã do meio-dia: sem ela, o pico de sobreoferta de
+      2024 cairia <strong>83%</strong>. Como não tem controle centralizado pelo ONS, não pode ser "cortada" da
+      mesma forma — empurrando o corte para os parques centralizados, que então pedem indenização. É um conflito
+      distributivo embutido na "curva do pato". A rampa de carga líquida que a hidro precisa absorver deve subir
+      de ~25 GW (2024) para ~50 GW (2028).</p>
+  </div>
+</section>
+
+<!-- ============================ MERCADO & PREÇO ============================ -->
+<section class="panel" id="mercado">
+  <h2 class="sec">Onde a energia é vendida — e como nasce o preço <span class="tag">Fase 2</span></h2>
+  <p class="sec-sub">Dois ambientes contratuais paralelos, ambos liquidados na CCEE, com lógicas opostas: o
+    <strong>ACR</strong> é compra centralizada via leilão; o <strong>ACL</strong> é contratação bilateral livre.</p>
+
+  <div class="twocol">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">R</span>ACR — Contratação Regulada</h4>
+      <p>As distribuidoras compram 100% do mercado cativo <strong>exclusivamente via leilões</strong> (energia
+        nova A-3 a A-6, energia existente, reserva, Angra). O preço é repassado à tarifa do cativo. A
+        antecedência "A-x" indica os anos antes do início do suprimento.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">L</span>ACL — Contratação Livre</h4>
+      <p>Contratação <strong>bilateral</strong> — preço, prazo, volume e fonte negociados. Consumidores livres
+        (todo Grupo A desde jan/2024, sem piso de carga), especiais (500 kW–1 MW, só fontes incentivadas),
+        comercializadores e geradores.</p></div>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-acl"></div>
+    <figcaption><span class="ti">Participação do mercado livre (ACL) no consumo nacional</span>
+      O ACL chegou a <strong>~43% do consumo</strong> no fim de 2025 — recorde. A abertura do Grupo A (alta tensão)
+      em jan/2024 disparou as migrações. Fonte: CCEE.</figcaption>
+  </figure>
+
+  <h3 class="sub">A abertura do mercado livre — cronograma vigente</h3>
+  <p>Ponto que gera muita confusão: <strong>são duas leis distintas, ambas de 2025, nenhuma caducou.</strong></p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Origem</th><th>Virou</th><th>Sanção</th><th>Foco</th></tr></thead>
+    <tbody>
+      <tr><td>MP 1.300/2025 ("conta de luz")</td><td><strong>Lei 15.235/2025</strong></td><td class="num">08/10/2025</td><td>Tarifa Social ampliada (gratuidade até 80 kWh), isenção de CDE p/ baixa renda, rateio de Angra entre todo o SIN.</td></tr>
+      <tr><td>MP 1.304/2025 (reforma)</td><td><strong>Lei 15.269/2025</strong></td><td class="num">24/11/2025</td><td>Abertura total do ACL, Supridor de Última Instância, teto da CDE, armazenamento, <strong>fim do desconto de TUSD</strong>.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="flow">
+    <div class="step"><div class="n">DESDE JAN/2024</div><div class="t">Grupo A aberto</div><div class="d">Toda a alta tensão, sem piso de carga (Portaria GM/MME 50/2022)</div></div>
+    <div class="step"><div class="n">≈ NOV/2027</div><div class="t">Grupo B C&amp;I</div><div class="d">Comércio e indústria de baixa tensão (24 meses após a lei)</div></div>
+    <div class="step"><div class="n">≈ NOV/2028</div><div class="t">Abertura total</div><div class="d">Residenciais e rurais (36 meses) — &gt;70 milhões de unidades</div></div>
+  </div>
+  <div class="callout warn">
+    <span class="mk">ARMADILHA DE DATA</span>
+    <p>Material comercial cita "ago/2026" e "dez/2027" — são expectativas <em>pré-sanção</em> (texto original da
+      MP). Os tetos legais a partir de 24/11/2025 são <strong>≈ nov/2027</strong> (BT comercial/industrial) e
+      <strong>≈ nov/2028</strong> (residencial), sujeitos a regulamentação da ANEEL/CCEE.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Como nasce o preço: PLD e CMO</h2>
+  <p>O <strong>CMO</strong> é o custo de produzir o próximo MWh que o sistema precisa; o <strong>PLD</strong> é
+    o preço que valora, no curto prazo, a energia gerada ou consumida <strong>mas não contratada</strong>. O PLD
+    deriva do CMO, <strong>limitado por teto e piso</strong> definidos pela ANEEL. O mercado de curto prazo só
+    liquida o <strong>delta</strong> entre o contratado e o medido — não toda a energia.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Limite do PLD</th><th class="num">2025</th><th class="num">2026</th></tr></thead>
+    <tbody>
+      <tr><td>Piso (mínimo)</td><td class="num">R$ 58,60</td><td class="num">R$ 57,31</td></tr>
+      <tr><td>Máximo estrutural</td><td class="num">R$ 751,73</td><td class="num">R$ 785,27</td></tr>
+      <tr><td>Máximo horário</td><td class="num">R$ 1.542,23</td><td class="num">R$ 1.611,04</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src-note">R$/MWh. PLD horário desde 01/01/2021, por submercado. Fonte: ANEEL, Despachos 3.625/2024 e 3.850/2025.</p>
+
+  <div class="callout insight">
+    <span class="mk">CONTRAINTUITIVO</span>
+    <p><strong>Chuva não derruba o preço — reservatório confortável derruba.</strong> Em jan–mar/2026, período
+      úmido, o PLD ficou em ~R$ 156 (longe do piso) porque as afluências vieram abaixo da média e o
+      armazenamento do Sudeste estava em ~57%. O preço responde ao <strong>valor da água</strong> (custo futuro),
+      não à precipitação corrente. Modelar receita de geradora por "vai chover" é erro de altitude: o que importa
+      é o nível dos reservatórios e a postura do CMSE.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">O risco hidrológico: MRE e GSF</h2>
+  <p>A <strong>garantia física</strong> é quanto uma usina pode <em>vender</em> em contrato (seu lastro), sempre
+    inferior à capacidade instalada. O <strong>MRE (Mecanismo de Realocação de Energia)</strong> socializa o
+    risco hidrológico: realoca energia das hidrelétricas que geraram acima da garantia física para as que
+    geraram abaixo, transformando produção incerta em receita firme.</p>
+  <p>O <strong>GSF (Generation Scaling Factor)</strong> é a razão entre a geração hídrica do conjunto e a soma
+    das garantias físicas. <strong>GSF &lt; 1 = déficit</strong>: a geradora tem de <strong>comprar a energia
+    faltante no spot ao PLD</strong> para honrar contratos.</p>
+
+  <div class="callout danger">
+    <span class="mk">A CRISE DO GSF</span>
+    <p>Em 2014–15, seca severa + despacho térmico por segurança + sobrecontratação derrubaram o GSF de ~0,91
+      para ~0,79, com o PLD no teto. As geradoras tiveram de comprar caro justamente quando o spot estava no
+      máximo — um <strong>short estrutural disparado pela mesma variável (seca) que eleva o preço de cobertura</strong>.
+      Estimativas de perdas: R$ 13 bi (ANEEL) a R$ 18,5 bi (APINE/ABRAGE) só em 2014. Dizimou o caixa das hidrelétricas.</p>
+    <p>Repactuado pelas Leis 13.203/2015 e 14.052/2020 (prêmio de risco + extensão de outorga). A <strong>última
+      liminar caiu em dez/2025</strong> — encerrando quase uma década de litígio. Mas a mecânica de fundo
+      permanece: o MRE <strong>socializa</strong> o risco hidrológico, não o elimina.</p>
+  </div>
+
+  <h3 class="sub">Bandeiras tarifárias</h3>
+  <p>Sinalizam ao consumidor o custo variável de geração (despacho de térmicas em anos secos). Valores em vigor
+    desde abril/2024:</p>
+  <figure>
+    <div class="chart" id="chart-band"></div>
+    <figcaption><span class="ti">Bandeiras tarifárias — acréscimo na conta (R$ por 100 kWh)</span>
+      Acionadas mensalmente pela ANEEL conforme PLD/CMO e risco hidrológico. Em 2026: jan–abr verde, maio e junho
+      amarela. Em 2021, a seca exigiu até uma bandeira extra "Escassez Hídrica" de R$ 14,20. Fonte: ANEEL REH 3.306/2024.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================ REGULAÇÃO ECONÔMICA ============================ -->
+<section class="panel" id="regulacao">
+  <h2 class="sec">Como cada segmento ganha dinheiro <span class="tag">Fase 3 · o coração</span></h2>
+  <p class="sec-sub">Aqui mora o alfa. A remuneração de cada elo é quase totalmente determinada pelo desenho
+    regulatório — e os três fios ganham dinheiro de formas radicalmente diferentes.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Segmento</th><th>Como é remunerado</th><th>Risco de demanda</th><th>Risco dominante</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Transmissão</strong></td><td>RAP fixa por <strong>disponibilizar</strong> o ativo (não por MWh)</td><td><span class="pill low">~Nulo</span></td><td>Operacional + construção</td></tr>
+      <tr><td><strong>Distribuição</strong></td><td>Parcela B (capital + O&amp;M regulados) + repasse neutro da Parcela A</td><td><span class="pill mid">Baixo-médio</span></td><td>Regulatório (revisão, perdas, Fator X)</td></tr>
+      <tr><td><strong>Geração</strong></td><td>Preço × energia contratada (garantia física); saldo exposto ao PLD</td><td><span class="pill high">Médio-alto</span></td><td>Preço (PLD), hidrologia (GSF), curtailment</td></tr>
+      <tr><td><strong>Comercialização</strong></td><td>Spread compra/venda no mercado livre</td><td><span class="pill high">Alto</span></td><td>Contraparte, preço, liquidez</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 class="sub">Transmissão — o ativo "bond" do setor</h3>
+  <p>A <strong>RAP (Receita Anual Permitida)</strong> é recebida por <strong>disponibilizar</strong> linhas e
+    subestações — <strong>independe do fluxo de energia</strong>. Os leilões usam o critério de <strong>menor
+    RAP</strong>: vence quem oferta a menor receita para construir, operar e manter por 30 anos. A receita só cai
+    por <strong>falha da própria empresa</strong> (Parcela Variável, limitada a 12,5% da RAP em 12 meses).</p>
+  <figure>
+    <div class="chart" id="chart-rap"></div>
+    <figcaption><span class="ti">Receita Anual Permitida do segmento de transmissão (R$ bi)</span>
+      Reajustada todo ciclo (1º julho), majoritariamente por IPCA. Os deságios de 40–49% nos leilões recentes
+      sinalizam competição agressiva e compressão de retorno em projetos novos. Fonte: ANEEL (REH dos ciclos).</figcaption>
+  </figure>
+  <div class="callout warn">
+    <span class="mk">RISCO DE CAUDA</span>
+    <p>A disputa da <strong>RBSE</strong> (ativos pré-2000, indenização de R$ 62,2 bi via Lei 12.783/2013) segue
+      viva: em maio/2026 o TCU manteve, mas o TRF-1 anulou o componente "Ke" (~R$ 20 bi de custo de capital
+      próprio) — decisões a dias de distância, sujeitas a recurso. Impacto relevante para Eletrobras, ISA Energia
+      (CTEEP) e Taesa, com ~R$ 11 bi ainda a pagar até 2028.</p>
+  </div>
+
+  <h3 class="sub">Distribuição — a mais complexa</h3>
+  <p>A receita requerida = <strong>Parcela A (não gerenciável) + Parcela B (gerenciável)</strong>. A Parcela A
+    (~75% da receita) é apenas <strong>repassada sem margem</strong>: compra de energia, transporte e encargos.
+    A <strong>margem real vive na Parcela B</strong> (~25%): O&amp;M eficiente + remuneração de capital (WACC ×
+    Base de Remuneração Regulatória) + depreciação regulatória.</p>
+  <figure>
+    <div class="chart" id="chart-parcela"></div>
+    <figcaption><span class="ti">Composição da receita de uma distribuidora (ordem de grandeza)</span>
+      Olhar a receita bruta engana: ~75% é repasse neutro. O valor está na Parcela B e na eficiência da
+      distribuidora <em>vs.</em> o nível regulatório. Fonte: PRORET / ANEEL (faixa típica).</figcaption>
+  </figure>
+  <div class="callout insight">
+    <span class="mk">A ARMADILHA CENTRAL</span>
+    <p>Sob as normas contábeis (IFRS), <strong>parte relevante do "lucro" de uma distribuidora não é caixa</strong>.
+      A receita reflete a remuneração e a correção (IPCA) de um <strong>ativo financeiro indenizável</strong> (a
+      base de ativos a valor de reposição) e da <strong>CVA</strong> (a conta que difere as variações da Parcela
+      A) — reconhecidas <em>antes</em> do recebimento. Por isso as companhias publicam reconciliação de "EBITDA
+      IFRS → EBITDA regulatório". <strong>Quem modela só o P&amp;L IFRS confunde lucro com geração de caixa.</strong></p>
+  </div>
+  <ul class="clean">
+    <li><strong>RTP vs RTA:</strong> a Revisão Tarifária Periódica (a cada ~4–5 anos) redefine tudo — Parcela B eficiente, base de ativos, WACC, metas. O Reajuste Anual só corrige a Parcela B por IPCA − Fator X.</li>
+    <li><strong>WACC re-parametrizado todo ano:</strong> 8,10% real (2026) na distribuição vs 7,16% (2025). Tratar como fixo no ciclo é erro comum.</li>
+    <li><strong>Perdas não técnicas são P&amp;L direto:</strong> a distribuidora só recupera o nível <em>regulatório</em>; tudo acima sai do acionista. Light e Amazonas Energia são casos-limite (juntas, ~34% das perdas não técnicas do país).</li>
+    <li><strong>Limite de repasse de 105%:</strong> sobras de compra de energia acima disso não são repassáveis — viram custo do acionista.</li>
+  </ul>
+
+  <h3 class="sub">Geração — contrato vs. exposição ao PLD</h3>
+  <p>Dois vetores de receita: a <strong>parcela contratada</strong> (preço × energia, limitada à garantia física)
+    e a <strong>exposição ao curto prazo</strong> (o desvio entre gerado e contratado liquidado ao PLD). É o
+    segmento de maior risco: preço (PLD entre R$ 57 e R$ 1.611/MWh em 2026), hidrologia (GSF) e curtailment.</p>
+  <div class="callout warn">
+    <span class="mk">RISCO RENOVÁVEL</span>
+    <p>O <strong>curtailment por motivo energético não é ressarcido</strong>. A Lei 15.269/2025 garante
+      ressarcimento apenas para cortes por indisponibilidade externa e confiabilidade — não por sobreoferta, que
+      responde pela maior parte dos cortes. Tese de eólica/solar precisa descontar curtailment não ressarcível,
+      não só o preço de venda.</p>
+  </div>
+
+  <h3 class="sub">Geração distribuída — o subsídio em extinção</h3>
+  <p>A <strong>Lei 14.300/2022</strong> encerrou a isenção integral de uso da rede para a micro e minigeração.
+    O "Fio B" passa a ser cobrado de forma escalonada para quem entrou a partir de 2023:</p>
+  <figure>
+    <div class="chart" id="chart-fiob"></div>
+    <figcaption><span class="ti">Cobrança do "Fio B" sobre a geração distribuída (% do uso da rede)</span>
+      Quem protocolou antes de 07/01/2023 mantém compensação cheia até 2045. O subsídio cruzado (bancado por
+      todos via CDE) já passa de R$ 5–7 bi/ano. A tentativa de taxar novos entrantes foi rejeitada no Congresso
+      em out/2025. Fonte: Lei 14.300/2022, art. 27.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================ MUNDO ============================ -->
+<section class="panel" id="mundo">
+  <h2 class="sec">O Brasil visto de fora <span class="tag">Benchmark</span></h2>
+  <p class="sec-sub">Para criar senso crítico: como o resto do mundo organiza o mesmo problema — e onde o
+    desenho brasileiro é referência, onde é apenas peculiar, e onde está atrasado.</p>
+
+  <div class="callout insight">
+    <span class="mk">O DIVISOR DE ÁGUAS</span>
+    <p>A diferença não é de detalhe — é de filosofia sobre <strong>quem decide o preço</strong>. No Brasil
+      (<em>cost-based</em>), o ONS despacha e o preço sai de um <strong>modelo de otimização estatal</strong>. Na
+      maior parte do mundo (<em>bid-based</em>), o preço sai de <strong>lances dos geradores</strong> num mercado.
+      O Brasil é um dos poucos grandes sistemas sem preço por oferta.</p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Dimensão</th><th>Brasil (cost-based)</th><th>Mundo (bid-based)</th></tr></thead>
+    <tbody>
+      <tr><td>Quem forma o preço</td><td>Otimizador estatal (NEWAVE/DECOMP)</td><td>Lances dos próprios agentes</td></tr>
+      <tr><td>Risco de manipulação</td><td>Disputa sobre os <em>inputs</em> do modelo (litígio)</td><td>Lances estratégicos / poder de mercado</td></tr>
+      <tr><td>Sinal de preço</td><td>Atrasado, suavizado, único por submercado</td><td>Reflete escassez e congestão (nodal)</td></tr>
+      <tr><td>Autodespacho</td><td>Não — despacho centralizado</td><td>Sim — o gerador decide gerar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 class="sub">Estudos de caso</h3>
+  <div class="cards c2">
+    <div class="card"><h4>🇬🇧 Reino Unido — a referência em redes</h4><p>O modelo <strong>RIIO</strong> remunera redes
+      por <strong>incentivo e desempenho</strong> (totex, RAB), não por gasto bruto — o benchmark global que a
+      regulação de distribuição brasileira não tem. Os <strong>CfD</strong> de renováveis são "primos" dos
+      leilões do ACR, mas com melhor desenho (two-way: devolvem dinheiro ao consumidor quando o mercado sobe).</p></div>
+    <div class="card"><h4>🇳🇴 Nord Pool — hidro por mercado</h4><p>O contraponto <strong>decisivo</strong>: a
+      Noruega é ~96% hidrelétrica e <strong>precifica a água por mercado</strong>, não por otimizador estatal. O
+      "valor da água" emerge dos lances dos produtores. Derruba o argumento de que "hidrelétrica exige despacho
+      central" — ao custo de alta volatilidade e fortes diferenças zonais de preço.</p></div>
+    <div class="card"><h4>🇺🇸 PJM / ERCOT — capacidade vs escassez</h4><p>Preço <strong>nodal (LMP)</strong> por
+      localização — o que o Brasil mais carece. PJM tem mercado de capacidade (preços recordes, US$ 329/MW-dia
+      em 26/27); o ERCOT é <em>energy-only</em> e a tempestade Uri (2021, 246 mortes, preço no teto por dias)
+      expôs o risco do modelo puro sob evento extremo.</p></div>
+    <div class="card"><h4>🇪🇸 Ibéria — o alerta renovável</h4><p>O "mecanismo ibérico" (2022) capou o gás para
+      desacoplar o preço. O <strong>apagão de abril/2025</strong> (~31 GW perdidos em segundos, alta penetração
+      solar) é o alerta sobre <strong>inércia e controle de tensão</strong> em sistemas de alta renovável — causa
+      ainda contestada, mas relevante para o Brasil, que adiciona solar/eólica em massa.</p></div>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-precos"></div>
+    <figcaption><span class="ti">Preço residencial de eletricidade — comparação internacional (US$/kWh)</span>
+      O residencial brasileiro é <strong>mediano</strong> no ranking — o paradoxo está em ter tarifa apenas
+      mediana sobre uma das matrizes mais limpas e baratas do mundo. Médias 2023–2026; Argentina e México são
+      fortemente subsidiados. Fonte: GlobalPetrolPrices; Eurostat; EIA.</figcaption>
+  </figure>
+
+  <div class="callout warn">
+    <span class="mk">O PARADOXO TARIFÁRIO</span>
+    <p>A geração no Brasil é barata; a conta não é — porque <strong>o fio carrega política pública</strong>. Em
+      2024, <strong>44,8% da receita do setor</strong> virou tributo + encargo (R$ 114,6 bi), com a <strong>CDE
+      sozinha em 13,2%</strong> (R$ 33,8 bi, recorde, ~38× o valor de 2003). A peculiaridade não é o imposto em
+      si (a União Europeia tributa ~28% da conta), e sim <strong>usar a tarifa de energia como veículo fiscal e
+      de política social/industrial</strong> — subsídios a baixa renda, sistemas isolados, fontes incentivadas e
+      geração distribuída embutidos na conta de todos.</p>
+  </div>
+
+  <h2 class="sec">Síntese crítica</h2>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Dimensão</th><th>Referência global</th><th>Brasil é…</th></tr></thead>
+    <tbody>
+      <tr><td>Formação de preço</td><td>Lances em merit order; LMP nodal (EUA)</td><td><span class="pill high">Atrasado/peculiar</span> — único grande sistema sem preço por oferta</td></tr>
+      <tr><td>Gestão da hidrologia</td><td>Noruega: valor da água por mercado</td><td><span class="pill mid">Peculiar</span> — prova de que dá para precificar água por mercado existe</td></tr>
+      <tr><td>Sinal locacional</td><td>Preço nodal (EUA, Ontário)</td><td><span class="pill high">Atrasado</span> — preço único por submercado, sem sinal de congestão</td></tr>
+      <tr><td>Remuneração de redes</td><td>RIIO / totex / incentivo (UK)</td><td><span class="pill high">Atrasado</span> vs o benchmark de incentivo</td></tr>
+      <tr><td>Armazenamento / flexibilidade</td><td>Baterias <em>standalone</em> legisladas (Chile, AU)</td><td><span class="pill mid">Em transição</span> — 1º leilão BESS só em 2028</td></tr>
+      <tr><td>Abertura de varejo</td><td>UK/UE/AU abriram há décadas</td><td><span class="pill mid">Atrasado, mas avançando</span> — 2027–2028</td></tr>
+      <tr><td>Contratação de longo prazo (ACR)</td><td>CfD (UK) — mesma lógica</td><td><span class="pill low">Referência parcial</span> — desenho robusto que viabilizou a expansão</td></tr>
+      <tr><td>Matriz física</td><td>—</td><td><span class="pill low">Referência</span> — limpa, diversificada, com a maior bateria hídrica do mundo</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">TESE CENTRAL</span>
+    <p>O Brasil construiu um sistema <strong>fisicamente excelente e contratualmente sofisticado (ACR)</strong>,
+      mas mantém <strong>o coração do mercado — o preço — dentro de uma caixa-preta de otimização estatal</strong>,
+      num mundo que migrou para preço por oferta, sinais nodais e regulação de redes por incentivo. O caso
+      nórdico derruba o argumento de que "hidrelétrica exige despacho central"; o RIIO mostra a regulação de
+      redes que falta; o PJM/ERCOT delimita o debate capacidade-vs-escassez que o Brasil ainda evitará; e o
+      paradoxo tarifário expõe o uso da conta de luz como veículo fiscal.</p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Sobre este estudo</h4>
+        <p>Mapa de referência das Fases 1–3 (sistema, mercado e regulação) do setor elétrico brasileiro, com
+          benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
+          sem dependências externas de dados.</p>
+        <div class="badge-row">
+          <span class="badge">v1.0</span><span class="badge">26 jun 2026</span><span class="badge">dados: 2024–2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Fontes primárias</h4>
+        <p>ONS (operação, EAR, curtailment) · ANEEL (tarifas, PLD, WACC, RAP) · EPE (BEN 2026, PDE) · CCEE
+          (mercado, liquidação) · MME (boletins, leis) · Eletronuclear · Planalto/Congresso (Leis 14.300,
+          15.235, 15.269).</p>
+      </div>
+      <div>
+        <h4>Benchmark internacional</h4>
+        <p>IEA · EIA · Eurostat · Ofgem (RIIO/CfD) · FERC, PJM, ERCOT, CAISO · Nord Pool / NVE · OMIE, ENTSO-E
+          · AEMO/AER · GlobalPetrolPrices · PwC/Instituto Acende Brasil.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- Tabs ---------------- */
+(function(){
+  const tabs=document.querySelectorAll('.tab');
+  const panels=document.querySelectorAll('.panel');
+  function show(id){
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.t===id));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'instant'});
+    if(window.__renderCharts) window.__renderCharts();
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.t)));
+})();
+
+/* ---------------- SVG chart helpers (no external lib) ---------------- */
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  const fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:1});
+  function el(tag,attrs,txt){
+    const e=document.createElementNS(NS,tag);
+    for(const k in attrs)e.setAttribute(k,attrs[k]);
+    if(txt!=null)e.textContent=txt;
+    return e;
+  }
+  // Horizontal bar chart
+  function hbars(mount,data,opts){
+    opts=opts||{};
+    const W=opts.W||640, rowH=opts.rowH||34, padT=8, padB=8,
+          labelW=opts.labelW||150, valW=opts.valW||64,
+          H=padT+padB+data.length*rowH;
+    const max=opts.max||Math.max(...data.map(d=>d.value))*1.02;
+    const x0=labelW, x1=W-valW, plot=x1-x0;
+    const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img'});
+    // gridlines
+    const ticks=opts.ticks||4;
+    for(let i=0;i<=ticks;i++){
+      const gx=x0+plot*i/ticks;
+      svg.appendChild(el('line',{x1:gx,y1:padT,x2:gx,y2:H-padB,stroke:'#eee7da','stroke-width':1}));
+    }
+    data.forEach((d,i)=>{
+      const y=padT+i*rowH, bw=Math.max(2,plot*d.value/max), cy=y+rowH/2;
+      svg.appendChild(el('text',{x:x0-10,y:cy+4,'text-anchor':'end',
+        'font-size':13,'font-weight':d.bold?700:500,fill:'#3a4150','font-family':'Inter,sans-serif'},d.label));
+      svg.appendChild(el('rect',{x:x0,y:y+5,width:bw,height:rowH-12,rx:4,fill:d.color||'#1f5f9e'}));
+      svg.appendChild(el('text',{x:x0+bw+8,y:cy+4,'font-size':12.5,'font-weight':600,
+        fill:'#1b1f27','font-family':'IBM Plex Mono,monospace'},opts.valFmt?opts.valFmt(d.value,d):fmt(d.value)));
+    });
+    mount.innerHTML='';mount.appendChild(svg);
+  }
+  // Vertical column chart (time-ish series, independent columns — no stacking)
+  function vcols(mount,data,opts){
+    opts=opts||{};
+    const W=opts.W||640,H=opts.H||260,padL=44,padR=12,padT=14,padB=34;
+    const max=opts.max||Math.max(...data.map(d=>d.value))*1.12;
+    const x0=padL,x1=W-padR,y0=H-padB,y1=padT,plotW=x1-x0,plotH=y0-y1;
+    const n=data.length,slot=plotW/n,bw=Math.min(opts.barW||48,slot*0.6);
+    const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img'});
+    const ticks=opts.ticks||4;
+    for(let i=0;i<=ticks;i++){
+      const v=max*i/ticks,gy=y0-plotH*i/ticks;
+      svg.appendChild(el('line',{x1:x0,y1:gy,x2:x1,y2:gy,stroke:'#eee7da','stroke-width':1}));
+      svg.appendChild(el('text',{x:x0-8,y:gy+4,'text-anchor':'end','font-size':10.5,
+        fill:'#9aa2ad','font-family':'IBM Plex Mono,monospace'},opts.axisFmt?opts.axisFmt(v):fmt(v)));
+    }
+    data.forEach((d,i)=>{
+      const cx=x0+slot*(i+0.5),bh=plotH*d.value/max,y=y0-bh;
+      svg.appendChild(el('rect',{x:cx-bw/2,y:y,width:bw,height:Math.max(2,bh),rx:4,
+        fill:d.color||'#1f5f9e',opacity:d.faint?0.55:1}));
+      svg.appendChild(el('text',{x:cx,y:y-7,'text-anchor':'middle','font-size':12,'font-weight':600,
+        fill:'#1b1f27','font-family':'IBM Plex Mono,monospace'},opts.valFmt?opts.valFmt(d.value):fmt(d.value)));
+      svg.appendChild(el('text',{x:cx,y:y0+18,'text-anchor':'middle','font-size':12,
+        fill:'#6b7480','font-family':'Inter,sans-serif',
+        'font-weight':d.bold?700:400},d.label));
+      if(d.note)svg.appendChild(el('text',{x:cx,y:y0+31,'text-anchor':'middle','font-size':9.5,
+        fill:'#9aa2ad','font-family':'Inter,sans-serif'},d.note));
+    });
+    mount.innerHTML='';mount.appendChild(svg);
+  }
+  function legend(mount,items){
+    const wrap=document.createElement('div');wrap.className='legend';
+    items.forEach(it=>{const s=document.createElement('span');
+      s.innerHTML='<i style="background:'+it.color+'"></i>'+it.label;wrap.appendChild(s);});
+    mount.appendChild(wrap);
+  }
+
+  const C={hydro:'#1f6f8b',thermal:'#cf7d2e',wind:'#3f9277',solar:'#e0a93b',
+    nuclear:'#8a5fb0',accent:'#1f5f9e',danger:'#be3c34',muted:'#9aa2ad',
+    ok:'#2f7d57',warn:'#b07b1f',gray:'#aeb6bf'};
+
+  const rendered={};
+  function render(id,fn){
+    const m=document.getElementById(id);
+    if(!m||rendered[id])return;
+    if(m.offsetParent===null && id!=='chart-matriz')return; // only render visible
+    fn(m);rendered[id]=true;
+  }
+
+  function renderAll(){
+    // OVERVIEW: generation matrix (TWh)
+    render('chart-matriz',m=>{
+      hbars(m,[
+        {label:'Hidrelétrica',value:401.4,color:C.hydro,bold:true},
+        {label:'Eólica',value:116.5,color:C.wind},
+        {label:'Solar (centr.+telhado)',value:88.1,color:C.solar},
+        {label:'Biomassa',value:63.0,color:'#6a9b4e'},
+        {label:'Gás natural',value:58.6,color:C.thermal},
+        {label:'Nuclear',value:15.8,color:C.nuclear},
+        {label:'Carvão',value:11.2,color:'#6d5b4a'},
+        {label:'Óleo',value:6.7,color:'#9a7b5a'},
+      ],{labelW:160,valW:70,valFmt:v=>fmt(v)+' TWh'});
+      legend(m,[{label:'Renovável',color:C.hydro},{label:'Térmica fóssil',color:C.thermal},{label:'Nuclear',color:C.nuclear}]);
+    });
+    // FÍSICO: EAR by subsystem
+    render('chart-ear',m=>{
+      vcols(m,[
+        {label:'Norte',value:97,color:C.thermal},
+        {label:'Nordeste',value:96,color:C.solar},
+        {label:'SE/CO',value:66,color:C.hydro,bold:true},
+        {label:'Sul',value:32,color:C.wind},
+      ],{H:230,max:100,barW:50,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
+    });
+    // FÍSICO: curtailment
+    render('chart-curt',m=>{
+      vcols(m,[
+        {label:'2022',value:1100,color:C.gray,note:'confiabil.'},
+        {label:'2023',value:2400,color:C.gray},
+        {label:'2024',value:4330,color:C.accent,note:'ONS (real)'},
+        {label:'2025',value:9500,color:C.danger,faint:true,note:'estimativa'},
+      ],{H:250,max:11000,barW:54,axisFmt:v=>fmt(v/1000)+' TWh',valFmt:v=>fmt(v/1000)});
+      legend(m,[{label:'Fechamento ONS',color:C.accent},{label:'Estimativa de mercado',color:C.danger}]);
+    });
+    // MERCADO: ACL share
+    render('chart-acl',m=>{
+      vcols(m,[
+        {label:'2021',value:30,color:C.gray},
+        {label:'2022',value:33,color:C.gray},
+        {label:'2023',value:36,color:C.accent},
+        {label:'2024',value:40,color:C.accent},
+        {label:'2025',value:43,color:C.ok,bold:true},
+      ],{H:240,max:50,barW:46,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
+    });
+    // MERCADO: bandeiras
+    render('chart-band',m=>{
+      hbars(m,[
+        {label:'Verde',value:0,color:C.ok},
+        {label:'Amarela',value:1.885,color:C.solar},
+        {label:'Vermelha P1',value:4.463,color:'#d9612e'},
+        {label:'Vermelha P2',value:7.877,color:C.danger,bold:true},
+        {label:'Escassez 2021*',value:14.20,color:'#7a2520'},
+      ],{labelW:128,valW:74,max:15,valFmt:v=>'R$ '+fmt(v)});
+    });
+    // REGULAÇÃO: RAP transmissão
+    render('chart-rap',m=>{
+      vcols(m,[
+        {label:'24/25',value:46.7,color:C.hydro},
+        {label:'25/26',value:50.3,color:C.hydro},
+        {label:'26/27',value:55.0,color:C.accent,bold:true},
+      ],{H:230,max:62,barW:56,axisFmt:v=>'R$'+fmt(v)+'bi',valFmt:v=>fmt(v)});
+    });
+    // REGULAÇÃO: Parcela A vs B
+    render('chart-parcela',m=>{
+      hbars(m,[
+        {label:'Parcela A (repasse neutro)',value:75,color:C.gray},
+        {label:'Parcela B (a margem real)',value:25,color:C.accent,bold:true},
+      ],{labelW:210,valW:54,max:100,rowH:46,valFmt:v=>v+'%'});
+    });
+    // REGULAÇÃO: Fio B
+    render('chart-fiob',m=>{
+      vcols(m,[
+        {label:'2023',value:15,color:C.gray},
+        {label:'2024',value:30,color:C.gray},
+        {label:'2025',value:45,color:C.solar},
+        {label:'2026',value:60,color:C.thermal,bold:true},
+        {label:'2027',value:75,color:'#d9612e'},
+        {label:'2028',value:90,color:C.danger},
+        {label:'2029',value:100,color:'#7a2520',note:'novo modelo'},
+      ],{H:240,max:110,barW:40,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
+    });
+    // MUNDO: international prices
+    render('chart-precos',m=>{
+      hbars(m,[
+        {label:'Alemanha',value:0.406,color:C.gray},
+        {label:'Reino Unido',value:0.404,color:C.gray},
+        {label:'França',value:0.276,color:C.gray},
+        {label:'Espanha',value:0.253,color:C.gray},
+        {label:'Chile',value:0.224,color:C.gray},
+        {label:'EUA',value:0.186,color:C.gray},
+        {label:'Média mundial',value:0.174,color:C.warn},
+        {label:'Brasil',value:0.162,color:C.accent,bold:true},
+        {label:'Noruega',value:0.162,color:C.gray},
+        {label:'México',value:0.108,color:'#cdb8a0'},
+        {label:'Argentina',value:0.083,color:'#cdb8a0'},
+        {label:'China',value:0.076,color:'#cdb8a0'},
+      ],{labelW:130,valW:74,max:0.44,valFmt:v=>'US$ '+v.toFixed(3)});
+      legend(m,[{label:'Brasil',color:C.accent},{label:'Média mundial',color:C.warn},{label:'Subsidiado',color:'#cdb8a0'}]);
+    });
+  }
+  window.__renderCharts=renderAll;
+  renderAll();
+  window.addEventListener('resize',()=>{}); // svg is responsive via viewBox
+})();
+</script>
+</body>
+</html>
