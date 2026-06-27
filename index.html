@@ -106,8 +106,9 @@
     border:1px solid;display:flex;gap:13px;align-items:flex-start;font-size:14.5px}
   .callout .mk{flex:0 0 auto;font-weight:700;font-size:12px;font-family:var(--mono);
     padding:3px 8px;border-radius:6px;letter-spacing:.04em;margin-top:1px}
-  .callout p{margin:0;color:var(--ink-soft)}
+  .callout p{margin:0;color:var(--ink-soft);min-width:0}
   .callout p+p{margin-top:8px}
+  @media(max-width:560px){.callout{flex-direction:column;gap:9px}.callout .mk{align-self:flex-start}}
   .callout.insight{background:var(--insight-soft);border-color:#dccef0}
   .callout.insight .mk{background:var(--insight);color:#fff}
   .callout.warn{background:var(--warn-soft);border-color:#ecd8a8}
@@ -125,6 +126,7 @@
   tbody tr:last-child td{border-bottom:none}
   tbody tr:hover{background:#fbfaf6}
   td.num,th.num{text-align:right;font-family:var(--mono);font-size:13px;white-space:nowrap}
+  td.hlcell{background:var(--accent-soft)}
   .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;
     font-family:var(--sans);white-space:nowrap}
   .pill.low{background:var(--ok-soft);color:var(--ok)}
@@ -172,6 +174,31 @@
   .twocol{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:14px 0}
   @media(max-width:720px){.twocol{grid-template-columns:1fr}h1.title{font-size:31px}.lead{font-size:19px}}
 
+  /* ---------- Era band ---------- */
+  .eras{display:flex;gap:6px;margin:20px 0 32px}
+  .eras .era{flex:1;border-radius:11px;padding:13px 14px;color:#fff;min-width:0;position:relative}
+  .eras .era .yr{font-family:var(--mono);font-size:11px;opacity:.9;font-weight:500;letter-spacing:.02em}
+  .eras .era .nm{font-weight:650;font-size:13.5px;line-height:1.28;margin-top:4px}
+  .eras .era .ar{position:absolute;right:-6px;top:50%;transform:translateY(-50%);z-index:2;
+    color:var(--faint);font-size:15px}
+  .eras .era:last-child .ar{display:none}
+  @media(max-width:720px){.eras{flex-direction:column}.eras .era .ar{display:none}}
+
+  /* ---------- Vertical timeline ---------- */
+  .timeline{position:relative;margin:14px 0 26px;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line-strong)}
+  .tl{position:relative;padding:0 0 22px}
+  .tl:last-child{padding-bottom:2px}
+  .tl::before{content:"";position:absolute;left:-25px;top:4px;width:12px;height:12px;border-radius:50%;
+    background:var(--surface);border:2.5px solid var(--accent);box-shadow:0 0 0 3px var(--bg)}
+  .tl.crisis::before{border-color:var(--danger);background:var(--danger-soft)}
+  .tl.star::before{background:var(--accent)}
+  .tl .yr{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent)}
+  .tl.crisis .yr{color:var(--danger)}
+  .tl .ev{font-weight:650;font-size:15px;margin:1px 0 3px;color:var(--ink)}
+  .tl .why{font-size:13.5px;color:var(--muted);max-width:760px}
+  .tl .why b{color:var(--ink-soft);font-weight:600}
+
   footer{background:#13202b;color:#9fb3c2;padding:34px 0 44px;font-size:13px}
   footer h4{color:#e7eef3;font-size:14px;margin:0 0 10px}
   footer a{color:#8fb8d6;border-bottom-color:rgba(143,184,214,.3)}
@@ -190,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.0 · 26 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.1 · 27 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -200,11 +227,12 @@
   <div class="wrap">
     <div class="tabrow" id="tabrow">
       <button class="tab active" data-t="overview"><span class="num">00</span>Visão geral</button>
-      <button class="tab" data-t="inst"><span class="num">01</span>Instituições</button>
-      <button class="tab" data-t="fisico"><span class="num">02</span>Sistema físico</button>
-      <button class="tab" data-t="mercado"><span class="num">03</span>Mercado &amp; preço</button>
-      <button class="tab" data-t="regulacao"><span class="num">04</span>Regulação econômica</button>
-      <button class="tab" data-t="mundo"><span class="num">05</span>Benchmark global</button>
+      <button class="tab" data-t="historia"><span class="num">01</span>Contexto histórico</button>
+      <button class="tab" data-t="inst"><span class="num">02</span>Instituições</button>
+      <button class="tab" data-t="fisico"><span class="num">03</span>Sistema físico</button>
+      <button class="tab" data-t="mercado"><span class="num">04</span>Mercado &amp; preço</button>
+      <button class="tab" data-t="regulacao"><span class="num">05</span>Regulação econômica</button>
+      <button class="tab" data-t="mundo"><span class="num">06</span>Benchmark global</button>
     </div>
   </div>
 </nav>
@@ -255,7 +283,7 @@
     <div class="kpi"><div class="v">86,8<span class="u">%</span></div><div class="l">Matriz renovável (na geração)</div><div class="src">EPE BEN 2026</div></div>
     <div class="kpi"><div class="v">~291<span class="u">GWmês</span></div><div class="l">"Bateria" do sistema: energia armazenável em reservatórios</div><div class="src">ONS</div></div>
     <div class="kpi"><div class="v">&gt;191<span class="u">mil km</span></div><div class="l">Linhas de transmissão (Rede Básica)</div><div class="src">MME · fim 2025</div></div>
-    <div class="kpi"><div class="v">~43<span class="u">%</span></div><div class="l">Consumo já no mercado livre (ACL)</div><div class="src">CCEE · fim 2025</div></div>
+    <div class="kpi"><div class="v">~42<span class="u">%</span></div><div class="l">Consumo já no mercado livre (ACL)</div><div class="src">CCEE · fim 2025</div></div>
     <div class="kpi"><div class="v">~44,8<span class="u">%</span></div><div class="l">Da receita do setor vira tributo + encargo</div><div class="src">PwC/Acende · 2024</div></div>
   </div>
 
@@ -264,21 +292,137 @@
     <figcaption><span class="ti">Matriz elétrica brasileira por geração — 2025 (TWh)</span>
       A base hídrica ainda domina (~52%), mas eólica + solar já são <strong>~26% da geração</strong>.
       Esse crescimento é a origem dos novos problemas do sistema (curtailment, rampas, necessidade de armazenamento).
-      Fonte: EPE, Balanço Energético Nacional 2026 (ano-base 2025).</figcaption>
+      As oito fontes somam ~761 TWh; a diferença para os 775,9 TWh de geração total corresponde a importação
+      líquida e ajustes estatísticos. Fonte: EPE, Balanço Energético Nacional 2026 (ano-base 2025).</figcaption>
   </figure>
 
   <h2 class="sec">Como navegar este estudo</h2>
   <div class="cards c2">
-    <div class="card"><h4>01 · Instituições</h4><p>Quem <strong>planeja, opera, regula e liquida</strong>.
+    <div class="card"><h4>01 · Contexto histórico</h4><p>O arco de 1879 a 2026: como cada instituição nasceu
+      de uma crise, e por que o Brasil "desagrega" o que o mundo "agrega".</p></div>
+    <div class="card"><h4>02 · Instituições</h4><p>Quem <strong>planeja, opera, regula e liquida</strong>.
       A arquitetura de governança — e por que ONS e CCEE são entes privados.</p></div>
-    <div class="card"><h4>02 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
+    <div class="card"><h4>03 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
       despacho por custo e a cadeia de modelos NEWAVE → DECOMP → DESSEM.</p></div>
-    <div class="card"><h4>03 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
+    <div class="card"><h4>04 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
       o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
-    <div class="card"><h4>04 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
+    <div class="card"><h4>05 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
-    <div class="card"><h4>05 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
+    <div class="card"><h4>06 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
       Ibéria, preços internacionais — para criar senso crítico sobre o modelo brasileiro.</p></div>
+  </div>
+</section>
+
+<!-- ============================ CONTEXTO HISTÓRICO ============================ -->
+<section class="panel" id="historia">
+  <p class="lead">As instituições de hoje não foram desenhadas numa prancheta — são <b>cicatrizes de crises</b>.
+    Para entender por que o setor tem seis órgãos separados, é preciso seguir um arco de quase 150 anos:
+    do <b>município que concedia</b>, à <b>União que regulava</b>, à <b>União que operava tudo</b>, ao
+    <b>mercado</b> e, por fim, ao desenho atual. Cada peça resolveu uma falha da anterior.</p>
+
+  <div class="eras">
+    <div class="era" style="background:#6b7480"><div class="yr">1879–1933</div><div class="nm">Concessões privadas locais</div><span class="ar">→</span></div>
+    <div class="era" style="background:var(--accent)"><div class="yr">1934–1944</div><div class="nm">Nasce a regulação federal</div><span class="ar">→</span></div>
+    <div class="era" style="background:var(--hydro)"><div class="yr">1945–1989</div><div class="nm">Estado desenvolvimentista</div><span class="ar">→</span></div>
+    <div class="era" style="background:var(--thermal)"><div class="yr">1990–2003</div><div class="nm">Reforma de mercado</div><span class="ar">→</span></div>
+    <div class="era" style="background:var(--wind)"><div class="yr">2004–hoje</div><div class="nm">Novo Modelo &amp; abertura</div></div>
+  </div>
+
+  <h2 class="sec">O arco institucional <span class="tag">1879 → 2026</span></h2>
+  <p class="sec-sub">O fio condutor: <strong>quem financia e coordena</strong> uma indústria de capital intensivo,
+    retorno lento e valor estratégico. A resposta mudou de mãos várias vezes.</p>
+
+  <div class="timeline">
+    <div class="tl"><div class="yr">1879 · 1889</div><div class="ev">A eletricidade chega antes do Estado</div><div class="why">Demonstração de Edison no Rio (1879); a UHE <strong>Marmelos</strong> (Juiz de Fora, 1889) é a 1ª hidrelétrica de serviço público da América do Sul. <b>Serviço urbano, privado e local — sem nenhuma moldura federal.</b></div></div>
+    <div class="tl"><div class="yr">1899 · 1927</div><div class="ev">O grande capital estrangeiro: Light e AMFORP</div><div class="why">A <strong>Light</strong> (canadense, 1899/1905) eletrifica SP e RJ; a <strong>AMFORP</strong> (americana, 1927) compra dezenas de concessões. Por volta de 1930, as duas respondiam por <b>~70% da energia do país</b>. Traziam capital e escala — mas cada município concedia sozinho, com tarifa blindada pela "cláusula-ouro".</div></div>
+    <div class="tl star"><div class="yr">1934</div><div class="ev">Código de Águas — o marco fundador</div><div class="why">Vargas <strong>nacionaliza as quedas d'água</strong> (passam a ser bem da União) e cria a outorga e a <strong>tarifa federal pelo "custo do serviço"</strong>, enterrando a cláusula-ouro. <b>Problema que resolveu:</b> não havia título público sobre o insumo (a água) nem poder federal de tarifa. É a base jurídica de tudo que veio depois.</div></div>
+    <div class="tl"><div class="yr">1939 · 1960</div><div class="ev">CNAEE e o Ministério de Minas e Energia</div><div class="why">O <strong>CNAEE</strong> (1939) dá ao Código um órgão executor; o <strong>MME</strong> (1960) unifica o comando político de um setor antes espalhado por vários órgãos.</div></div>
+    <div class="tl"><div class="yr">1945 · 1957</div><div class="ev">CHESF e Furnas — a União vira operadora</div><div class="why">O capital privado, com tarifa regulada em ambiente inflacionário, <strong>não financiava a expansão</strong>. O Estado assume: a <strong>CHESF</strong> (1945) leva energia ao Nordeste (Paulo Afonso); <strong>Furnas</strong> (1957) debela a crise do Sudeste.</div></div>
+    <div class="tl star"><div class="yr">1962</div><div class="ev">Eletrobras — a holding que planeja e financia</div><div class="why">Proposta por Vargas em 1954, ficou 8 anos travada no Congresso. Instalada em 1962, vira o <strong>vértice do sistema</strong>: holding, banco setorial e braço de planejamento. <b>Lógica do modelo:</b> tarifa pelo custo + remuneração garantida (10–12%) + planejamento centralizado; o Estado assume o risco que o mercado não bancava.</div></div>
+    <div class="tl"><div class="yr">1973 · 1984</div><div class="ev">As grandes obras e a coordenação central</div><div class="why">Tratado de <strong>Itaipu</strong> (1973; gera em 1984), <strong>Tucuruí</strong> (1984), programa nuclear. Os grupos <strong>GCOI</strong> (operação) e <strong>GCPS</strong> (planejamento) institucionalizam o despacho e a expansão ótimos — a grande vantagem técnica do modelo estatal, embrião do futuro ONS.</div></div>
+    <div class="tl crisis"><div class="yr">Anos 1980</div><div class="ev">A implosão financeira do modelo</div><div class="why">A <strong>tarifa achatada</strong> para conter a inflação + o fim do crédito externo (crise da dívida) secam as duas fontes de financiamento. O investimento paralisa e estoura a <strong>inadimplência cruzada</strong> dentro do próprio sistema Eletrobras. <b>O modelo estatal perdeu sua base econômica</b> — e preparou as reformas dos anos 90.</div></div>
+    <div class="tl"><div class="yr">1990 · 1995</div><div class="ev">Reforma liberal e desverticalização</div><div class="why">O <strong>PND</strong> (1990) e as leis de concessão (1995) abrem o setor. O projeto <strong>RE-SEB</strong> separa geração, transmissão, distribuição e comercialização: <b>competir onde é possível (geração), regular o monopólio natural (os fios)</b>. Privatizam-se as distribuidoras.</div></div>
+    <div class="tl star"><div class="yr">1996 · 1998</div><div class="ev">ANEEL, ONS e o MAE — o Estado-regulador</div><div class="why">Privatizar exige trocar o "Estado-empresário" pelo "Estado-regulador". Nasce a <strong>ANEEL</strong> (1996) — árbitro neutro; o <strong>ONS</strong> (1998) — operador imparcial de um sistema com múltiplos donos privados; e o <strong>MAE</strong> — câmara de mercado (que falharia e viraria CCEE).</div></div>
+    <div class="tl crisis star"><div class="yr">2001</div><div class="ev">O apagão — a falha de "deixar o mercado planejar"</div><div class="why">Seca + subinvestimento na transição + um modelo que apostou que o preço guiaria a expansão. Mas o preço chega <strong>tarde demais</strong> num setor de obras longas. Racionamento de jun/2001 a fev/2002, ~20% de corte. <b>Lição:</b> a segurança de suprimento é um bem público que o curto prazo não garante.</div></div>
+    <div class="tl star"><div class="yr">2004</div><div class="ev">O Novo Modelo — a arquitetura atual</div><div class="why">Resposta direta ao apagão: criam-se a <strong>EPE</strong> (o planejamento volta a ser função de Estado, mas separado), a <strong>CCEE</strong> (substitui o MAE) e o <strong>CMSE</strong> (vigília permanente de suprimento). Surgem o ACR (leilões) e o ACL. <b>Cada função antes fundida na estatal vira um órgão distinto</b> — checks and balances energético.</div></div>
+    <div class="tl crisis"><div class="yr">2012 · 2015</div><div class="ev">MP 579 e a crise do GSF</div><div class="why">A <strong>MP 579</strong> renovou concessões à força em troca de tarifa menor; quase só a Eletrobras aderiu e perdeu ~R$ 10 bi/ano — mexer no contrato por canetada destruiu a previsibilidade. A seca de 2014–15 derrubou o <strong>GSF</strong>, e as <strong>bandeiras tarifárias</strong> (2015) passaram a mostrar o custo real na conta.</div></div>
+    <div class="tl crisis"><div class="yr">2021</div><div class="ev">A pior seca em 91 anos — sem apagão</div><div class="why">Reservatórios em nível crítico exigiram acionamento massivo de térmicas e uma bandeira extra de "escassez hídrica". Mas <b>não houve racionamento</b> — creditado à arquitetura de monitoramento (CMSE) e à matriz mais diversificada (eólica/solar) construída desde 2004.</div></div>
+    <div class="tl"><div class="yr">2022 · 2025</div><div class="ev">Privatização da Eletrobras e abertura total</div><div class="why">A <strong>Eletrobras</strong> é capitalizada em 2022 (União diluída a ~45%); ativos estratégicos (Itaipu, nuclear) vão para a estatal <strong>ENBPar</strong>. Em 2025, as Leis 15.235 e <strong>15.269</strong> abrem o mercado livre até o consumidor residencial (2027–2028) — a conclusão lógica do projeto iniciado em 1995.</div></div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">A CHAVE DE LEITURA</span>
+    <p>Toda a era das reformas é a história de <strong>uma única estatal verticalizada se decompondo em funções
+      autônomas</strong>. Primeiro por necessidade fiscal (anos 90); depois corrigindo o erro de confiar a
+      expansão ao mercado (apagão → EPE/CMSE); por fim estendendo a competição ao varejo (2025).</p>
+  </div>
+
+  <h2 class="sec">Cada instituição é a cicatriz de uma crise</h2>
+  <p class="sec-sub">A arquitetura granular de hoje não foi planejada de uma vez — cada órgão nasceu do problema
+    específico que veio resolver.</p>
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">A</span>ANEEL <span style="color:var(--faint);font-weight:500;font-size:12px">1996</span></h4><p>Ao privatizar, o Estado não pode ser dono e fiscal ao mesmo tempo. Precisa de um <strong>árbitro independente e técnico</strong> — sem isso, ninguém confia em contratos de 30 anos.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">O</span>ONS <span style="color:var(--faint);font-weight:500;font-size:12px">1998</span></h4><p>Um sistema interligado hidrotérmico com <strong>múltiplos donos privados</strong> precisa de um operador neutro que despache pelo mínimo custo do sistema — não pelo lucro de um gerador.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">C</span>CCEE <span style="color:var(--faint);font-weight:500;font-size:12px">2004</span></h4><p>Compra e venda nunca batem com o gerado. Alguém precisa <strong>medir, contabilizar e liquidar</strong> as diferenças sob regras comuns. Sucedeu o MAE, que falhara na governança.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">E</span>EPE <span style="color:var(--faint);font-weight:500;font-size:12px">2004</span></h4><p>O apagão provou que <strong>faltava um planejador de longo prazo</strong>. Mas sem voltar a misturar planejamento com operação e regulação — daí um planejador dedicado e separado.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--danger)">M</span>CMSE <span style="color:var(--faint);font-weight:500;font-size:12px">2004</span></h4><p>Em 2001, ninguém tinha a função de <strong>acender o alarme</strong> antes do déficit. O CMSE é a memória institucional do apagão transformada em rotina de vigilância.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--nuclear)">N</span>ENBPar <span style="color:var(--faint);font-weight:500;font-size:12px">2022</span></h4><p>Ao privatizar a Eletrobras, ativos <strong>estratégicos e não-competitivos</strong> (Itaipu binacional, nuclear) não podiam ir para a empresa privada — foram segregados numa estatal.</p></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">O Brasil "desagrega" o que o mundo "agrega" <span class="tag">Institucional comparado</span></h2>
+  <p class="sec-sub">A tese: o Brasil tem <strong>uma das arquiteturas mais finamente desagregadas do mundo</strong> —
+    seis entidades para seis funções. Em boa parte do planeta, várias dessas funções moram na mesma casa.</p>
+
+  <div class="callout insight">
+    <span class="mk">O CONTRASTE-CHAVE</span>
+    <p>No Brasil, o <strong>ONS</strong> despacha a física e a <strong>CCEE</strong> liquida o dinheiro —
+      <strong>duas entidades</strong>. Nos ISOs dos EUA (PJM, CAISO, ERCOT), <strong>uma só entidade</strong>
+      faz o despacho <em>e</em> opera o mercado, calcula o preço e emite as faturas. A diferença é conceitual:
+      no modelo americano <em>bid-based</em>, o preço é um sinal operacional, então quem despacha precifica;
+      no Brasil <em>cost-based</em>, o preço (PLD) é calculado por modelo à parte, e faz sentido isolar a
+      contabilidade do operador físico. <strong>O Brasil separou a "física" da "contabilidade"; os EUA as fundiram.</strong></p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Função</th><th>Brasil</th><th>EUA</th><th>Reino Unido</th><th>Nórdicos</th><th>Chile</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Política</strong></td><td>MME</td><td>DOE / estados</td><td>DESNZ</td><td>Ministérios</td><td>Min. Energia</td></tr>
+      <tr><td><strong>Planejamento</strong></td><td class="hlcell"><strong>EPE</strong> (dedicada)</td><td>PUCs (IRP) + ISO</td><td>NESO</td><td>TSO + ENTSO-E</td><td>CNE</td></tr>
+      <tr><td><strong>Regulação</strong></td><td>ANEEL</td><td>FERC + PUCs</td><td>Ofgem</td><td>NRAs + ACER</td><td>CNE / SEC</td></tr>
+      <tr><td><strong>Operação física</strong></td><td><strong>ONS</strong></td><td>ISO / RTO</td><td>NESO</td><td>TSOs</td><td>Coordinador</td></tr>
+      <tr><td><strong>Liquidação do mercado</strong></td><td class="hlcell"><strong>CCEE</strong></td><td>o <em>mesmo</em> ISO</td><td>Elexon</td><td>Nord Pool (privada)</td><td>o <em>mesmo</em> Coordinador</td></tr>
+      <tr><td><strong>Monitoramento</strong></td><td>CMSE</td><td>NERC + ISO</td><td>NESO / Ofgem</td><td>TSOs</td><td>Coordinador</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src-note">Onde está <strong>combinado</strong>: operador = mercado (EUA, Chile). Onde o Brasil <strong>separa</strong> e tem companhia: liquidação fora do operador (Brasil, Reino Unido com a Elexon, Nórdicos com o Nord Pool). Agência de planejamento dedicada (EPE): praticamente só o Brasil. França/UE seguem caminho oposto — agregam para cima, com a camada supranacional (ACER, ENTSO-E) que o Brasil não tem.</p>
+
+  <div class="twocol">
+    <div class="callout ok" style="background:var(--ok-soft);border:1px solid #cbe5d5">
+      <span class="mk" style="background:var(--ok);color:#fff">DEFENSÁVEL</span>
+      <p><strong>Liquidação neutra</strong> (isolar a CCEE do ONS num sistema cost-based protege a credibilidade
+        do PLD) e <strong>planejamento de Estado blindado</strong> (a EPE provê o longo prazo que mercados de
+        curto prazo subprovêem — exatamente o que o modelo descentralizado dos EUA faz mal). Reino Unido e
+        Chile mostram que cada peça isolada tem paralelo no mundo.</p>
+    </div>
+    <div class="callout warn">
+      <span class="mk">CUSTOSO / IDIOSSINCRÁTICO</span>
+      <p><strong>Custo de coordenação:</strong> seis fronteiras de responsabilidade, atritos de interface
+        ONS↔CCEE que viram litígio (o histórico do GSF é o caso canônico — um ISO único <em>internalizaria</em>).
+        E a separação depende do paradigma <strong>cost-based em erosão</strong>: se o Brasil migrar para preço
+        por oferta, parte da justificativa para separar ONS de CCEE enfraquece.</p>
+    </div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">VEREDITO</span>
+    <p>O Brasil não é "errado" por ser granular — cada separação tem paralelo no mundo. É <strong>incomum por
+      combinar todas as separações ao mesmo tempo</strong>, sem a contrapartida de uma camada supranacional
+      (como a UE) que justifique tanta repartição. É o desenho mais desagregado da amostra; o custo dessa
+      elegância é a coordenação.</p>
   </div>
 </section>
 
@@ -400,16 +544,18 @@
   <div class="divider"></div>
 
   <h3 class="sub">A onda renovável e os problemas que ela criou</h3>
-  <p>Eólica (~34,7 GW, 5º maior do mundo onshore) e solar (~70 GW, 2ª maior fonte da matriz) cresceram em
-    velocidade explosiva. O efeito colateral é o <strong>curtailment</strong> — o corte de geração renovável
+  <p>Eólica (~34,7 GW, 5º maior do mundo onshore) e solar (~70 GW — 2ª maior fonte em <em>capacidade instalada</em>,
+    3ª na <em>geração</em>) cresceram em velocidade explosiva. O efeito colateral é o <strong>curtailment</strong> — o corte de geração renovável
     pelo ONS — que está mudando de natureza.</p>
   <figure>
     <div class="chart" id="chart-curt"></div>
     <figcaption><span class="ti">Curtailment por razão energética — corte por sobreoferta (GWh)</span>
       Até 2024 os cortes eram majoritariamente por <em>confiabilidade</em> (falta de fio). O ONS projeta que
       <strong>até 2029 ~96% dos cortes serão por razão energética</strong> — ou seja, simplesmente sobra geração.
-      Construir mais linha não resolve; só armazenamento e flexibilidade resolvem. Valor de 2024 é número de
-      fechamento do ONS; 2025 é estimativa de mercado (Volt Robotics) ainda não consolidada. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.</figcaption>
+      Construir mais linha não resolve; só armazenamento e flexibilidade resolvem. <strong>Refere-se apenas ao
+      corte por razão energética</strong>; o curtailment total (todas as causas) é bem maior — ~14,6 TWh em 2024.
+      Só 2024 é fechamento do ONS (4.330 GWh); 2022–23 ilustram a trajetória e 2025 é estimativa de mercado (Volt
+      Robotics), não diretamente comparável. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.</figcaption>
   </figure>
   <div class="callout warn">
     <span class="mk">A VILÃ SILENCIOSA</span>
@@ -441,8 +587,8 @@
   <figure>
     <div class="chart" id="chart-acl"></div>
     <figcaption><span class="ti">Participação do mercado livre (ACL) no consumo nacional</span>
-      O ACL chegou a <strong>~43% do consumo</strong> no fim de 2025 — recorde. A abertura do Grupo A (alta tensão)
-      em jan/2024 disparou as migrações. Fonte: CCEE.</figcaption>
+      O ACL chegou a <strong>~42% do consumo</strong> no fim de 2025 — recorde histórico (CCEE). A abertura do
+      Grupo A (alta tensão) em jan/2024 disparou as migrações. Anos anteriores ilustram a trajetória. Fonte: CCEE.</figcaption>
   </figure>
 
   <h3 class="sub">A abertura do mercado livre — cronograma vigente</h3>
@@ -646,21 +792,23 @@
   <h3 class="sub">Estudos de caso</h3>
   <div class="cards c2">
     <div class="card"><h4>🇬🇧 Reino Unido — a referência em redes</h4><p>O modelo <strong>RIIO</strong> remunera redes
-      por <strong>incentivo e desempenho</strong> (totex, RAB), não por gasto bruto — o benchmark global que a
+      por <strong>incentivo e desempenho</strong> — <em>totex</em> (capex e opex tratados como um só pacote de
+      eficiência) sobre uma base de ativos regulatória (RAB), não por gasto bruto. É o benchmark global que a
       regulação de distribuição brasileira não tem. Os <strong>CfD</strong> de renováveis são "primos" dos
-      leilões do ACR, mas com melhor desenho (two-way: devolvem dinheiro ao consumidor quando o mercado sobe).</p></div>
+      leilões do ACR, mas com melhor desenho (<em>two-way</em>: devolvem dinheiro ao consumidor quando o mercado sobe).</p></div>
     <div class="card"><h4>🇳🇴 Nord Pool — hidro por mercado</h4><p>O contraponto <strong>decisivo</strong>: a
       Noruega é ~96% hidrelétrica e <strong>precifica a água por mercado</strong>, não por otimizador estatal. O
       "valor da água" emerge dos lances dos produtores. Derruba o argumento de que "hidrelétrica exige despacho
       central" — ao custo de alta volatilidade e fortes diferenças zonais de preço.</p></div>
-    <div class="card"><h4>🇺🇸 PJM / ERCOT — capacidade vs escassez</h4><p>Preço <strong>nodal (LMP)</strong> por
-      localização — o que o Brasil mais carece. PJM tem mercado de capacidade (preços recordes, US$ 329/MW-dia
+    <div class="card"><h4>🇺🇸 PJM / ERCOT — capacidade vs escassez</h4><p>Preço <strong>nodal (LMP — preço
+      marginal por nó/localização)</strong> — o que o Brasil mais carece. PJM tem mercado de capacidade (preços recordes, US$ 329/MW-dia
       em 26/27); o ERCOT é <em>energy-only</em> e a tempestade Uri (2021, 246 mortes, preço no teto por dias)
       expôs o risco do modelo puro sob evento extremo.</p></div>
     <div class="card"><h4>🇪🇸 Ibéria — o alerta renovável</h4><p>O "mecanismo ibérico" (2022) capou o gás para
-      desacoplar o preço. O <strong>apagão de abril/2025</strong> (~31 GW perdidos em segundos, alta penetração
-      solar) é o alerta sobre <strong>inércia e controle de tensão</strong> em sistemas de alta renovável — causa
-      ainda contestada, mas relevante para o Brasil, que adiciona solar/eólica em massa.</p></div>
+      desacoplar o preço. O <strong>apagão de abril/2025</strong> (~31 GW de <em>carga desconectada</em> em
+      segundos — o gatilho foi a perda de ~2,2 GW de geração, sob altíssima penetração solar) é o alerta sobre
+      <strong>inércia e controle de tensão</strong> em sistemas de alta renovável — causa ainda contestada, mas
+      relevante para o Brasil, que adiciona solar/eólica em massa.</p></div>
   </div>
 
   <figure>
@@ -686,7 +834,7 @@
   <table>
     <thead><tr><th>Dimensão</th><th>Referência global</th><th>Brasil é…</th></tr></thead>
     <tbody>
-      <tr><td>Formação de preço</td><td>Lances em merit order; LMP nodal (EUA)</td><td><span class="pill high">Atrasado/peculiar</span> — único grande sistema sem preço por oferta</td></tr>
+      <tr><td>Formação de preço</td><td>Lances em merit order; LMP nodal (EUA)</td><td><span class="pill high">Atrasado/peculiar</span> — um dos poucos grandes sistemas sem preço por oferta</td></tr>
       <tr><td>Gestão da hidrologia</td><td>Noruega: valor da água por mercado</td><td><span class="pill mid">Peculiar</span> — prova de que dá para precificar água por mercado existe</td></tr>
       <tr><td>Sinal locacional</td><td>Preço nodal (EUA, Ontário)</td><td><span class="pill high">Atrasado</span> — preço único por submercado, sem sinal de congestão</td></tr>
       <tr><td>Remuneração de redes</td><td>RIIO / totex / incentivo (UK)</td><td><span class="pill high">Atrasado</span> vs o benchmark de incentivo</td></tr>
@@ -721,7 +869,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.0</span><span class="badge">26 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.1</span><span class="badge">27 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -742,15 +890,38 @@
 <script>
 /* ---------------- Tabs ---------------- */
 (function(){
-  const tabs=document.querySelectorAll('.tab');
-  const panels=document.querySelectorAll('.panel');
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panels=[...document.querySelectorAll('.panel')];
+  const row=document.getElementById('tabrow');
+  // ARIA wiring (no markup changes needed)
+  if(row)row.setAttribute('role','tablist');
+  tabs.forEach(t=>{
+    t.setAttribute('role','tab');
+    t.id='tab-'+t.dataset.t;
+    t.setAttribute('aria-controls',t.dataset.t);
+    t.setAttribute('aria-selected',t.classList.contains('active')?'true':'false');
+  });
+  panels.forEach(p=>{
+    p.setAttribute('role','tabpanel');
+    p.setAttribute('aria-labelledby','tab-'+p.id);
+    p.setAttribute('tabindex','0');
+  });
   function show(id){
-    tabs.forEach(t=>t.classList.toggle('active',t.dataset.t===id));
+    tabs.forEach(t=>{const on=t.dataset.t===id;t.classList.toggle('active',on);t.setAttribute('aria-selected',on?'true':'false');});
     panels.forEach(p=>p.classList.toggle('active',p.id===id));
     window.scrollTo({top:0,behavior:'instant'});
     if(window.__renderCharts) window.__renderCharts();
   }
-  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.t)));
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>show(t.dataset.t));
+    // keyboard navigation between tabs (left/right)
+    t.addEventListener('keydown',e=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+      e.preventDefault();
+      const n=(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length;
+      show(tabs[n].dataset.t);tabs[n].focus();
+    });
+  });
 })();
 
 /* ---------------- SVG chart helpers (no external lib) ---------------- */
@@ -877,7 +1048,7 @@
         {label:'2022',value:33,color:C.gray},
         {label:'2023',value:36,color:C.accent},
         {label:'2024',value:40,color:C.accent},
-        {label:'2025',value:43,color:C.ok,bold:true},
+        {label:'2025',value:42,color:C.ok,bold:true},
       ],{H:240,max:50,barW:46,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
     });
     // MERCADO: bandeiras

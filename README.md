@@ -9,6 +9,7 @@ Estudo de referência do setor elétrico brasileiro (Fases 1–3), construído *
 | Aba | Conteúdo |
 |-----|----------|
 | **Visão geral** | As três camadas (física, comercial, regulatória) e os números-chave do SIN |
+| **Contexto histórico** | O arco de 1879 a 2026: como cada instituição nasceu de uma crise, e por que o Brasil "desagrega" o que o mundo "agrega" (comparação institucional internacional) |
 | **Instituições** | Quem planeja (EPE), opera (ONS), regula (ANEEL) e liquida (CCEE) |
 | **Sistema físico** | Matriz, reservatórios como "bateria", os 4 submercados, despacho por custo (NEWAVE→DECOMP→DESSEM), curtailment |
 | **Mercado & preço** | ACR vs ACL, abertura do mercado livre, formação do PLD, risco hidrológico (MRE/GSF), bandeiras |
@@ -27,4 +28,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v1.0 · 26 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v1.1 · 27 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
