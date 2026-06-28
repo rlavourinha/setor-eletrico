@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.2 · 27 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.3 · 28 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -231,9 +231,10 @@
       <button class="tab" data-t="inst"><span class="num">02</span>Instituições</button>
       <button class="tab" data-t="fisico"><span class="num">03</span>Sistema físico</button>
       <button class="tab" data-t="od"><span class="num">04</span>Oferta &amp; demanda</button>
-      <button class="tab" data-t="mercado"><span class="num">05</span>Mercado &amp; preço</button>
-      <button class="tab" data-t="regulacao"><span class="num">06</span>Regulação econômica</button>
-      <button class="tab" data-t="mundo"><span class="num">07</span>Benchmark global</button>
+      <button class="tab" data-t="geracao"><span class="num">05</span>Geração</button>
+      <button class="tab" data-t="mercado"><span class="num">06</span>Mercado &amp; preço</button>
+      <button class="tab" data-t="regulacao"><span class="num">07</span>Regulação econômica</button>
+      <button class="tab" data-t="mundo"><span class="num">08</span>Benchmark global</button>
     </div>
   </div>
 </nav>
@@ -307,11 +308,13 @@
       despacho por custo e a cadeia de modelos NEWAVE → DECOMP → DESSEM.</p></div>
     <div class="card"><h4>04 · Oferta &amp; demanda</h4><p>Crescimento, desafios (curva do pato), leilões (LRCAP),
       custo por fonte (LCOE) e como o preço deveria se comportar pela geração marginal.</p></div>
-    <div class="card"><h4>05 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
+    <div class="card"><h4>05 · Geração</h4><p>Quanto custa e quanto demora construir, o ciclo de caixa (curva J),
+      o financiamento — e por que o Brasil parou de construir grandes hidrelétricas.</p></div>
+    <div class="card"><h4>06 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
       o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
-    <div class="card"><h4>06 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
+    <div class="card"><h4>07 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
-    <div class="card"><h4>07 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
+    <div class="card"><h4>08 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
       Ibéria, preços internacionais — para criar senso crítico sobre o modelo brasileiro.</p></div>
   </div>
 </section>
@@ -805,6 +808,191 @@
   </div>
 </section>
 
+<!-- ============================ GERAÇÃO ============================ -->
+<section class="panel" id="geracao">
+  <p class="lead">Gerar energia é um negócio de <b>infraestrutura</b>: capital pesado e adiantado, depois
+    décadas de receita estável. É <b>bond-like</b> quando a receita é contratada. Entender o ciclo de caixa, o
+    custo e o prazo de cada fonte explica por que a expansão virou solar e eólica — e por que o Brasil
+    <b>parou de construir grandes hidrelétricas</b>.</p>
+
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">~R$12<span class="u">mi/MW</span></div><div class="l">CAPEX de uma hidrelétrica grande (vs ~R$4 mi/MW da solar)</div><div class="src">EPE</div></div>
+    <div class="kpi"><div class="v">5–10<span class="u">anos</span></div><div class="l">Prazo de construção de uma UHE (solar: meses)</div><div class="src">EPE/EIA</div></div>
+    <div class="kpi"><div class="v">70–80<span class="u">%</span></div><div class="l">Alavancagem típica (dívida) num projeto contratado</div><div class="src">BNDES/mercado</div></div>
+    <div class="kpi"><div class="v">12–16<span class="u">%</span></div><div class="l">TIR real alavancada (equity); ~8–11% desalavancada</div><div class="src">mercado</div></div>
+    <div class="kpi"><div class="v">96<span class="u">%</span></div><div class="l">Da "expansão hídrica" 2024–34 vem de modernização, não de barragem nova</div><div class="src">PDE 2034</div></div>
+    <div class="kpi"><div class="v">~62<span class="u">%</span></div><div class="l">Do potencial hídrico estudável (UHE &gt;30 MW) está na Amazônia</div><div class="src">EPE</div></div>
+  </div>
+
+  <h2 class="sec">Quanto custa e quanto demora construir <span class="tag">CAPEX</span></h2>
+  <p class="sec-sub">Cada fonte tem um perfil distinto de custo, prazo, fator de capacidade e vida útil. A
+    revolução: solar e eólica têm <strong>CAPEX baixo e construção rápida</strong>; hidro e nuclear, o oposto.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Fonte</th><th class="num">CAPEX (R$ mi/MW)</th><th class="num">Prazo constr.</th><th class="num">Fator capac.</th><th class="num">Vida útil</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Solar FV</strong></td><td class="num">3,0–6,0</td><td class="num">&lt;1–1,5 a</td><td class="num">25–28%</td><td class="num">25 a</td></tr>
+      <tr><td><strong>Eólica onshore</strong></td><td class="num">4,0–7,5</td><td class="num">~1–2 a</td><td class="num">42% (NE até 50)</td><td class="num">20–30 a</td></tr>
+      <tr><td><strong>Gás — ciclo combinado</strong></td><td class="num">3,5–7,0</td><td class="num">2–3 a</td><td class="num">50–85%</td><td class="num">20–30 a</td></tr>
+      <tr><td><strong>Gás — ponta (OCGT)</strong></td><td class="num">3,0–5,0</td><td class="num">~2 a</td><td class="num">5–20%</td><td class="num">20–30 a</td></tr>
+      <tr><td><strong>PCH</strong></td><td class="num">5,0–13,5</td><td class="num">2,5–4 a</td><td class="num">50–55%</td><td class="num">30 a</td></tr>
+      <tr><td><strong>UHE grande</strong></td><td class="num">8,6–15,2</td><td class="num">5–10 a</td><td class="num">~50%</td><td class="num">30 conc. / 50+ físico</td></tr>
+      <tr><td><strong>Biomassa</strong></td><td class="num">2,0–6,5</td><td class="num">2–3,5 a</td><td class="num">~50% (safra)</td><td class="num">20 a</td></tr>
+      <tr><td><strong>Nuclear (Angra)</strong></td><td class="num">20–40</td><td class="num">8–12 a</td><td class="num">~90%</td><td class="num">40–60 físico</td></tr>
+      <tr><td><strong>Baterias (BESS)</strong></td><td class="num">5,0–9,5</td><td class="num">&lt;1 a</td><td class="num">despacho</td><td class="num">15–20 a</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src-note">CAPEX overnight (sem juros de construção). Fonte: EPE — Caderno de Custos PDE 2034 (R$, base 2022); EIA AEO2025 e IRENA 2024 para referência internacional. Fatores de capacidade: BEN 2025/ONS.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-capex"></div>
+      <figcaption><span class="ti">Custo de construção por fonte (R$ mi/MW)</span>
+        Nuclear e hidro grande têm CAPEX por MW muito acima; solar e eólica despencaram. Ponto médio das faixas.
+        Fonte: EPE (base 2022).</figcaption>
+    </figure>
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-prazo"></div>
+      <figcaption><span class="ti">Prazo de construção por fonte (anos)</span>
+        Solar e baterias entram em meses; hidro leva 5–10 anos e nuclear, mais de uma década. Fonte: EPE/EIA.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-fc"></div>
+    <figcaption><span class="ti">Fator de capacidade por fonte (%)</span>
+      O contraponto ao CAPEX baixo: solar gera só ~26% do tempo equivalente; nuclear e gás, a maior parte. Por
+      isso CAPEX/MW não conta a história toda — o que importa é o custo por <em>MWh efetivamente gerado</em>.
+      Fonte: BEN 2025/ONS (ano-base 2024).</figcaption>
+  </figure>
+
+  <div class="callout insight">
+    <span class="mk">CAPEX vs COMBUSTÍVEL</span>
+    <p>As fontes se dividem em dois mundos. <strong>Renováveis e hidro</strong>: quase 100% CAPEX, combustível
+      zero — você paga tudo na construção (na hidro, o custo econômico não é zero: é o <em>valor da água</em>).
+      <strong>Térmica a gás</strong>: CAPEX menor, mas o combustível domina (<strong>CVU</strong> — custo variável
+      de operar — de R$ 260 a R$ 730/MWh). <strong>Nuclear</strong>: CAPEX altíssimo, mas combustível baixíssimo
+      (CVU ~R$ 50/MWh). É por isso que renováveis afundam o preço quando despacham, e térmicas só
+      entram quando o preço sobe o suficiente para pagar o combustível.</p>
+  </div>
+
+  <h2 class="sec">O ciclo de caixa — a curva J</h2>
+  <p class="sec-sub">O perfil de caixa da geração é clássico: <strong>negativo, profundo e adiantado</strong> na
+    construção; <strong>positivo, raso e perpétuo</strong> na operação contratada.</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 270" role="img" aria-label="Curva J: fluxo de caixa acumulado de um projeto de geração ao longo do tempo">
+        <!-- negative (construction) area -->
+        <path d="M50,156.7 L88,200 L126,223.3 L164,208.7 L202,191.3 L240,171.3 L259,156.7 Z" fill="#be3c34" opacity="0.12"/>
+        <!-- positive (operation) area -->
+        <path d="M259,156.7 L335,123.3 L430,93.3 L525,63.3 L620,36.7 L620,156.7 Z" fill="#2f7d57" opacity="0.10"/>
+        <!-- zero line -->
+        <line x1="50" y1="156.7" x2="620" y2="156.7" stroke="#9aa2ad" stroke-width="1" stroke-dasharray="5 4"/>
+        <text x="44" y="160" font-family="IBM Plex Mono,monospace" font-size="10" fill="#9aa2ad" text-anchor="end">0</text>
+        <!-- J curve -->
+        <polyline points="50,156.7 88,200 126,223.3 164,208.7 202,191.3 240,171.3 259,156.7 335,123.3 430,93.3 525,63.3 620,36.7" fill="none" stroke="#1f5f9e" stroke-width="2.8" stroke-linejoin="round"/>
+        <!-- markers -->
+        <circle cx="126" cy="223.3" r="3.5" fill="#be3c34"/>
+        <circle cx="259" cy="156.7" r="3.5" fill="#2f7d57"/>
+        <!-- year axis -->
+        <g font-family="IBM Plex Mono,monospace" font-size="10" fill="#9aa2ad" text-anchor="middle">
+          <text x="50" y="262">ano 0</text><text x="240" y="262">10</text><text x="430" y="262">20</text><text x="620" y="262">30</text>
+        </g>
+        <text x="20" y="135" font-family="Inter,sans-serif" font-size="10.5" fill="#6b7480" transform="rotate(-90 20 135)" text-anchor="middle">caixa acumulado</text>
+        <!-- annotations -->
+        <g font-family="Inter,sans-serif" font-size="11" font-weight="600">
+          <text x="110" y="250" fill="#be3c34" text-anchor="middle">CAPEX — construção</text>
+          <text x="139" y="216" fill="#be3c34" font-size="10">COD</text>
+          <text x="262" y="146" fill="#2f7d57">payback ~ano 7–12</text>
+          <text x="470" y="78" fill="#1f5f9e">receita contratada (20–30 anos, IPCA)</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><span class="ti">A curva J do fluxo de caixa de um projeto de geração (ilustrativo)</span>
+      Todo o CAPEX sai <em>antes</em> de existir receita (área vermelha). No COD (entrada em operação) o caixa
+      inflete; o payback vem em ~7–12 anos e a receita contratada segue estável por décadas (área verde). Esse
+      perfil — capital intensivo, longo, previsível — aproxima a geração contratada de um ativo de renda fixa, com
+      a ressalva do risco de construção e da exposição ao PLD/GSF no saldo não contratado.</figcaption>
+  </figure>
+
+  <h3 class="sub">O contrato de longo prazo é o que viabiliza o financiamento</h3>
+  <p>A regra de ouro do <em>project finance</em>: o banco não empresta para o ativo, empresta contra o
+    <strong>fluxo de receita</strong>. Sem receita previsível, não há alavancagem — por isso <strong>o PPA
+    (contrato de venda) é o colateral econômico</strong> do projeto. Vender no leilão regulado (ACR) trava um
+    preço por 20–30 anos e destrava dívida de 70–80%; vender no mercado livre (ACL) rende mais, mas com mais risco.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Dimensão</th><th>ACR (regulado)</th><th>ACL (mercado livre)</th></tr></thead>
+    <tbody>
+      <tr><td>Como vende</td><td>Leilão EPE/MME (A-3/A-5/A-6)</td><td>PPA bilateral com consumidor/trader</td></tr>
+      <tr><td>Prazo</td><td><strong>20–30 anos</strong></td><td>5–15 anos</td></tr>
+      <tr><td>Preço</td><td>Travado no leilão, IPCA</td><td>Negociado, exposto ao PLD</td></tr>
+      <tr><td>Contraparte</td><td>Pool de distribuidoras (risco diluído)</td><td>Offtaker individual</td></tr>
+      <tr><td>Financiabilidade</td><td><span class="pill low">Alta</span> → 70–80% dívida</td><td><span class="pill mid">Menor</span> → mais equity</td></tr>
+      <tr><td>Retorno</td><td>Menor e estável</td><td>Maior e volátil (capta o upside)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout insight">
+    <span class="mk">DE ONDE VEM O DINHEIRO</span>
+    <p>O funding migrou do <strong>BNDES</strong> (até 80%, 24 anos, TLP+spread) para o <strong>mercado de
+      capitais</strong>: as <strong>debêntures incentivadas (Lei 12.431)</strong> — isentas de IR para a pessoa
+      física — viraram a fonte dominante, com <strong>~R$ 120 bi emitidos em 2024</strong> e energia como setor
+      líder. A alavancagem de 70–80% é o coração do retorno: como a dívida (TLP+spread ou IPCA+) custa menos que
+      a TIR do projeto, o <em>spread</em> positivo é capturado pelo equity — daí a TIR alavancada (12–16%) superar
+      a desalavancada (8–11%).</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Por que o Brasil não constrói mais grandes hidrelétricas <span class="tag">o enigma</span></h2>
+  <p class="sec-sub">O último grande ciclo foi na Amazônia, nos anos 2010. Depois de <strong>Belo Monte e Sinop
+    (2019)</strong>, nenhum grande aproveitamento greenfield entrou em obras. Não foi acaso — foram seis forças
+    convergindo.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Última geração de grandes UHEs</th><th>Rio</th><th class="num">Potência</th><th class="num">Operação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Santo Antônio</strong></td><td>Madeira (RO)</td><td class="num">3.568 MW</td><td class="num">~2012–17</td></tr>
+      <tr><td><strong>Jirau</strong></td><td>Madeira (RO)</td><td class="num">3.750 MW</td><td class="num">2013–16</td></tr>
+      <tr><td><strong>Teles Pires</strong></td><td>Teles Pires (MT/PA)</td><td class="num">1.820 MW</td><td class="num">2015</td></tr>
+      <tr><td><strong>Belo Monte</strong></td><td>Xingu (PA)</td><td class="num">11.233 MW</td><td class="num">2016–19</td></tr>
+      <tr><td><strong>Sinop</strong></td><td>Teles Pires (MT)</td><td class="num">402 MW</td><td class="num">2019</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="cards c2">
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">1</span>Os sítios bons acabaram</h4><p>Do potencial de ~175 GW, mais de 60% já foi construído — e os melhores (Sudeste/Sul, perto da carga) foram os primeiros. O potencial ainda estudável (~52 GW em grandes usinas) está <strong>~62% na Amazônia</strong>, longe da carga; <strong>77% interfere em áreas protegidas</strong> (UCs, terras indígenas).</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--danger)">2</span>Restrição socioambiental</h4><p>A hidro virou o projeto mais litigado do país. O caso-paradigma: <strong>São Luiz do Tapajós</strong> (~8 GW) foi <strong>arquivada pelo IBAMA em 2016</strong> por alagar a Terra Indígena Sawré Muybu — inviável pela Constituição. Sepultou o maior projeto que restava.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">3</span>O fim dos reservatórios</h4><p><strong>A razão mais subestimada.</strong> Para reduzir alagamento, as UHEs amazônicas são <strong>a fio d'água</strong> — sem reservatório de regularização. Geram muito na cheia e pouco na seca; <strong>não agregam estoque</strong>. Belo Monte chega a operar com &lt;3% da energia projetada na estiagem. A hidro nova perdeu sua função de bateria.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">4</span>Custo, prazo e risco</h4><p>CAPEX bilionário, 5–10 anos de obra e estouros recorrentes. <strong>Belo Monte saltou de ~R$ 19 bi para mais de R$ 40 bi.</strong> Some o risco judicial que pode parar a obra a qualquer momento — o oposto do que o investidor quer.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">5</span>Competição: renovável barata</h4><p>Solar e eólica despencaram — a solar atingiu <strong>R$ 64,99/MWh</strong> em leilão, perto do recorde histórico da própria hidro. Modulares, rápidas, sem grande risco socioambiental. Em leilão de neutralidade tecnológica, <strong>a UHE nova não compete por custo</strong>.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--nuclear)">6</span>Risco regulatório e hidrológico</h4><p>A <strong>MP 579/2012</strong> (renovação forçada, ~R$ 198 bi em custos) e a <strong>crise do GSF</strong> (a hidro gerou menos que o contratado e teve de comprar a diferença cara) traumatizaram o capital. A <strong>mudança climática</strong> torna a premissa de "água farta e previsível" cada vez mais frágil — minando o próprio ativo.</p></div>
+  </div>
+
+  <div class="callout danger">
+    <span class="mk">O PARADOXO</span>
+    <p>O Brasil construiu suas hidrelétricas pela <strong>firmeza e pelo estoque</strong> que os reservatórios
+      davam. Esgotou os bons sítios, e os últimos aproveitamentos (amazônicos, a fio d'água) <strong>não entregam
+      mais estoque</strong>. Agora, com a matriz cada vez mais intermitente, <strong>o sistema precisa de
+      firmeza como nunca — exatamente a função que a hidro deixou de cumprir</strong>. A solução não é mais
+      barrar rios; é recriar o reservatório por outros meios.</p>
+  </div>
+
+  <h2 class="sec">O que o sistema precisa no lugar</h2>
+  <p class="sec-sub">A nova fronteira da firmeza e da flexibilidade — recriar a "bateria" sem grandes barragens.</p>
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">↺</span>Hidrelétrica reversível (UHR)</h4><p>Dois reservatórios em desnível: bombeia água para cima no vale de preço (sol do meio-dia) e gera na ponta. É a "bateria gigante" <strong>sem barrar um grande rio</strong>. A EPE publicou o Roadmap de UHR em 2025; só o inventário do RJ achou <strong>~21 GW em 15 sítios</strong> (de 23 identificados). Ainda não há UHR comercial no país.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">⚙</span>Modernização do parque</h4><p><strong>96% da "expansão hídrica" da década</strong> vem daqui: trocar turbinas, repotenciar, hibridizar com solar flutuante nos reservatórios existentes. Ganha-se capacidade <strong>sem nova barragem, sem novo licenciamento, sem novo conflito</strong>.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--solar)">⚡</span>Baterias, gás flexível, demanda</h4><p><strong>BESS</strong> para deslocar a solar do meio-dia para a noite (1º leilão em dez/2026), <strong>térmica a gás</strong> como capacidade firme, e <strong>resposta da demanda</strong>. A flexibilidade vira o produto escasso — e o que o sistema passa a remunerar.</p></div>
+  </div>
+</section>
+
 <!-- ============================ MERCADO & PREÇO ============================ -->
 <section class="panel" id="mercado">
   <h2 class="sec">Onde a energia é vendida — e como nasce o preço <span class="tag">Fase 2</span></h2>
@@ -1107,7 +1295,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.2</span><span class="badge">27 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.3</span><span class="badge">28 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -1409,6 +1597,43 @@
         {label:'proj.25*',value:59,color:C.gray,faint:true,note:'projeção'},
         {label:'piso 26',value:57,color:C.gray,faint:true},
       ],{H:230,max:185,barW:42,axisFmt:v=>fmt(v),valFmt:v=>'R$'+fmt(v)});
+    });
+    // GERAÇÃO: CAPEX por fonte (R$ mi/MW)
+    render('chart-capex',m=>{
+      hbars(m,[
+        {label:'Solar FV',value:4.0,color:C.solar,bold:true},
+        {label:'Biomassa',value:4.5,color:'#6a9b4e'},
+        {label:'Eólica onshore',value:5.3,color:C.wind},
+        {label:'Gás (ciclo comb.)',value:5.6,color:C.thermal},
+        {label:'Baterias (BESS)',value:6.5,color:C.accent},
+        {label:'PCH',value:9.0,color:'#3f8b9d'},
+        {label:'UHE grande',value:12.0,color:C.hydro,bold:true},
+        {label:'Nuclear',value:30.0,color:C.nuclear,bold:true},
+      ],{labelW:150,valW:84,max:33,valFmt:v=>'R$ '+fmt(v)+' mi'});
+    });
+    // GERAÇÃO: prazo de construção (anos)
+    render('chart-prazo',m=>{
+      hbars(m,[
+        {label:'Solar FV',value:1,color:C.solar},
+        {label:'Baterias (BESS)',value:1,color:C.accent},
+        {label:'Eólica onshore',value:2,color:C.wind},
+        {label:'Gás (ciclo comb.)',value:2.5,color:C.thermal},
+        {label:'PCH',value:3,color:'#3f8b9d'},
+        {label:'Biomassa',value:3,color:'#6a9b4e'},
+        {label:'UHE grande',value:7,color:C.hydro,bold:true},
+        {label:'Nuclear',value:10,color:C.nuclear,bold:true},
+      ],{labelW:150,valW:64,max:11,valFmt:v=>fmt(v)+(v===1?' ano':' anos')});
+    });
+    // GERAÇÃO: fator de capacidade (%)
+    render('chart-fc',m=>{
+      hbars(m,[
+        {label:'Solar FV',value:26,color:C.solar},
+        {label:'Eólica (média BR)',value:42,color:C.wind},
+        {label:'Hidrelétrica',value:50,color:C.hydro},
+        {label:'Biomassa (safra)',value:52,color:'#6a9b4e'},
+        {label:'Gás (ciclo comb.)',value:70,color:C.thermal},
+        {label:'Nuclear',value:90,color:C.nuclear,bold:true},
+      ],{labelW:150,valW:54,max:100,valFmt:v=>v+'%'});
     });
   }
   window.__renderCharts=renderAll;

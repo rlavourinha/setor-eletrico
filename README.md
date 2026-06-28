@@ -13,6 +13,7 @@ Estudo de referência do setor elétrico brasileiro (Fases 1–3), construído *
 | **Instituições** | Quem planeja (EPE), opera (ONS), regula (ANEEL) e liquida (CCEE) |
 | **Sistema físico** | Matriz, reservatórios como "bateria", os 4 submercados, despacho por custo (NEWAVE→DECOMP→DESSEM), curtailment |
 | **Oferta & demanda** | Crescimento histórico, a curva do pato, os leilões (LRCAP, BESS), custo por fonte (LCOE), formação de preço pela geração marginal (merit order, canibalização, missing money) e o arco dos incentivos renováveis |
+| **Geração** | Quanto custa e quanto demora construir (CAPEX/prazo/fator de capacidade por fonte), o ciclo de caixa (curva J), o financiamento (project finance, BNDES, debêntures incentivadas) e por que o Brasil parou de construir grandes hidrelétricas (+ UHR reversíveis) |
 | **Mercado & preço** | ACR vs ACL, abertura do mercado livre, formação do PLD, risco hidrológico (MRE/GSF), bandeiras |
 | **Regulação econômica** | Como cada segmento ganha dinheiro: RAP (transmissão), Parcela A/B + ativos regulatórios (distribuição), risco da geração |
 | **Benchmark global** | Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT, Ibéria; preços internacionais; síntese crítica |
@@ -29,4 +30,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v1.2 · 27 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v1.3 · 28 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
