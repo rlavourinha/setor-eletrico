@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.1 · 27 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.2 · 27 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -230,9 +230,10 @@
       <button class="tab" data-t="historia"><span class="num">01</span>Contexto histórico</button>
       <button class="tab" data-t="inst"><span class="num">02</span>Instituições</button>
       <button class="tab" data-t="fisico"><span class="num">03</span>Sistema físico</button>
-      <button class="tab" data-t="mercado"><span class="num">04</span>Mercado &amp; preço</button>
-      <button class="tab" data-t="regulacao"><span class="num">05</span>Regulação econômica</button>
-      <button class="tab" data-t="mundo"><span class="num">06</span>Benchmark global</button>
+      <button class="tab" data-t="od"><span class="num">04</span>Oferta &amp; demanda</button>
+      <button class="tab" data-t="mercado"><span class="num">05</span>Mercado &amp; preço</button>
+      <button class="tab" data-t="regulacao"><span class="num">06</span>Regulação econômica</button>
+      <button class="tab" data-t="mundo"><span class="num">07</span>Benchmark global</button>
     </div>
   </div>
 </nav>
@@ -290,7 +291,7 @@
   <figure>
     <div class="chart" id="chart-matriz"></div>
     <figcaption><span class="ti">Matriz elétrica brasileira por geração — 2025 (TWh)</span>
-      A base hídrica ainda domina (~52%), mas eólica + solar já são <strong>~26% da geração</strong>.
+      A base hídrica ainda domina (~52%), mas eólica + solar já são <strong>~26% da geração (2025)</strong>.
       Esse crescimento é a origem dos novos problemas do sistema (curtailment, rampas, necessidade de armazenamento).
       As oito fontes somam ~761 TWh; a diferença para os 775,9 TWh de geração total corresponde a importação
       líquida e ajustes estatísticos. Fonte: EPE, Balanço Energético Nacional 2026 (ano-base 2025).</figcaption>
@@ -304,11 +305,13 @@
       A arquitetura de governança — e por que ONS e CCEE são entes privados.</p></div>
     <div class="card"><h4>03 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
       despacho por custo e a cadeia de modelos NEWAVE → DECOMP → DESSEM.</p></div>
-    <div class="card"><h4>04 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
+    <div class="card"><h4>04 · Oferta &amp; demanda</h4><p>Crescimento, desafios (curva do pato), leilões (LRCAP),
+      custo por fonte (LCOE) e como o preço deveria se comportar pela geração marginal.</p></div>
+    <div class="card"><h4>05 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
       o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
-    <div class="card"><h4>05 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
+    <div class="card"><h4>06 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
-    <div class="card"><h4>06 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
+    <div class="card"><h4>07 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
       Ibéria, preços internacionais — para criar senso crítico sobre o modelo brasileiro.</p></div>
   </div>
 </section>
@@ -544,7 +547,7 @@
   <div class="divider"></div>
 
   <h3 class="sub">A onda renovável e os problemas que ela criou</h3>
-  <p>Eólica (~34,7 GW, 5º maior do mundo onshore) e solar (~70 GW — 2ª maior fonte em <em>capacidade instalada</em>,
+  <p>Eólica (~34,7 GW, 5º maior do mundo onshore) e solar (~65 GW — 2ª maior fonte em <em>capacidade instalada</em>,
     3ª na <em>geração</em>) cresceram em velocidade explosiva. O efeito colateral é o <strong>curtailment</strong> — o corte de geração renovável
     pelo ONS — que está mudando de natureza.</p>
   <figure>
@@ -564,6 +567,241 @@
       mesma forma — empurrando o corte para os parques centralizados, que então pedem indenização. É um conflito
       distributivo embutido na "curva do pato". A rampa de carga líquida que a hidro precisa absorver deve subir
       de ~25 GW (2024) para ~50 GW (2028).</p>
+  </div>
+</section>
+
+<!-- ============================ OFERTA & DEMANDA ============================ -->
+<section class="panel" id="od">
+  <p class="lead">A economia do setor <b>se inverteu</b>. Por décadas o desafio foi ter <b>energia</b> suficiente
+    (estoque hidrológico). Hoje sobra energia barata — eólica e solar são as fontes de energia nova <b>mais baratas
+    do mundo</b> (em custo nivelado) — e o que falta é <b>potência firme e flexibilidade</b> na hora certa. Isso muda tudo: os leilões, o custo,
+    e como o preço deveria se comportar.</p>
+
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">562<span class="u">TWh</span></div><div class="l">Consumo de energia (2025); +0,2% no ano, após +5,6% em 2024</div><div class="src">EPE</div></div>
+    <div class="kpi"><div class="v">3,3<span class="u">%a.a.</span></div><div class="l">Crescimento projetado da carga até 2034</div><div class="src">PDE 2034</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda; 7 recordes só em 2025</div><div class="src">ONS</div></div>
+    <div class="kpi"><div class="v">2027</div><div class="l">Quando o SIN passa a precisar de potência adicional</div><div class="src">PDE 2034</div></div>
+    <div class="kpi"><div class="v">25→50<span class="u">GW</span></div><div class="l">A rampa de carga líquida dobra (2024→2028)</div><div class="src">EPE</div></div>
+    <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no maior leilão da história (LRCAP 2026)</div><div class="src">CCEE</div></div>
+  </div>
+
+  <h2 class="sec">Como a oferta cresce <span class="tag">Fase 2</span></h2>
+  <p class="sec-sub">A expansão recente é quase toda renovável variável. Em 2024 a matriz cresceu +10,9 GW — a
+    maior expansão da série histórica — e a <strong>solar ultrapassou as térmicas</strong> em capacidade instalada.</p>
+  <figure>
+    <div class="chart" id="chart-renovaveis"></div>
+    <figcaption><span class="ti">Capacidade instalada de eólica e solar (GW acumulados)</span>
+      Duas séries independentes (sem empilhar). A solar saiu de ~1 GW (2017) para <strong>~65 GW (2025)</strong>,
+      ultrapassando a eólica por volta de 2023. Pontos-âncora de fonte primária (2017, 2024, 2025); anos
+      intermediários ilustram a trajetória. Fonte: EPE/BEN 2026, ANEEL, ABEEólica, ABSOLAR.</figcaption>
+  </figure>
+  <figure>
+    <div class="chart" id="chart-classe"></div>
+    <figcaption><span class="ti">Consumo de energia por classe — 2024 (TWh)</span>
+      Indústria e residências respondem por dois terços da demanda. O crescimento é puxado por PIB,
+      ar-condicionado (ondas de calor), e novas grandes cargas no horizonte — <strong>data centers</strong> e
+      hidrogênio. Fonte: EPE, Anuário 2025 (base SIMPLES).</figcaption>
+  </figure>
+
+  <h2 class="sec">A inversão do problema: de energia para potência</h2>
+  <p class="sec-sub">Com eólica + solar saindo de 3,7% (2015) para <strong>~26% da geração (2025)</strong>, o gargalo
+    deixou de ser energia e virou <strong>a curva do pato</strong>: a solar achata a <strong>carga líquida</strong>
+    (a demanda menos a geração solar/eólica do momento) ao meio-dia e some ao entardecer, criando uma rampa cada
+    vez mais íngreme.</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 640 250" role="img" aria-label="Curva do pato: carga total vs carga líquida ao longo do dia">
+        <!-- solar fill (gap between total and net load) -->
+        <path d="M182,130 L250,88.7 L318,68 L340.7,64.5 L386,61 L431.3,68 L476.7,54 L476.7,54 L431.3,102.5 L386,151 L340.7,185.5 L318,178.5 L250,137 L182,130 Z" fill="#e0a93b" opacity="0.16"/>
+        <!-- axis baseline -->
+        <line x1="46" y1="220" x2="600" y2="220" stroke="#d8d2c5" stroke-width="1"/>
+        <!-- total load (dashed) -->
+        <polyline points="46,109.5 114,137 182,130 250,88.7 318,68 340.7,64.5 386,61 431.3,68 476.7,54 522,75 590,106" fill="none" stroke="#9aa2ad" stroke-width="2" stroke-dasharray="5 4"/>
+        <!-- net load (solid) -->
+        <polyline points="46,109.5 114,137 182,130 250,137 318,178.5 340.7,185.5 386,151 431.3,102.5 476.7,54 522,75 590,106" fill="none" stroke="#1f5f9e" stroke-width="2.8" stroke-linejoin="round"/>
+        <!-- hour labels -->
+        <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#9aa2ad" text-anchor="middle">
+          <text x="46" y="236">0h</text><text x="182" y="236">6h</text><text x="318" y="236">12h</text><text x="454" y="236">18h</text><text x="590" y="236">24h</text>
+        </g>
+        <!-- annotations -->
+        <g font-family="Inter,sans-serif" font-size="11" font-weight="600">
+          <text x="332" y="205" fill="#b07b1f" text-anchor="middle">vale: sol a pleno</text>
+          <text x="436" y="128" fill="#be3c34">rampa íngreme</text>
+          <text x="486" y="44" fill="#1f5f9e">ponta da noite</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><span class="ti">A curva do pato — carga total vs. carga líquida ao longo do dia (ilustrativo)</span>
+      A <span style="color:#1f5f9e;font-weight:600">carga líquida</span> (demanda − solar, linha cheia) mergulha
+      ao meio-dia e dispara ao entardecer, quando a solar (<span style="color:#c9921f;font-weight:600">área</span>)
+      some. A linha tracejada é a carga total. O preço <em>deveria</em> afundar no vale e disparar na ponta.</figcaption>
+  </figure>
+
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--danger)">↗</span>Rampa dobra</h4><p>A rampa de carga líquida vai de <strong>~25 GW (2024) para ~50 GW (2028)</strong> — dezenas de GW que precisam subir em poucas horas ao entardecer.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">⏱</span>Déficit de potência</h4><p>O PDE aponta necessidade de potência adicional <strong>a partir de 2027</strong> (~5,5 GW em 2028, ~35–40 GW até 2034) — mesmo com sobra de energia.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">⚡</span>Curtailment</h4><p>A renovável se concentra no Nordeste, a carga no Sudeste. Sem transmissão e armazenamento, sobra geração: <strong>~20% da geração potencial de eólica+solar cortada em 2025</strong> (estimativa de mercado).</p></div>
+  </div>
+
+  <h2 class="sec">Como o operador supre o mercado: os leilões <span class="tag">ACR</span></h2>
+  <p class="sec-sub">A expansão é contratada centralizadamente em leilões. A virada conceitual recente: deixou-se de
+    comprar só <strong>energia (R$/MWh)</strong> para comprar <strong>potência disponível (R$/MW-ano)</strong>.</p>
+
+  <div class="twocol">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">E</span>Contratar energia</h4>
+      <p>Paga-se pela <strong>produção</strong> ao longo do tempo (MWh). É o produto dos Leilões de Energia Nova
+        e Existente. Faz sentido quando falta <em>geração</em>.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">P</span>Contratar potência</h4>
+      <p>Paga-se pela <strong>disponibilidade</strong> de entregar quando o sistema precisa (MW), na ponta e na
+        rampa — independente de quanto gere. É o produto do <strong>LRCAP</strong> (Leilão de Reserva de Capacidade).</p></div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Leilão (2025–26)</th><th>Objeto</th><th class="num">Preço / deságio</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>39º LEN A-5</strong> · ago/2025</td><td>Energia nova — <strong>só hídrico</strong> (PCH/UHE)</td><td class="num">R$ 392,84/MWh · −3,16%</td><td>1ª contratação de geração nova em 3 anos; R$ 5,5 bi</td></tr>
+      <tr><td><strong>LEE A-1/A-2/A-3</strong> · nov/2025</td><td>Energia existente (recontratação)</td><td class="num">R$ 205–213/MWh · −15,4%</td><td>R$ 6,48 bi; economia R$ 1,18 bi</td></tr>
+      <tr><td><strong>2º LRCAP</strong> · mar/2026</td><td><strong>Potência</strong> (térmicas + ampliação hidro)</td><td class="num">−5,52%</td><td><strong>~19 GW</strong>; R$ 515,7 bi (receita 15 anos); ~80% gás</td></tr>
+      <tr><td><strong>LRCAP Baterias</strong> · dez/2026</td><td><strong>Potência via BESS</strong> (CVU=0, ≥4h)</td><td class="num">a realizar</td><td>1º leilão de armazenamento do país; início ago/2028</td></tr>
+      <tr><td><strong>Transmissão 4/2025</strong> · out/2025</td><td>Linhas + subestações (RAP)</td><td class="num">−47,98%</td><td>R$ 5,53 bi; economia ~R$ 11,5 bi</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">O QUE OS LEILÕES REVELAM</span>
+    <p>Os Leilões de Energia Nova de 2024 foram <strong>cancelados</strong> e só voltaram em 2025 — restritos a
+      <strong>hidrelétricas</strong>. O sistema não queria mais energia intermitente (já sobra). Em paralelo, o
+      <strong>maior leilão de geração da história</strong> (LRCAP 2026, ~19 GW, R$ 515,7 bi) não contratou energia
+      — contratou <strong>disponibilidade</strong>, ~80% em térmicas a gás. O TCU e o MPF contestaram o preço-teto
+      (indícios de sobrepreço), mas o leilão foi mantido. <strong>O eixo migrou de "quanto MWh comprar" para
+      "quanto MW disponível garantir"</strong> — com baterias como aposta estruturante a partir de dez/2026.</p>
+  </div>
+
+  <h2 class="sec">Quanto custa gerar, por fonte</h2>
+  <p class="sec-sub">O custo nivelado (LCOE) junta investimento, O&amp;M, combustível e custo de capital num único
+    R$/MWh. A revolução da década: <strong>solar e eólica viraram as fontes mais baratas</strong> de energia nova.</p>
+  <figure>
+    <div class="chart" id="chart-lcoe"></div>
+    <figcaption><span class="ti">Custo de geração por fonte — proxy de leilão (R$/MWh)</span>
+      Valores representativos (faixas variam com câmbio, gás e WACC). Eólica e solar lideram em custo; gás de
+      ponta e nuclear são caros em <em>energia</em> — mas valem por <em>firmeza</em>, que o LCOE não captura.
+      Fonte: leilões EPE/ANEEL como proxy; IRENA 2024; Lazard.</figcaption>
+  </figure>
+  <div class="callout insight">
+    <span class="mk">A DISRUPÇÃO</span>
+    <p>O LCOE da solar caiu <strong>~90% em 14 anos</strong> (US$ 417 → US$ 43/MWh entre 2010 e 2024). Em 2024,
+      <strong>91% dos projetos renováveis novos no mundo</strong> saíram mais baratos que qualquer alternativa
+      fóssil. Mas o LCOE <strong>não captura valor temporal nem firmeza</strong> — e é exatamente essa lacuna que
+      reorganiza o preço.</p>
+  </div>
+
+  <h2 class="sec">Como o preço deveria se comportar</h2>
+  <p class="sec-sub">O preço de equilíbrio é o <strong>custo da última usina despachada</strong> (a marginal) — não
+    a média. Empilhe as usinas por custo crescente e a demanda define onde se "corta" a curva.</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 290" role="img" aria-label="Curva de oferta (merit order): custo marginal por usina">
+        <!-- area under step -->
+        <path d="M50,249 L315.5,249 L315.5,239.8 L451.2,239.8 L451.2,194 L545.6,194 L545.6,131.5 L598.7,131.5 L598.7,47 L640,47 L640,250 L50,250 Z" fill="#1f5f9e" opacity="0.07"/>
+        <!-- y axis ticks -->
+        <g font-family="IBM Plex Mono,monospace" font-size="10" fill="#9aa2ad" text-anchor="end">
+          <line x1="50" y1="250" x2="640" y2="250" stroke="#d8d2c5"/>
+          <text x="44" y="253">0</text><text x="44" y="203">300</text><text x="44" y="152">600</text><text x="44" y="101">900</text><text x="44" y="50">1200</text>
+          <line x1="48" y1="199.2" x2="640" y2="199.2" stroke="#eee7da"/><line x1="48" y1="148.5" x2="640" y2="148.5" stroke="#eee7da"/><line x1="48" y1="97.7" x2="640" y2="97.7" stroke="#eee7da"/>
+        </g>
+        <text x="20" y="140" font-family="Inter,sans-serif" font-size="10.5" fill="#6b7480" transform="rotate(-90 20 140)" text-anchor="middle">custo marginal R$/MWh</text>
+        <!-- step curve -->
+        <path d="M50,249 L315.5,249 L315.5,239.8 L451.2,239.8 L451.2,194 L545.6,194 L545.6,131.5 L598.7,131.5 L598.7,47 L640,47" fill="none" stroke="#1b1f27" stroke-width="2.4" stroke-linejoin="round"/>
+        <!-- block color caps -->
+        <line x1="50" y1="249" x2="315.5" y2="249" stroke="#3f9277" stroke-width="5"/>
+        <line x1="315.5" y1="239.8" x2="451.2" y2="239.8" stroke="#1f6f8b" stroke-width="5"/>
+        <line x1="451.2" y1="194" x2="545.6" y2="194" stroke="#cf7d2e" stroke-width="5"/>
+        <line x1="545.6" y1="131.5" x2="598.7" y2="131.5" stroke="#9a5b2e" stroke-width="5"/>
+        <line x1="598.7" y1="47" x2="640" y2="47" stroke="#be3c34" stroke-width="5"/>
+        <!-- demand lines -->
+        <g stroke-dasharray="4 3" stroke-width="1.6">
+          <line x1="374.5" y1="250" x2="374.5" y2="232" stroke="#2f7d57"/>
+          <line x1="522" y1="250" x2="522" y2="186" stroke="#be3c34"/>
+        </g>
+        <circle cx="374.5" cy="239.8" r="3.5" fill="#2f7d57"/>
+        <circle cx="522" cy="194" r="3.5" fill="#be3c34"/>
+        <!-- block labels -->
+        <g font-family="Inter,sans-serif" font-size="9" fill="#6b7480" text-anchor="middle">
+          <text x="182" y="265">Solar·Eólica·Nuclear (CVU≈0)</text>
+          <text x="383" y="265">Hidro</text>
+          <text x="498" y="265">Gás CC</text>
+          <text x="565" y="265">Ponta</text>
+          <text x="623" y="265">Óleo</text>
+        </g>
+        <!-- demand annotations -->
+        <g font-family="Inter,sans-serif" font-size="10.5" font-weight="600">
+          <text x="368" y="226" fill="#2f7d57" text-anchor="end">demanda baixa → preço baixo</text>
+          <text x="528" y="180" fill="#be3c34">demanda alta → preço do gás</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><span class="ti">Curva de oferta (merit order) — o preço sai do cruzamento com a demanda</span>
+      Renováveis e nuclear (custo marginal ≈ 0) formam a base; gás e óleo, a parte cara. Quando a demanda é baixa
+      (ou há muito sol/vento), a marginal é barata e o preço afunda; quando aperta, a marginal vira o gás e o
+      preço dispara. <strong>Toda usina à esquerda da marginal embolsa a diferença</strong> (renda inframarginal).</figcaption>
+  </figure>
+
+  <div class="callout insight">
+    <span class="mk">A CANIBALIZAÇÃO</span>
+    <p>Injetar uma massa de solar/eólica de custo marginal ≈ zero <strong>empurra a curva inteira para a
+      direita</strong>: a marginal fica mais barata e o preço cai estruturalmente (<em>efeito merit-order</em>).
+      Pior: nas horas de muito sol, a marginal vira a <em>própria</em> renovável de custo zero, e o preço afunda
+      ao piso. <strong>A solar destrói o próprio preço de venda</strong> — o sucesso da tecnologia corrói sua
+      receita marginal. Em mercados livres isso vira preço zero/negativo ao meio-dia; no Brasil, abafado pelo
+      PLD administrado e pela hidro, aparece como <strong>curtailment físico</strong>.</p>
+  </div>
+
+  <div class="twocol">
+    <div>
+      <figure style="margin-top:0">
+        <div class="chart" id="chart-pld"></div>
+        <figcaption><span class="ti">PLD médio anual (R$/MWh)</span>
+          A projeção de início de 2025 era ~R$ 59 (perto do <strong>piso</strong>), mas o realizado foi
+          <strong>~R$ 157</strong> — acima de 2024. No Brasil a canibalização aparece como <strong>curtailment
+          físico</strong>, não como PLD baixo: o piso administrado e a hidro amortecem o preço, e afluências abaixo
+          da média mantiveram os reservatórios apertados. *proj. jan/2025. Fonte: CCEE (PLDx).</figcaption>
+      </figure>
+    </div>
+    <div class="callout danger" style="margin-top:0">
+      <span class="mk">MISSING MONEY</span>
+      <p>Se o preço da energia afunda perto do piso em muitas horas (sol/vento fartos), as usinas que o sistema <em>precisa</em>
+        para a segurança — térmica flexível, ponta, capacidade firme — <strong>não recuperam o investimento só
+        com receita de energia</strong>. Rodam poucas horas/ano, e nelas o preço está capado. Falta dinheiro
+        (<em>missing money</em>) para construir confiabilidade. <strong>A energia ficou barata; a confiabilidade
+        ficou cara.</strong> Daí a migração para pagar potência (LRCAP) e armazenamento.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">Os incentivos aos renováveis — e a virada</h2>
+  <p class="sec-sub">O Brasil construiu, em ~20 anos, uma camada densa de subsídios a renováveis — que fazia sentido
+    quando eram caras. Agora que são as mais baratas, o subsídio à <em>energia</em> foi retirado.</p>
+
+  <div class="timeline">
+    <div class="tl"><div class="yr">2002</div><div class="ev">PROINFA — o primeiro programa</div><div class="why">Preço administrado de longo prazo (feed-in à brasileira) para eólica, PCH e biomassa; ~3 GW. <b>Semente</b> de uma indústria que ainda não existia.</div></div>
+    <div class="tl"><div class="yr">2009 →</div><div class="ev">Leilões de reserva e o desconto de TUSD/TUST</div><div class="why">Leilões competitivos (o 1º de eólica em 2009) <strong>derrubaram o preço</strong>. Em paralelo, o desconto de <strong>50–100% na TUSD/TUST</strong> para fontes incentivadas dava sinal de demanda — bancado por todos via CDE.</div></div>
+    <div class="tl"><div class="yr">2022</div><div class="ev">Lei 14.300 — marco da geração distribuída</div><div class="why">Net metering + início da cobrança escalonada do "Fio B" (ver aba Regulação econômica). Direito adquirido até 2045 para quem entrou antes de 2023.</div></div>
+    <div class="tl crisis"><div class="yr">2024–25</div><div class="ev">O subsídio virou peso tarifário</div><div class="why">Só o desconto de TUSD/TUST passou de <strong>R$ 15 bi/ano</strong>, dentro de uma CDE de ~R$ 49 bi — recaindo sobre o consumidor cativo, o de menor renda. ANEEL, TCU e Fazenda convergem: o subsídio perdeu justificativa.</div></div>
+    <div class="tl star"><div class="yr">2025</div><div class="ev">Lei 15.269 — fim do desconto para novos</div><div class="why">Encerra o desconto de TUSD/TUST para <strong>novos entrantes</strong> (preserva direito adquirido) e cria <strong>teto para a CDE</strong> a partir de 2027. A tentativa de taxar a GD ("taxa do sol") foi <strong>rejeitada</strong> no Congresso em out/2025.</div></div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">A LÓGICA DA VIRADA</span>
+    <p>O incentivo fazia sentido quando renovável era cara e incipiente. <strong>A política funcionou bem demais</strong>:
+      os leilões competitivos tornaram solar e eólica as mais baratas do sistema. Quando o subsidiado vira o mais
+      barato, o subsídio deixa de corrigir uma falha e vira transferência de renda regressiva. <strong>O incentivo
+      certo mudou de objeto</strong>: não se subsidia mais <em>energia</em> (commodity barata), e sim <em>capacidade
+      e flexibilidade</em> — armazenamento, reserva de potência. O risco à frente não é "faltar incentivo a
+      renovável", e sim desenhar tarde os incentivos de sistema que a própria renovável tornou necessários.</p>
   </div>
 </section>
 
@@ -869,7 +1107,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.1</span><span class="badge">27 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.2</span><span class="badge">27 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -988,6 +1226,32 @@
     });
     mount.innerHTML='';mount.appendChild(svg);
   }
+  // Multi-line chart (independent series, never stacked)
+  function lines(mount,series,opts){
+    opts=opts||{};
+    const W=opts.W||660,H=opts.H||280,padL=46,padR=58,padT=16,padB=30;
+    const xs=opts.xLabels, n=xs.length;
+    const max=opts.max||Math.max(...series.flatMap(s=>s.data))*1.1;
+    const x0=padL,x1=W-padR,y0=H-padB,y1=padT,pw=x1-x0,ph=y0-y1;
+    const X=i=>x0+pw*i/(n-1), Y=v=>y0-ph*v/max;
+    const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img'});
+    const ticks=opts.ticks||4;
+    for(let i=0;i<=ticks;i++){const v=max*i/ticks,gy=Y(v);
+      svg.appendChild(el('line',{x1:x0,y1:gy,x2:x1,y2:gy,stroke:'#eee7da','stroke-width':1}));
+      svg.appendChild(el('text',{x:x0-8,y:gy+4,'text-anchor':'end','font-size':10.5,fill:'#9aa2ad','font-family':'IBM Plex Mono,monospace'},opts.axisFmt?opts.axisFmt(v):Math.round(v)));
+    }
+    xs.forEach((lb,i)=>{if(opts.everyOther&&i%2&&i!==n-1)return;
+      svg.appendChild(el('text',{x:X(i),y:y0+18,'text-anchor':'middle','font-size':11,fill:'#6b7480','font-family':'Inter,sans-serif'},lb));});
+    series.forEach(s=>{
+      let d='';s.data.forEach((v,i)=>{d+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)+' ';});
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':2.6,'stroke-linejoin':'round','stroke-linecap':'round'}));
+      const li=s.data.length-1;
+      svg.appendChild(el('circle',{cx:X(li),cy:Y(s.data[li]),r:3.5,fill:s.color}));
+      svg.appendChild(el('text',{x:X(li)+8,y:Y(s.data[li])+4,'font-size':12,'font-weight':600,fill:s.color,'font-family':'IBM Plex Mono,monospace'},opts.endFmt?opts.endFmt(s.data[li]):s.data[li]));
+    });
+    mount.innerHTML='';mount.appendChild(svg);
+    legend(mount,series.map(s=>({label:s.label,color:s.color})));
+  }
   function legend(mount,items){
     const wrap=document.createElement('div');wrap.className='legend';
     items.forEach(it=>{const s=document.createElement('span');
@@ -1105,6 +1369,46 @@
         {label:'China',value:0.076,color:'#cdb8a0'},
       ],{labelW:130,valW:74,max:0.44,valFmt:v=>'US$ '+v.toFixed(3)});
       legend(m,[{label:'Brasil',color:C.accent},{label:'Média mundial',color:C.warn},{label:'Subsidiado',color:'#cdb8a0'}]);
+    });
+    // OFERTA & DEMANDA: explosão renovável (eólica vs solar, GW)
+    render('chart-renovaveis',m=>{
+      lines(m,[
+        {label:'Solar (centr.+telhado)',color:C.solar,data:[0,0.1,1,2.4,4.6,7.9,13,24,37.4,48.5,64.8]},
+        {label:'Eólica',color:C.wind,data:[8.7,10.7,12.8,14.7,15.4,17.7,20.8,25.6,29.3,33.7,34.7]},
+      ],{xLabels:['15','16','17','18','19','20','21','22','23','24','25'],max:70,
+        axisFmt:v=>v.toFixed(0),endFmt:v=>v.toFixed(0)+' GW'});
+    });
+    // OFERTA & DEMANDA: consumo por classe 2024 (TWh)
+    render('chart-classe',m=>{
+      hbars(m,[
+        {label:'Industrial',value:197.6,color:C.hydro,bold:true},
+        {label:'Residencial',value:176.5,color:C.accent},
+        {label:'Comercial',value:104.1,color:'#5b8db0'},
+        {label:'Rural',value:31.4,color:C.wind},
+        {label:'Outros',value:51.9,color:C.gray},
+      ],{labelW:120,valW:74,valFmt:v=>fmt(v)+' TWh'});
+    });
+    // OFERTA & DEMANDA: LCOE por fonte (R$/MWh, proxy leilão)
+    render('chart-lcoe',m=>{
+      hbars(m,[
+        {label:'Eólica onshore',value:185,color:C.wind,bold:true},
+        {label:'Solar PV',value:200,color:C.solar,bold:true},
+        {label:'Hidrelétrica (UHE)',value:250,color:C.hydro},
+        {label:'Biomassa',value:300,color:'#6a9b4e'},
+        {label:'PCH',value:316,color:'#3f8b9d'},
+        {label:'Gás (ciclo combinado)',value:330,color:C.thermal},
+        {label:'Nuclear',value:480,color:C.nuclear},
+        {label:'Gás de ponta (OCGT)',value:700,color:'#9a5b2e'},
+      ],{labelW:160,valW:82,max:760,valFmt:v=>'R$ '+fmt(v)});
+    });
+    // OFERTA & DEMANDA: PLD médio (R$/MWh) 2024 vs 2025
+    render('chart-pld',m=>{
+      vcols(m,[
+        {label:'2024',value:128,color:C.thermal,note:'realizado'},
+        {label:'2025',value:157,color:C.thermal,bold:true,note:'realizado'},
+        {label:'proj.25*',value:59,color:C.gray,faint:true,note:'projeção'},
+        {label:'piso 26',value:57,color:C.gray,faint:true},
+      ],{H:230,max:185,barW:42,axisFmt:v=>fmt(v),valFmt:v=>'R$'+fmt(v)});
     });
   }
   window.__renderCharts=renderAll;
