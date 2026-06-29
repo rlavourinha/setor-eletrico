@@ -46,10 +46,9 @@
   /* ---------- Tabs ---------- */
   nav.tabs{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.93);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line-strong);}
-  .tabrow{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-  .tabrow::-webkit-scrollbar{display:none}
+  .tabrow{display:flex;flex-wrap:wrap;gap:0 2px}
   .tab{flex:0 0 auto;border:none;background:none;font-family:var(--sans);
-    font-size:14px;font-weight:550;color:var(--muted);padding:15px 16px 13px;
+    font-size:13.5px;font-weight:550;color:var(--muted);padding:11px 11px 9px;
     cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap;
     transition:color .15s,border-color .15s}
   .tab:hover{color:var(--ink)}
@@ -217,7 +216,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.7 · 29 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.8 · 29 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -1677,7 +1676,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.7</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.8</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
