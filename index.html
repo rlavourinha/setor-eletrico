@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.3 · 28 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.4 · 28 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -234,7 +234,7 @@
       <button class="tab" data-t="geracao"><span class="num">05</span>Geração</button>
       <button class="tab" data-t="mercado"><span class="num">06</span>Mercado &amp; preço</button>
       <button class="tab" data-t="regulacao"><span class="num">07</span>Regulação econômica</button>
-      <button class="tab" data-t="mundo"><span class="num">08</span>Benchmark global</button>
+      <button class="tab" data-t="mundo"><span class="num">08</span>Internacional</button>
     </div>
   </div>
 </nav>
@@ -314,8 +314,8 @@
       o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
     <div class="card"><h4>07 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
-    <div class="card"><h4>08 · Benchmark global</h4><p>Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT,
-      Ibéria, preços internacionais — para criar senso crítico sobre o modelo brasileiro.</p></div>
+    <div class="card"><h4>08 · Internacional</h4><p>Seis eixos regulatórios, preços (varejo/atacado/tributos),
+      preço negativo vs curtailment, mercados de capacidade, casos de estresse e as lições para o Brasil.</p></div>
   </div>
 </section>
 
@@ -1191,95 +1191,147 @@
 
 <!-- ============================ MUNDO ============================ -->
 <section class="panel" id="mundo">
-  <h2 class="sec">O Brasil visto de fora <span class="tag">Benchmark</span></h2>
-  <p class="sec-sub">Para criar senso crítico: como o resto do mundo organiza o mesmo problema — e onde o
-    desenho brasileiro é referência, onde é apenas peculiar, e onde está atrasado.</p>
+  <p class="lead">Lendo o Brasil contra o mundo, ele é <b>outlier em quase todos os eixos</b>: preço por
+    modelo (não por lance), poucos submercados (sem sinal locacional fino), mercado de capacidade incipiente,
+    redes remuneradas por base de ativos (não por incentivo) e varejo fechado até 2027–28. Um desenho coerente,
+    herdado da hidro — mas vários eixos atrás da fronteira. A agenda não é "copiar a Europa": é <b>importar os
+    mecanismos preservando os ativos</b> (matriz limpa, hidro, leilões longos).</p>
 
-  <div class="callout insight">
-    <span class="mk">O DIVISOR DE ÁGUAS</span>
-    <p>A diferença não é de detalhe — é de filosofia sobre <strong>quem decide o preço</strong>. No Brasil
-      (<em>cost-based</em>), o ONS despacha e o preço sai de um <strong>modelo de otimização estatal</strong>. Na
-      maior parte do mundo (<em>bid-based</em>), o preço sai de <strong>lances dos geradores</strong> num mercado.
-      O Brasil é um dos poucos grandes sistemas sem preço por oferta.</p>
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">~US$29<span class="u">/MWh</span></div><div class="l">Atacado/PLD Brasil (2025) vs ~US$101 na Alemanha — geração barata</div><div class="src">CCEE/EPEX</div></div>
+    <div class="kpi"><div class="v">~44<span class="u">%</span></div><div class="l">Da conta brasileira é tributo+encargo (UE ~28%)</div><div class="src">IDEC/Eurostat</div></div>
+    <div class="kpi"><div class="v">2028</div><div class="l">Varejo residencial abre no BR (UE 2007, UK 1999)</div><div class="src">Lei 15.269</div></div>
+    <div class="kpi"><div class="v">108<span class="u">GW</span></div><div class="l">Baterias adicionadas no mundo em 2025 (+40%); BR: 1º leilão dez/2026</div><div class="src">IEA</div></div>
+    <div class="kpi"><div class="v">573<span class="u">h</span></div><div class="l">Horas de preço negativo na Alemanha (2025); no BR, vira curtailment</div><div class="src">pv-magazine</div></div>
+    <div class="kpi"><div class="v">US$329<span class="u">/MW-dia</span></div><div class="l">Leilão de capacidade do PJM (26/27); BR sem mercado estrutural</div><div class="src">PJM</div></div>
   </div>
 
+  <h2 class="sec">O divisor de águas: quem decide o preço <span class="tag">Eixo 1</span></h2>
+  <div class="callout insight">
+    <span class="mk">COST-BASED vs BID-BASED</span>
+    <p>A diferença mais fundamental. No Brasil (<em>cost-based</em>), o ONS roda um modelo que minimiza o custo a
+      partir de custos <strong>declarados/auditados</strong>, e o preço sai como o custo marginal desse modelo — o
+      gerador <strong>não dá lance</strong>. Na maior parte do mundo (<em>bid-based</em>), geradores <strong>ofertam
+      preços</strong> e o equilíbrio é o último lance aceito. O cost-based reduz <em>gaming</em> (útil num parque
+      concentrado e hidro), mas transfere ao regulador a responsabilidade pelo modelo: o preço é tão bom quanto as
+      premissas. Entre os grandes sistemas, só o Brasil e o Chile mantêm esse paradigma — e o Chile já estuda migrar
+      para o bid-based (proposta do Coordinador Eléctrico, em desenho desde 2024).</p>
+  </div>
+
+  <h2 class="sec">Seis eixos: onde o Brasil está vs a fronteira</h2>
+  <p class="sec-sub">O comparativo regulatório completo — cada eixo com a referência global e a posição brasileira.</p>
   <div class="tbl-wrap">
   <table>
-    <thead><tr><th>Dimensão</th><th>Brasil (cost-based)</th><th>Mundo (bid-based)</th></tr></thead>
+    <thead><tr><th>Eixo</th><th>Fronteira global</th><th>Brasil</th></tr></thead>
     <tbody>
-      <tr><td>Quem forma o preço</td><td>Otimizador estatal (NEWAVE/DECOMP)</td><td>Lances dos próprios agentes</td></tr>
-      <tr><td>Risco de manipulação</td><td>Disputa sobre os <em>inputs</em> do modelo (litígio)</td><td>Lances estratégicos / poder de mercado</td></tr>
-      <tr><td>Sinal de preço</td><td>Atrasado, suavizado, único por submercado</td><td>Reflete escassez e congestão (nodal)</td></tr>
-      <tr><td>Autodespacho</td><td>Não — despacho centralizado</td><td>Sim — o gerador decide gerar</td></tr>
+      <tr><td><strong>1. Formação de preço</strong></td><td>Bid-based (lances de mercado)</td><td><span class="pill high">Cost-based</span> — NEWAVE/DECOMP; quase único entre os grandes (par com o Chile, que estuda migrar)</td></tr>
+      <tr><td><strong>2. Sinal locacional</strong></td><td>Nodal/LMP — um preço por nó da rede (EUA: ERCOT &gt;17 mil nós) — ou zonal — preço por zona (Itália adotou em 2025)</td><td><span class="pill high">Submercado</span> — 4 zonas grossas; congestão interna socializada</td></tr>
+      <tr><td><strong>3. Adequação de oferta</strong></td><td>Energy-only+escassez (ERCOT) ou mercado de capacidade (PJM, UK, França)</td><td><span class="pill mid">LRCAP incipiente</span> — não estrutural</td></tr>
+      <tr><td><strong>4. Regulação de redes</strong></td><td>Incentivo/totex/RIIO (UK) — paga por resultado</td><td><span class="pill high">Base de ativos</span> (RAB/BRR) — viés a capex</td></tr>
+      <tr><td><strong>5. Abertura de varejo</strong></td><td>Residencial livre: UE 2007, UK 1999</td><td><span class="pill mid">Abrindo 2027–28</span> — ~20 anos depois</td></tr>
+      <tr><td><strong>6. Camada supranacional</strong></td><td>ACER/ENTSO-E + acoplamento de mercados (SDAC, &gt;95% da UE)</td><td><span class="pill high">Inexistente</span> — SIN nacional e ilhado</td></tr>
     </tbody>
   </table>
   </div>
 
-  <h3 class="sub">Estudos de caso</h3>
-  <div class="cards c2">
-    <div class="card"><h4>🇬🇧 Reino Unido — a referência em redes</h4><p>O modelo <strong>RIIO</strong> remunera redes
-      por <strong>incentivo e desempenho</strong> — <em>totex</em> (capex e opex tratados como um só pacote de
-      eficiência) sobre uma base de ativos regulatória (RAB), não por gasto bruto. É o benchmark global que a
-      regulação de distribuição brasileira não tem. Os <strong>CfD</strong> de renováveis são "primos" dos
-      leilões do ACR, mas com melhor desenho (<em>two-way</em>: devolvem dinheiro ao consumidor quando o mercado sobe).</p></div>
-    <div class="card"><h4>🇳🇴 Nord Pool — hidro por mercado</h4><p>O contraponto <strong>decisivo</strong>: a
-      Noruega é ~96% hidrelétrica e <strong>precifica a água por mercado</strong>, não por otimizador estatal. O
-      "valor da água" emerge dos lances dos produtores. Derruba o argumento de que "hidrelétrica exige despacho
-      central" — ao custo de alta volatilidade e fortes diferenças zonais de preço.</p></div>
-    <div class="card"><h4>🇺🇸 PJM / ERCOT — capacidade vs escassez</h4><p>Preço <strong>nodal (LMP — preço
-      marginal por nó/localização)</strong> — o que o Brasil mais carece. PJM tem mercado de capacidade (preços recordes, US$ 329/MW-dia
-      em 26/27); o ERCOT é <em>energy-only</em> e a tempestade Uri (2021, 246 mortes, preço no teto por dias)
-      expôs o risco do modelo puro sob evento extremo.</p></div>
-    <div class="card"><h4>🇪🇸 Ibéria — o alerta renovável</h4><p>O "mecanismo ibérico" (2022) capou o gás para
-      desacoplar o preço. O <strong>apagão de abril/2025</strong> (~31 GW de <em>carga desconectada</em> em
-      segundos — o gatilho foi a perda de ~2,2 GW de geração, sob altíssima penetração solar) é o alerta sobre
-      <strong>inércia e controle de tensão</strong> em sistemas de alta renovável — causa ainda contestada, mas
-      relevante para o Brasil, que adiciona solar/eólica em massa.</p></div>
+  <h3 class="sub">Três casos que iluminam o contraste</h3>
+  <div class="cards c3">
+    <div class="card"><h4>🇳🇴 Nord Pool — hidro por mercado</h4><p>O contraponto <strong>decisivo</strong>: a Noruega é ~96% hidrelétrica e <strong>precifica a água por mercado</strong>, não por otimizador. O "valor da água" emerge dos lances. Relativiza o argumento de que "hidro exige despacho central" — embora a Noruega tenha forte interconexão europeia e reservatórios de regulação plurianual, condições que o SIN ilhado não tem.</p></div>
+    <div class="card"><h4>🇬🇧 Reino Unido — RIIO nas redes</h4><p>O <strong>RIIO</strong> remunera redes por <strong>resultado e eficiência</strong> (totex, incentivos), não por CAPEX. RIIO-3 (2026–31): £28,1 bi de totex com meta de <strong>−1% de custo ao ano</strong>. É o benchmark que falta ao Brasil.</p></div>
+    <div class="card"><h4>🇺🇸 PJM — mercado de capacidade</h4><p>Preço <strong>nodal (LMP)</strong> + leilão de capacidade que paga por MW disponível: <strong>US$ 329/MW-dia</strong> (26/27), recorde. Resolve o <em>missing money</em> (a receita que o preço de curto prazo não cobre para pagar a capacidade) que o energy-only puro não resolve — ao custo de subsidiar capacidade fóssil.</p></div>
+  </div>
+
+  <h2 class="sec">Preços — varejo, atacado e o paradoxo</h2>
+  <p class="sec-sub">A conta do consumidor é dominada por rede + tributos, não pela geração. O Brasil tem
+    <strong>geração baratíssima</strong> (atacado) e tarifa só mediana — porque o fio carrega política pública.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-precos"></div>
+      <figcaption><span class="ti">Preço residencial (US$/kWh)</span>
+        O residencial brasileiro é <strong>mediano</strong>. Argentina e México são subsidiados. Fonte: GlobalPetrolPrices Q1/2026.</figcaption>
+    </figure>
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-precos-ind"></div>
+      <figcaption><span class="ti">Preço industrial/comercial (US$/kWh)</span>
+        Competitividade industrial: Brasil (0,132) e EUA baixos; Reino Unido e Itália são os piores da OCDE. Fonte: GlobalPetrolPrices Q1/2026.</figcaption>
+    </figure>
   </div>
 
   <figure>
-    <div class="chart" id="chart-precos"></div>
-    <figcaption><span class="ti">Preço residencial de eletricidade — comparação internacional (US$/kWh)</span>
-      O residencial brasileiro é <strong>mediano</strong> no ranking — o paradoxo está em ter tarifa apenas
-      mediana sobre uma das matrizes mais limpas e baratas do mundo. Médias 2023–2026; Argentina e México são
-      fortemente subsidiados. Fonte: GlobalPetrolPrices; Eurostat; EIA.</figcaption>
+    <div class="chart" id="chart-atacado"></div>
+    <figcaption><span class="ti">Preço de atacado / day-ahead (US$/MWh, 2024–25)</span>
+      O atacado <strong>brasileiro é o mais barato</strong> da amostra (~US$29/MWh) — prova da geração limpa e
+      barata. Na Europa, o gás define o preço marginal e puxa o atacado para cima. <em>Convertido a EUR/USD ~1,13
+      e £/USD ~1,30 (médias 2025); metodologias diferem (day-ahead vs LMP) — ordem de grandeza comparável.</em>
+      Fonte: CCEE, EPEX, OMIE, Nord Pool, PJM, AEMO.</figcaption>
   </figure>
 
   <div class="callout warn">
     <span class="mk">O PARADOXO TARIFÁRIO</span>
-    <p>A geração no Brasil é barata; a conta não é — porque <strong>o fio carrega política pública</strong>. Em
-      2024, <strong>44,8% da receita do setor</strong> virou tributo + encargo (R$ 114,6 bi), com a <strong>CDE
-      sozinha em 13,2%</strong> (R$ 33,8 bi, recorde, ~38× o valor de 2003). A peculiaridade não é o imposto em
-      si (a União Europeia tributa ~28% da conta), e sim <strong>usar a tarifa de energia como veículo fiscal e
-      de política social/industrial</strong> — subsídios a baixa renda, sistemas isolados, fontes incentivadas e
-      geração distribuída embutidos na conta de todos.</p>
+    <p>Geração barata, conta cara: <strong>~44% da conta brasileira é tributo + encargo + subsídio</strong> (apenas
+      ~1/3 do valor pago é a energia em si). O ICMS é ~81% da parte tributária; a CDE financia subsídios cruzados
+      (irrigação, carvão, baixa renda, GD). Na UE, "taxes &amp; levies" pesam ~25–28% — <strong>menos</strong> que
+      no Brasil — e o preço alto vem da geração cara (gás marginal). Ou seja: <strong>Europa cara na geração; Brasil
+      cara na parafiscalidade</strong>. O Brasil é o 4º do mundo em tributos na conta de luz.</p>
   </div>
 
-  <h2 class="sec">Síntese crítica</h2>
+  <h2 class="sec">A canibalização: preço negativo lá fora, curtailment aqui</h2>
+  <p class="sec-sub">Quando entra muita solar de custo marginal zero, o preço do meio-dia desaba. No mercado livre
+    isso vira <strong>preço negativo</strong>; no Brasil, o <strong>piso administrado do PLD</strong> transforma o
+    mesmo fenômeno em <strong>corte físico de geração</strong>.</p>
+  <figure>
+    <div class="chart" id="chart-negativos"></div>
+    <figcaption><span class="ti">Horas de preço negativo por ano</span>
+      Alemanha 573h (2025, recorde), Califórnia ~1.180h (2024, ~13% das horas), Espanha ~543h (2025). O Chile teve
+      <strong>custo marginal zero em boa parte das horas solares</strong> (8 de 12 meses) e cortou ~6 TWh (~20%) em
+      2024. No Brasil: <strong>0h de preço negativo</strong> (o piso proíbe) — mas a canibalização reaparece como
+      <strong>~20% da eólica+solar cortada em 2025</strong> (perda de ~R$ 6,5 bi). O custo da inflexibilidade não
+      some; muda de forma. Fonte: pv-magazine, EIA, ENGIE, Ember.</figcaption>
+  </figure>
+
+  <h2 class="sec">Armazenamento e flexibilidade — a nova fronteira</h2>
+  <div class="callout insight">
+    <span class="mk">O QUE O MUNDO ESTÁ CONSTRUINDO</span>
+    <p>O mundo instalou <strong>~108 GW de baterias em 2025</strong> (+40%; China ~60%, EUA e Austrália em seguida).
+      Elas se pagam por <strong>revenue stacking</strong> (empilhar receitas numa mesma bateria) — arbitragem (comprar barato ao meio-dia, vender caro na
+      ponta), serviços ancilares e capacidade. Mas <strong>no Brasil o PLD com piso não gera o spread intradiário</strong>
+      que financia baterias por arbitragem lá fora — por isso o país entra pelo <strong>mercado de capacidade</strong>
+      (LRCAP de baterias, dez/2026), não pela arbitragem. E há a lacuna dos <strong>serviços ancilares</strong>
+      (inércia, controle de tensão): hoje a hidro síncrona os fornece "de graça", o que esconde a urgência — mas o
+      Reino Unido já paga por isso (Stability Pathfinders), e o risco cresce à medida que renováveis deslocam a hidro.</p>
+  </div>
+
+  <h2 class="sec">Casos de estresse — as lições</h2>
+  <div class="cards c3">
+    <div class="card"><h4>🇺🇸 Texas — tempestade Uri (2021)</h4><p>Demanda &gt; oferta no frio extremo; o preço ficou <strong>colado no teto (US$ 9.000/MWh) por 77 horas</strong>. A lição não é "contra renováveis" (congelaram gás, carvão, nuclear <em>e</em> eólica) — é <strong>contra confiar só no preço de curto prazo</strong> para garantir potência firme. Teto depois reduzido a US$ 5.000.</p></div>
+    <div class="card"><h4>🇪🇸 Ibéria — apagão (abr/2025)</h4><p>Blecaute total de Espanha+Portugal. O relatório final da ENTSO-E (2026) aponta <strong>controle de tensão/reativos</strong> e modos de operação dos inversores — e <strong>descarta "inércia" como causa-raiz</strong>. A lição: estabilidade vira <strong>serviço que alguém precisa contratar</strong>, não subproduto grátis do parque síncrono.</p></div>
+    <div class="card"><h4>🇦🇺 Austrália — suspensão do NEM (2022)</h4><p>A AEMO <strong>suspendeu o mercado spot</strong> por 9 dias: o teto administrado (A$300/MWh) ficou <em>abaixo</em> do custo real, os geradores pararam de ofertar e o operador teve de despachar à mão. <strong>Teto mal calibrado quebra o sinal de preço</strong> — espelho do risco do piso do PLD, na direção oposta.</p></div>
+  </div>
+
+  <h2 class="sec">Lições para o Brasil <span class="tag">síntese</span></h2>
   <div class="tbl-wrap">
   <table>
-    <thead><tr><th>Dimensão</th><th>Referência global</th><th>Brasil é…</th></tr></thead>
+    <thead><tr><th>Copiar (o que falta)</th><th>Evitar (armadilhas)</th><th>Já é referência (preservar)</th></tr></thead>
     <tbody>
-      <tr><td>Formação de preço</td><td>Lances em merit order; LMP nodal (EUA)</td><td><span class="pill high">Atrasado/peculiar</span> — um dos poucos grandes sistemas sem preço por oferta</td></tr>
-      <tr><td>Gestão da hidrologia</td><td>Noruega: valor da água por mercado</td><td><span class="pill mid">Peculiar</span> — prova de que dá para precificar água por mercado existe</td></tr>
-      <tr><td>Sinal locacional</td><td>Preço nodal (EUA, Ontário)</td><td><span class="pill high">Atrasado</span> — preço único por submercado, sem sinal de congestão</td></tr>
-      <tr><td>Remuneração de redes</td><td>RIIO / totex / incentivo (UK)</td><td><span class="pill high">Atrasado</span> vs o benchmark de incentivo</td></tr>
-      <tr><td>Armazenamento / flexibilidade</td><td>Baterias <em>standalone</em> legisladas (Chile, AU)</td><td><span class="pill mid">Em transição</span> — 1º leilão BESS só em 2028</td></tr>
-      <tr><td>Abertura de varejo</td><td>UK/UE/AU abriram há décadas</td><td><span class="pill mid">Atrasado, mas avançando</span> — 2027–2028</td></tr>
-      <tr><td>Contratação de longo prazo (ACR)</td><td>CfD (UK) — mesma lógica</td><td><span class="pill low">Referência parcial</span> — desenho robusto que viabilizou a expansão</td></tr>
-      <tr><td>Matriz física</td><td>—</td><td><span class="pill low">Referência</span> — limpa, diversificada, com a maior bateria hídrica do mundo</td></tr>
+      <tr><td>Regulação de redes por <strong>incentivo (RIIO)</strong> — pagar por resultado, acelerar a rede que destrava o curtailment</td><td><strong>Energy-only puro</strong> sem adequação (Texas) — não garante potência firme na cauda</td><td><strong>Matriz já limpa</strong> (~85–90% renovável) — o destino que o mundo gasta trilhões para alcançar</td></tr>
+      <tr><td><strong>Sinais locacionais/nodais</strong> — o PLD em poucos submercados não enxerga o gargalo</td><td><strong>Tetos/pisos mal calibrados</strong> (Austrália; piso do PLD) — escondem a inflexibilidade</td><td><strong>Hidro como flexibilidade barata</strong> — reservatórios = bateria de TWh + inércia de graça</td></tr>
+      <tr><td><strong>Mercado de capacidade/flexibilidade</strong> recorrente e neutro (PJM/UK) — o LRCAP é só o embrião</td><td><strong>Dependência de uma fonte</strong> e de um só produto (ancilares saturam rápido)</td><td><strong>Leilões longos (ACR)</strong> — a <em>bankability</em> (financiabilidade) que o energy-only não dá; estender a baterias</td></tr>
+      <tr><td><strong>Abertura plena do varejo</strong> — destrava demanda-resposta e precifica flexibilidade da carga</td><td><strong>Subsídio por MWh injetado</strong> que ignora hora/local — gera preço negativo e canibalização</td><td><strong>Despacho coordenado (ONS)</strong> — bem-usado é ativo; o problema é não precificar localização/flexibilidade</td></tr>
     </tbody>
   </table>
   </div>
 
   <div class="callout insight">
     <span class="mk">TESE CENTRAL</span>
-    <p>O Brasil construiu um sistema <strong>fisicamente excelente e contratualmente sofisticado (ACR)</strong>,
-      mas mantém <strong>o coração do mercado — o preço — dentro de uma caixa-preta de otimização estatal</strong>,
-      num mundo que migrou para preço por oferta, sinais nodais e regulação de redes por incentivo. O caso
-      nórdico derruba o argumento de que "hidrelétrica exige despacho central"; o RIIO mostra a regulação de
-      redes que falta; o PJM/ERCOT delimita o debate capacidade-vs-escassez que o Brasil ainda evitará; e o
-      paradoxo tarifário expõe o uso da conta de luz como veículo fiscal.</p>
+    <p>O Brasil está num ponto <strong>invejável e perigoso ao mesmo tempo</strong>. Invejável porque já é limpo e
+      tem a hidro — a flexibilidade que Califórnia, Alemanha e Austrália constroem a duras penas com baterias.
+      Perigoso porque seu arcabouço de preço (piso de PLD, poucos submercados, varejo semi-aberto, ancilares
+      não-precificados) foi desenhado para um sistema hidrotérmico previsível e agora <strong>converte a abundância
+      solar/eólica em desperdício físico</strong> (~20% cortados, R$ 6,5 bi/ano) em vez de sinal que atrai
+      flexibilidade. A lição transversal de Texas, Ibéria e Austrália é a mesma: <strong>na transição, a
+      confiabilidade e a estabilidade deixam de ser subprodutos gratuitos e passam a ser serviços que alguém
+      precisa contratar e pagar — explicitamente.</strong></p>
   </div>
 </section>
 
@@ -1295,7 +1347,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.3</span><span class="badge">28 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.4</span><span class="badge">28 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -1557,6 +1609,44 @@
         {label:'China',value:0.076,color:'#cdb8a0'},
       ],{labelW:130,valW:74,max:0.44,valFmt:v=>'US$ '+v.toFixed(3)});
       legend(m,[{label:'Brasil',color:C.accent},{label:'Média mundial',color:C.warn},{label:'Subsidiado',color:'#cdb8a0'}]);
+    });
+    // INTERNACIONAL: preço industrial/comercial (US$/kWh)
+    render('chart-precos-ind',m=>{
+      hbars(m,[
+        {label:'Reino Unido',value:0.445,color:C.gray},
+        {label:'Itália',value:0.415,color:C.gray},
+        {label:'Alemanha',value:0.285,color:C.gray},
+        {label:'Austrália',value:0.240,color:C.gray},
+        {label:'México',value:0.212,color:'#cdb8a0'},
+        {label:'Média mundial',value:0.164,color:C.warn},
+        {label:'EUA',value:0.148,color:C.gray},
+        {label:'Espanha',value:0.135,color:C.gray},
+        {label:'Brasil',value:0.132,color:C.accent,bold:true},
+        {label:'China',value:0.108,color:'#cdb8a0'},
+      ],{labelW:120,valW:74,max:0.48,valFmt:v=>'US$ '+v.toFixed(3)});
+    });
+    // INTERNACIONAL: preço de atacado / day-ahead (US$/MWh)
+    render('chart-atacado',m=>{
+      hbars(m,[
+        {label:'Reino Unido',value:110,color:C.gray},
+        {label:'Alemanha',value:101,color:C.gray},
+        {label:'Espanha',value:74,color:C.gray},
+        {label:'França',value:66,color:C.gray},
+        {label:'Austrália',value:57,color:C.gray},
+        {label:'Nord Pool',value:44,color:C.gray},
+        {label:'ERCOT (Texas)',value:40,color:C.gray},
+        {label:'PJM (EUA)',value:34,color:C.gray},
+        {label:'Brasil (PLD)',value:29,color:C.accent,bold:true},
+      ],{labelW:130,valW:70,max:122,valFmt:v=>'US$ '+fmt(v)});
+    });
+    // INTERNACIONAL: horas de preço negativo no ano
+    render('chart-negativos',m=>{
+      vcols(m,[
+        {label:'Califórnia',value:1180,color:C.thermal,note:'2024'},
+        {label:'Alemanha',value:573,color:C.thermal,note:'2025'},
+        {label:'Espanha',value:543,color:C.thermal,note:'2025'},
+        {label:'Brasil',value:0,color:C.accent,bold:true,note:'piso→corte'},
+      ],{H:240,max:1300,barW:54,axisFmt:v=>fmt(v),valFmt:v=>fmt(v)+'h'});
     });
     // OFERTA & DEMANDA: explosão renovável (eólica vs solar, GW)
     render('chart-renovaveis',m=>{

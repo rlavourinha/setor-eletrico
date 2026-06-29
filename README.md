@@ -16,7 +16,7 @@ Estudo de referência do setor elétrico brasileiro (Fases 1–3), construído *
 | **Geração** | Quanto custa e quanto demora construir (CAPEX/prazo/fator de capacidade por fonte), o ciclo de caixa (curva J), o financiamento (project finance, BNDES, debêntures incentivadas) e por que o Brasil parou de construir grandes hidrelétricas (+ UHR reversíveis) |
 | **Mercado & preço** | ACR vs ACL, abertura do mercado livre, formação do PLD, risco hidrológico (MRE/GSF), bandeiras |
 | **Regulação econômica** | Como cada segmento ganha dinheiro: RAP (transmissão), Parcela A/B + ativos regulatórios (distribuição), risco da geração |
-| **Benchmark global** | Cost-based vs bid-based, Nord Pool, RIIO, PJM/ERCOT, Ibéria; preços internacionais; síntese crítica |
+| **Internacional** | Seis eixos regulatórios (cost-based vs bid-based, nodal/zonal, energy-only vs capacidade, RIIO, abertura de varejo, camada supranacional); preços (varejo/atacado/tributos); preço negativo vs curtailment; armazenamento; casos de estresse (Uri, Ibéria, NEM); e as lições para o Brasil (copiar/evitar/preservar) |
 
 ## Fontes primárias
 
@@ -30,4 +30,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v1.3 · 28 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v1.4 · 28 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
