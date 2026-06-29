@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.5 · 29 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.6 · 29 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -1093,6 +1093,82 @@
     <div class="card"><h4><span class="ico" style="background:var(--accent)">⚙</span>Modernização do parque</h4><p><strong>96% da "expansão hídrica" da década</strong> vem daqui: trocar turbinas, repotenciar, hibridizar com solar flutuante nos reservatórios existentes. Ganha-se capacidade <strong>sem nova barragem, sem novo licenciamento, sem novo conflito</strong>.</p></div>
     <div class="card"><h4><span class="ico" style="background:var(--solar)">⚡</span>Baterias, gás flexível, demanda</h4><p><strong>BESS</strong> para deslocar a solar do meio-dia para a noite (1º leilão em dez/2026), <strong>térmica a gás</strong> como capacidade firme, e <strong>resposta da demanda</strong>. A flexibilidade vira o produto escasso — e o que o sistema passa a remunerar.</p></div>
   </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Baterias — o que muda no Brasil <span class="tag">a fronteira</span></h2>
+  <p class="sec-sub">O mundo já está <strong>fundo</strong> nas baterias — não é mais "se", é "quão rápido". O
+    Brasil entra agora, ~5–6 anos atrás, e de um jeito próprio: <strong>pela porta da capacidade, não da arbitragem</strong>.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-baterias"></div>
+      <figcaption><span class="ti">Baterias adicionadas no mundo por ano (GW)</span>
+        <strong>108 GW em 2025</strong> (+40%) — ~11× a <em>adição anual</em> de 2021 (o ritmo de instalação, não
+        o estoque). China responde por ~60%. Dados IEA para 2023–25; anos anteriores aproximados. Fonte: IEA, BloombergNEF.</figcaption>
+    </figure>
+    <div class="callout insight" style="margin-top:0">
+      <span class="mk">O MUNDO JÁ ESTÁ FUNDO</span>
+      <p>Lá fora as baterias se pagam por <strong>revenue stacking</strong> (empilhar arbitragem + ancilares +
+        capacidade). No ERCOT, a <strong>arbitragem</strong> — comprar barato ao meio-dia, vender caro na ponta —
+        já é ~60% da receita. Mas cada fonte <strong>satura rápido</strong>: o mercado de frequência do Reino Unido
+        desabou de &gt;£20 para &lt;£0,50/MW/h quando as baterias entraram. A receita real é a combinação, não um produto só.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Como entram no Brasil — e por que é diferente</h3>
+  <div class="cards c2">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">$</span>Pela capacidade, não pela arbitragem</h4><p>Lá fora a bateria vive do spread intradiário. No Brasil, o <strong>piso do PLD + poucos submercados comprimem o spread</strong> — a curva do pato cria um diferencial dia/noite, mas o piso e a granularidade grossa o achatam. Por isso o país entra pela porta do <strong>mercado de capacidade (LRCAP, dez/2026)</strong>, com receita fixa por MW disponível. Uma muleta regulatória que substitui o sinal de preço que o desenho suprime.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">♻</span>O prêmio: absorver o curtailment</h4><p>O Brasil joga fora <strong>~20% da eólica+solar (R$ 6,5 bi/ano)</strong>, sobretudo no Nordeste. É energia de custo ~zero desperdiçada ao meio-dia. A bateria a captura e devolve na ponta — <strong>monetiza o desperdício e recria a "firmeza/estoque"</strong> que a hidro a fio d'água deixou de dar. O ganho de maior valor no curto prazo.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">⛽</span>Tensão com os 19 GW de gás</h4><p>O LRCAP 2026 acabou de travar <strong>~19 GW (~80% gás) em contratos de 10–15 anos</strong> (térmica nova 15 anos, existente 10) para fazer ponta/rampa. A bateria é a concorrente direta desse papel. Conforme barateia, o caso do gás novo erode — e o Brasil pode ter contratado capacidade fóssil cara na véspera de a alternativa limpa ficar competitiva (<em>stranded contract</em> — um contrato preso pagando por um ativo que o mercado tornou desnecessário).</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--solar)">🏠</span>A frente distribuída</h4><p>Com o <strong>Fio B subindo (60% em 2026 → 100% em 2029)</strong>, autoconsumo solar + bateria fica cada vez mais atraente. Baterias atrás do medidor podem crescer rápido, reshapeando a curva de carga "de baixo para cima" — com risco de <em>load defection</em> (consumidores saindo da rede via autogeração+bateria, erodindo o rateio dos custos de rede). A BYD já anunciou uma linha de BESS de US$ 98 mi no país.</p></div>
+  </div>
+
+  <h3 class="sub">A chave: complementam a hidro, não a substituem</h3>
+  <p>O Brasil já tem a maior "bateria" do mundo — os reservatórios (~291 GWmês). Mas essa é uma bateria
+    <strong>sazonal</strong> (meses). A bateria de lítio é <strong>intradiária</strong> (horas). Resolvem problemas
+    em escalas de tempo <strong>diferentes</strong> — por isso se empilham, não competem.</p>
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 230" role="img" aria-label="Reservatório (ciclo sazonal) vs bateria (ciclo diário)">
+        <!-- panel divider -->
+        <line x1="40" y1="118" x2="620" y2="118" stroke="#eee7da" stroke-width="1"/>
+        <!-- panel 1: reservoir seasonal -->
+        <text x="50" y="26" font-family="Inter,sans-serif" font-size="12" font-weight="650" fill="#1f6f8b">Reservatório — ciclo sazonal (≈ meses)</text>
+        <polyline points="50,70 119,51 187,45 256,53 325,70 394,88 462,95 531,87 600,70" fill="none" stroke="#1f6f8b" stroke-width="2.6" stroke-linejoin="round"/>
+        <text x="187" y="40" font-family="Inter,sans-serif" font-size="10" fill="#1f6f8b" text-anchor="middle">cheio (úmido)</text>
+        <text x="462" y="109" font-family="Inter,sans-serif" font-size="10" fill="#9aa2ad" text-anchor="middle">vazio (seco)</text>
+        <text x="325" y="109" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#c9c2b4" text-anchor="middle">← 1 ano →</text>
+        <!-- panel 2: battery daily -->
+        <text x="50" y="146" font-family="Inter,sans-serif" font-size="12" font-weight="650" fill="#1f5f9e">Bateria — ciclo diário (≈ horas)</text>
+        <polyline points="50,205 119,165 187,205 256,165 325,205 394,165 462,205 531,165 600,205" fill="none" stroke="#1f5f9e" stroke-width="2.6" stroke-linejoin="round"/>
+        <text x="119" y="158" font-family="Inter,sans-serif" font-size="9.5" fill="#1f5f9e" text-anchor="middle">carrega (sol)</text>
+        <text x="187" y="221" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#c9c2b4" text-anchor="middle">1 dia</text>
+      </svg>
+    </div>
+    <figcaption><span class="ti">Duas baterias, duas escalas de tempo (ilustrativo)</span>
+      O reservatório arbitra a <strong>estação</strong> (guarda a água da cheia para a seca — uma onda lenta por ano);
+      a bateria arbitra o <strong>dia</strong> (guarda o sol do meio-dia para a ponta da noite — muitos ciclos rápidos).
+      A bateria preenche o buraco <em>intradiário</em> que a perda de regularização (fio d'água) + a onda solar criaram.</figcaption>
+  </figure>
+
+  <div class="callout insight">
+    <span class="mk">FORÇA DE REFORMA</span>
+    <p>Há um efeito de segunda ordem: como a bateria <em>precisa</em> de spread para operar por mercado (e não por
+      subsídio), seu avanço fortalece o argumento por <strong>sinais de preço mais finos</strong> — granularidade
+      horária real, sinal locacional, rever o piso. O avanço das baterias pode ser o <strong>forcing function</strong>
+      que empurra o Brasil do cost-based administrado para mais perto do mundo.</p>
+  </div>
+
+  <div class="callout danger">
+    <span class="mk">O RISCO: O MISSING MONEY DAS BATERIAS</span>
+    <p>A necessidade de <strong>flexibilidade</strong> é enorme — a rampa de carga líquida dobra para ~50 GW até
+      2028 — e a bateria é uma das respostas. Mas a contratação prevista é <strong>modesta</strong> (~1,7 GW no 1º
+      leilão; a EPE projeta ~6,6 GW de armazenamento até 2035). Se a única receita for a capacidade administrada
+      (LRCAP), o volume fica <strong>refém da disposição fiscal/tarifária</strong> — o mesmo debate da CDE — e pode
+      <strong>subdimensionar frente ao que a transição pede</strong>. É o <em>missing money</em> (a receita que o
+      preço de curto prazo não cobre para pagar a capacidade) aplicado às baterias.</p>
+  </div>
 </section>
 
 <!-- ============================ MERCADO & PREÇO ============================ -->
@@ -1449,7 +1525,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.5</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.6</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -1826,6 +1902,16 @@
         {label:'Gás (ciclo comb.)',value:70,color:C.thermal},
         {label:'Nuclear',value:90,color:C.nuclear,bold:true},
       ],{labelW:150,valW:54,max:100,valFmt:v=>v+'%'});
+    });
+    // GERAÇÃO: baterias adicionadas no mundo por ano (GW)
+    render('chart-baterias',m=>{
+      vcols(m,[
+        {label:'2021',value:10,color:C.gray,faint:true,note:'aprox.'},
+        {label:'2022',value:18,color:C.gray,faint:true,note:'aprox.'},
+        {label:'2023',value:42,color:C.accent},
+        {label:'2024',value:77,color:C.accent},
+        {label:'2025',value:108,color:C.ok,bold:true,note:'+40%'},
+      ],{H:240,max:125,barW:50,axisFmt:v=>fmt(v),valFmt:v=>fmt(v)});
     });
   }
   window.__renderCharts=renderAll;
