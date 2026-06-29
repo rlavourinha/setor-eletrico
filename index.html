@@ -216,7 +216,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.8 · 29 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v2.0 · 29 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -235,6 +235,7 @@
       <button class="tab" data-t="regulacao"><span class="num">07</span>Regulação econômica</button>
       <button class="tab" data-t="mundo"><span class="num">08</span>Internacional</button>
       <button class="tab" data-t="acomp"><span class="num">09</span>Acompanhamento</button>
+      <button class="tab" data-t="agenda"><span class="num">10</span>Agenda regulatória</button>
     </div>
   </div>
 </nav>
@@ -318,6 +319,8 @@
       preço negativo vs curtailment, mercados de capacidade, casos de estresse e as lições para o Brasil.</p></div>
     <div class="card"><h4>09 · Acompanhamento</h4><p>O que monitorar diariamente: o termômetro do PLD, os indicadores
       (preço, carga, hidrologia) com fontes ao vivo, o playbook de preço e as armadilhas de leitura.</p></div>
+    <div class="card"><h4>10 · Agenda regulatória</h4><p>O que está na mesa em 2026: a antecipação do reconhecimento do
+      CapEx e seus impactos, e o mapa das discussões (curtailment, CVaR, WACC, Fator X, CDE, RBSE, abertura, baterias).</p></div>
   </div>
 </section>
 
@@ -351,7 +354,7 @@
     <div class="tl crisis"><div class="yr">Anos 1980</div><div class="ev">A implosão financeira do modelo</div><div class="why">A <strong>tarifa achatada</strong> para conter a inflação + o fim do crédito externo (crise da dívida) secam as duas fontes de financiamento. O investimento paralisa e estoura a <strong>inadimplência cruzada</strong> dentro do próprio sistema Eletrobras. <b>O modelo estatal perdeu sua base econômica</b> — e preparou as reformas dos anos 90.</div></div>
     <div class="tl"><div class="yr">1990 · 1995</div><div class="ev">Reforma liberal e desverticalização</div><div class="why">O <strong>PND</strong> (1990) e as leis de concessão (1995) abrem o setor. O projeto <strong>RE-SEB</strong> separa geração, transmissão, distribuição e comercialização: <b>competir onde é possível (geração), regular o monopólio natural (os fios)</b>. Privatizam-se as distribuidoras.</div></div>
     <div class="tl star"><div class="yr">1996 · 1998</div><div class="ev">ANEEL, ONS e o MAE — o Estado-regulador</div><div class="why">Privatizar exige trocar o "Estado-empresário" pelo "Estado-regulador". Nasce a <strong>ANEEL</strong> (1996) — árbitro neutro; o <strong>ONS</strong> (1998) — operador imparcial de um sistema com múltiplos donos privados; e o <strong>MAE</strong> — câmara de mercado (que falharia e viraria CCEE).</div></div>
-    <div class="tl crisis star"><div class="yr">2001</div><div class="ev">O apagão — a falha de "deixar o mercado planejar"</div><div class="why">Seca + subinvestimento na transição + um modelo que apostou que o preço guiaria a expansão. Mas o preço chega <strong>tarde demais</strong> num setor de obras longas. Racionamento de jun/2001 a fev/2002, ~20% de corte. <b>Lição:</b> a segurança de suprimento é um bem público que o curto prazo não garante.</div></div>
+    <div class="tl crisis star"><div class="yr">2001</div><div class="ev">O apagão — a falha de "deixar o mercado planejar"</div><div class="why">A <strong>seca</strong> (menor pluviosidade em ~70 anos) foi o gatilho sobre um sistema sem folga — matriz ~90% hidro + subinvestimento na transição. O <strong>Relatório Kelman</strong> foi claro: a seca apenas <em>precipitou</em> uma crise já inevitável. Racionamento de jun/2001 a fev/2002, ~20% de corte. <b>Lição:</b> a segurança de suprimento é um bem público que o curto prazo não garante.</div></div>
     <div class="tl star"><div class="yr">2004</div><div class="ev">O Novo Modelo — a arquitetura atual</div><div class="why">Resposta direta ao apagão: criam-se a <strong>EPE</strong> (o planejamento volta a ser função de Estado, mas separado), a <strong>CCEE</strong> (substitui o MAE) e o <strong>CMSE</strong> (vigília permanente de suprimento). Surgem o ACR (leilões) e o ACL. <b>Cada função antes fundida na estatal vira um órgão distinto</b> — checks and balances energético.</div></div>
     <div class="tl crisis"><div class="yr">2012 · 2015</div><div class="ev">MP 579 e a crise do GSF</div><div class="why">A <strong>MP 579</strong> renovou concessões à força em troca de tarifa menor; quase só a Eletrobras aderiu e perdeu ~R$ 10 bi/ano — mexer no contrato por canetada destruiu a previsibilidade. A seca de 2014–15 derrubou o <strong>GSF</strong>, e as <strong>bandeiras tarifárias</strong> (2015) passaram a mostrar o custo real na conta.</div></div>
     <div class="tl crisis"><div class="yr">2021</div><div class="ev">A pior seca em 91 anos — sem apagão</div><div class="why">Reservatórios em nível crítico exigiram acionamento massivo de térmicas e uma bandeira extra de "escassez hídrica". Mas <b>não houve racionamento</b> — creditado à arquitetura de monitoramento (CMSE) e à matriz mais diversificada (eólica/solar) construída desde 2004.</div></div>
@@ -363,6 +366,18 @@
     <p>Toda a era das reformas é a história de <strong>uma única estatal verticalizada se decompondo em funções
       autônomas</strong>. Primeiro por necessidade fiscal (anos 90); depois corrigindo o erro de confiar a
       expansão ao mercado (apagão → EPE/CMSE); por fim estendendo a competição ao varejo (2025).</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">O CLIMA COMO GATILHO RECORRENTE</span>
+    <p>As três grandes crises do setor foram <strong>disparadas por seca</strong> — e cada uma deixou uma cicatriz
+      institucional: <strong>2001</strong> (racionamento) → EPE + CMSE (planejar e vigiar a oferta); <strong>2014–15</strong>
+      (crise do GSF — que veio com ENSO <em>neutro</em>, por um bloqueio atmosférico) → bandeiras tarifárias +
+      repactuação do risco hidrológico; <strong>2021</strong> (pior seca em 91 anos) → bandeira de "escassez hídrica".
+      Numa matriz ~90% hidro, o <strong>clima é gatilho, não pano de fundo</strong> — a vulnerabilidade é estrutural
+      e o clima só revela. A trajetória mostra o risco migrando de <em>físico</em> (racionamento em 2001) para
+      <em>financeiro</em> (preço em 2021 — seca pior, mas sem corte): as cicatrizes funcionaram em parte.
+      <span style="color:var(--muted)">Detalhe e a fase ENSO de cada crise na aba Acompanhamento.</span></p>
   </div>
 
   <h2 class="sec">Cada instituição é a cicatriz de uma crise</h2>
@@ -1314,9 +1329,10 @@
   <div class="callout warn">
     <span class="mk">RISCO DE CAUDA</span>
     <p>A disputa da <strong>RBSE</strong> (ativos pré-2000, indenização de R$ 62,2 bi via Lei 12.783/2013) segue
-      viva: em maio/2026 o TCU manteve, mas o TRF-1 anulou o componente "Ke" (~R$ 20 bi de custo de capital
-      próprio) — decisões a dias de distância, sujeitas a recurso. Impacto relevante para Eletrobras, ISA Energia
-      (CTEEP) e Taesa, com ~R$ 11 bi ainda a pagar até 2028.</p>
+      viva: em maio/2026 o TCU manteve, mas o TRF-1 anulou o componente "Ke" (o custo de capital próprio embutido
+      na indenização) — decisões a dias de distância, sujeitas a recurso. Impacto relevante para Eletrobras, ISA
+      Energia (CTEEP) e Taesa: do estoque de R$ 62 bi, ~80% já foi pago, restando <strong>~R$ 11 bi até 2028</strong>
+      (≈ R$ 5,5 bi/ano nas três últimas parcelas).</p>
   </div>
 
   <h3 class="sub">Distribuição — a mais complexa</h3>
@@ -1662,6 +1678,221 @@
     <li><strong>Tomar o PLD realizado como previsão.</strong> Ele é retrovisor; para a frente, olhe o DECOMP/PMO e a previsão de chuva.</li>
     <li><strong>Ignorar o despacho "fora da ordem de mérito".</strong> Térmica acionada por segurança (não por mérito) é o que descola o PLD do piso mesmo com hidro disponível.</li>
   </ul>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Histórico e sazonalidade <span class="tag">a régua</span></h2>
+  <p class="sec-sub">Para ler o número de hoje você precisa da <strong>régua sazonal</strong> (o normal de cada mês)
+    e da <strong>tendência de longo prazo</strong>. O número absoluto diz pouco; o número <em>vs. a estação</em> diz tudo.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-ear-sazonal"></div>
+      <figcaption><span class="ti">EAR do SE/CO — padrão sazonal típico (% por mês)</span>
+        Enche no <strong>período úmido</strong> (chuvas de verão), com <strong>pico em abr–mai (~64%)</strong>;
+        deplete no <strong>seco</strong>, com fundo em <strong>novembro (~38%)</strong>. Climatologia 2000–2023.
+        Fonte: ONS (cálculo sobre dados abertos).</figcaption>
+    </figure>
+    <div class="callout insight" style="margin-top:0">
+      <span class="mk">A ESTAÇÃO DE PREÇO</span>
+      <p>O preço é o <strong>espelho financeiro</strong> do ciclo úmido–seco. No seco, a oferta hídrica barata
+        recua, o ONS despacha térmica, e <strong>PLD e bandeiras sobem</strong>; no úmido, com afluência e EAR
+        recompostos, o PLD volta ao piso. Por isso a crise vem quando o úmido <strong>não enche o suficiente</strong>
+        — não pelo seco em si. E há defasagem regional: o <strong>Sul</strong> (chuva de inverno, sensível ao ENSO)
+        é um <em>hedge</em> natural; o <strong>Nordeste</strong> é o mais vulnerável.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">O VERÃO É O VILÃO DOBRADO</span>
+    <p>A demanda também é sazonal: o <strong>pico de carga é no verão</strong> (ar-condicionado). Felizmente, o pico
+      de demanda <strong>coincide</strong> com o pico de chuva — o sistema foi desenhado assim. O risco aparece
+      quando os dois <strong>se descasam</strong>: verão quente (demanda recorde) <strong>sem</strong> a chuva
+      correspondente — exatamente o El Niño de 2023–24.</p>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-consumo"></div>
+    <figcaption><span class="ti">Consumo de energia elétrica — Brasil (TWh)</span>
+      Crescimento de longo prazo de ~448 (2012) para <strong>~562 TWh (2024)</strong> (~2% a.a.), com dois recuos:
+      a recessão (2015–16) e a pandemia (2020). 2024 é recorde, puxado por calor (El Niño) e indústria. Fonte: EPE
+      (Anuário Estatístico).</figcaption>
+  </figure>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Eventos climáticos: El Niño, La Niña e o que mexe na hidrologia</h2>
+  <p class="sec-sub">Acima da sazonalidade, há a camada <strong>interanual</strong>: o <strong>ENSO</strong> (oscilação
+    do Pacífico) é o maior preditor da hidrologia brasileira — mas seu sinal é <strong>regional e probabilístico</strong>,
+    não determinístico.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Fase ENSO</th><th>Sul</th><th>Sudeste/Centro-Oeste</th><th>Norte / Nordeste</th></tr></thead>
+    <tbody>
+      <tr><td><strong>El Niño</strong></td><td><span class="pill low">+ chuva</span> (enchentes)</td><td>misto; tende a calor</td><td><span class="pill high">seca</span> (ZCIT desfavorecida)</td></tr>
+      <tr><td><strong>La Niña</strong></td><td><span class="pill high">seca</span> (estiagem)</td><td>misto; tende a calor</td><td><span class="pill low">+ chuva</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src-note">O grosso da hidrelétrica está no SE/CO e Norte, onde o sinal ENSO é <strong>ambíguo</strong> — por isso o resultado para o setor depende de qual bacia é atingida e de outros modos (Atlântico, bloqueios).</p>
+
+  <div class="callout danger">
+    <span class="mk">ONDE ESTAMOS — JUN/2026</span>
+    <p>A La Niña de 2024–25 terminou, passou por neutro, e o Pacífico está esquentando: o índice Niño-3.4 estava em
+      <strong>~+0,7 °C (CPC, início de jun/2026)</strong>, sob <strong>"El Niño Advisory"</strong>, com fortalecimento
+      previsto até o verão 2026–27 (até ~63% de chance de El Niño forte). <strong>Leitura para o setor:</strong> tende a
+      <strong>chuva abaixo da média no Norte/Nordeste</strong> (reservatórios do NE e do São Francisco sob atenção) e
+      <strong>calor no SE/CO</strong> (pressão de demanda), com provável alívio no Sul. Como o sinal no SE/CO é ambíguo,
+      o risco mais provável é <strong>NE seco + carga elevada por calor</strong>.</p>
+  </div>
+
+  <h3 class="sub">A fase climática de cada grande crise</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Crise</th><th>Fase ENSO</th><th>Mecanismo climático</th><th>Onde quebrou</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Racionamento 2001</strong></td><td>La Niña fraca (em decaimento)</td><td>Seca plurianual no SE/NE; matriz ~90% hidro sem reserva térmica</td><td><span class="pill high">Suprimento</span> — corte de ~20%</td></tr>
+      <tr><td><strong>Crise do GSF 2014–15</strong></td><td><strong>Neutro</strong> (não foi El Niño!)</td><td><strong>Bloqueio atmosférico</strong> (Alta Subtropical do Atlântico) barrou as chuvas</td><td><span class="pill mid">Preço/financeiro</span> — GSF &lt; 1</td></tr>
+      <tr><td><strong>Escassez 2021</strong></td><td>La Niña (tripla)</td><td>Pior seca em 91 anos; EAR do SE/CO a ~16,5%</td><td><span class="pill mid">Preço</span> (quase suprimento)</td></tr>
+      <tr><td><strong>Calor 2023–24</strong></td><td>El Niño forte</td><td>Ondas de calor + seca amazônica (hidro do Norte)</td><td><span class="pill mid">Demanda</span> — recordes de carga</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-ear-crise"></div>
+      <figcaption><span class="ti">EAR mínima do SE/CO nos anos de crise (%)</span>
+        Os reservatórios despencaram a <strong>15–21%</strong> nas crises (vs ~64% no pico típico), com o piso da
+        série em <strong>2014</strong>. São valores de <strong>EAR (energia armazenada)</strong> — métrica distinta
+        do "% de volume útil" das manchetes (~17% em jan/2015); o que importa é o <em>ordenamento</em> (2014 &lt; 2021
+        &lt; 2001). Fonte: ONS (cálculo próprio sobre dados abertos).</figcaption>
+    </figure>
+    <div class="callout insight" style="margin-top:0">
+      <span class="mk">CLIMA ≠ SÓ ENSO</span>
+      <p>A crise de 2014–15 é o aviso: foi com <strong>ENSO neutro</strong> — a seca veio de um <strong>bloqueio
+        atmosférico</strong> regional, não do Pacífico. <strong>Mesmo uma seca "comum" derruba um sistema sem folga.</strong>
+        E cada choque climático deixou uma <strong>cicatriz institucional</strong>: 2001 → EPE/CMSE; 2015 → bandeiras
+        + repactuação do GSF; 2021 → bandeira de escassez. A trajetória 2001→2021 mostra o risco migrando de
+        <em>físico</em> (racionamento) para <em>financeiro</em> (preço) — sinal de que as cicatrizes funcionaram em parte.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Outros fatores que mexem na hidrologia</h3>
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">🌊</span>Dipolo do Atlântico</h4><p>Anomalias de temperatura entre Atlântico Norte e Sul deslocam a ZCIT — o <strong>2º maior controle</strong> (depois do ENSO) da chuva do Nordeste. Pode somar ou cancelar o sinal do Pacífico.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--wind)">🌳</span>Rios voadores / Amazônia</h4><p>A floresta evapotranspira umidade que vira chuva no <strong>Centro-Sul — onde estão os maiores reservatórios</strong>. Desmatamento + aquecimento enfraquecem esse transporte: <strong>a Amazônia é infraestrutura hídrica do parque hidrelétrico</strong>.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--danger)">🌡️</span>Mudança climática</h4><p>Tendências: <strong>menos chuva no NE/Norte</strong>, secas mais severas e maior variabilidade (bateria hídrica menos confiável), e <strong>ondas de calor</strong> que elevam a demanda de pico estruturalmente.</p></div>
+  </div>
+</section>
+
+<!-- ============================ AGENDA REGULATÓRIA ============================ -->
+<section class="panel" id="agenda">
+  <p class="lead">O que está <b>na mesa</b> no regulador em 2026. O fio que conecta quase tudo é a <b>transição</b>:
+    antecipar CapEx, ressarcir curtailment, leiloar baterias e recalibrar o preço são respostas à mesma pressão —
+    integrar a renovável variável e dividir <b>quem paga, e quando</b>, entre empresas e consumidores.</p>
+
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">8,10<span class="u">%</span></div><div class="l">WACC regulatório da distribuição 2026 (transm. 8,00%)</div><div class="src">ANEEL · mar/26</div></div>
+    <div class="kpi"><div class="v">+8,6<span class="u">%</span></div><div class="l">Alta projetada da conta de luz em 2026</div><div class="src">ANEEL</div></div>
+    <div class="kpi"><div class="v">52,7<span class="u">R$ bi</span></div><div class="l">Orçamento da CDE 2026; teto a partir de 2027</div><div class="src">ANEEL · CP</div></div>
+    <div class="kpi"><div class="v">RBSE</div><div class="l">TRF-1 anulou o "ke" (custo de capital próprio), mai/26</div><div class="src">TRF-1</div></div>
+    <div class="kpi"><div class="v">dez/26</div><div class="l">1º leilão de baterias (LRCAP armazenamento)</div><div class="src">MME</div></div>
+    <div class="kpi"><div class="v">15/40</div><div class="l">CVaR mantido para 2027 (decisão CMSE, jun/26)</div><div class="src">CMSE</div></div>
+  </div>
+
+  <h2 class="sec">Antecipação do reconhecimento do CapEx <span class="tag">o tema do momento</span></h2>
+  <p class="sec-sub">A discussão central: encurtar o <strong>lag regulatório</strong> — o intervalo entre gastar o
+    investimento e ser remunerado por ele. Hoje o CapEx só entra na base remuneratória na revisão tarifária seguinte
+    (quinquenal); a proposta é reconhecê-lo <strong>anualmente, intraciclo</strong>.</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 200" role="img" aria-label="Lag regulatório: hoje vs com antecipação do CapEx">
+        <!-- investe marker -->
+        <text x="60" y="32" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#cf7d2e" text-anchor="middle">▼ investe (ano 0)</text>
+        <!-- row 1: hoje -->
+        <text x="60" y="52" font-family="Inter,sans-serif" font-size="11.5" font-weight="650" fill="#1b1f27">Hoje — lag quinquenal</text>
+        <rect x="60" y="58" width="432" height="22" fill="#c9c2b4"/>
+        <rect x="492" y="58" width="108" height="22" fill="#2f7d57"/>
+        <text x="276" y="73" font-family="Inter,sans-serif" font-size="10.5" fill="#fff" text-anchor="middle">sem remuneração (~4–5 anos)</text>
+        <text x="546" y="73" font-family="Inter,sans-serif" font-size="10.5" fill="#fff" text-anchor="middle">remunerado</text>
+        <!-- row 2: antecipação -->
+        <text x="60" y="116" font-family="Inter,sans-serif" font-size="11.5" font-weight="650" fill="#1b1f27">Com antecipação — reconhecimento anual</text>
+        <rect x="60" y="122" width="108" height="22" fill="#c9c2b4"/>
+        <rect x="168" y="122" width="432" height="22" fill="#2f7d57"/>
+        <text x="114" y="137" font-family="Inter,sans-serif" font-size="10" fill="#fff" text-anchor="middle">~1 ano</text>
+        <text x="384" y="137" font-family="Inter,sans-serif" font-size="10.5" fill="#fff" text-anchor="middle">remunerado mais cedo → ganho de VPL</text>
+        <!-- year axis -->
+        <g font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#9aa2ad" text-anchor="middle">
+          <line x1="60" y1="160" x2="600" y2="160" stroke="#e7e2d8"/>
+          <text x="60" y="174">ano 0</text><text x="168" y="174">1</text><text x="276" y="174">2</text><text x="384" y="174">3</text><text x="492" y="174">4</text><text x="600" y="174">5</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><span class="ti">O lag regulatório e sua compressão (ilustrativo)</span>
+      Reconhecer o investimento mais cedo antecipa a remuneração (WACC × base) — o mesmo fluxo recebido antes vale
+      mais a valor presente. A área verde extra é o <strong>ganho de VPL</strong> para a empresa (e a tarifa que
+      sobe mais cedo para o consumidor).</figcaption>
+  </figure>
+
+  <div class="twocol">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">D</span>Distribuição — o debate de regra</h4><p>Vem dentro da <strong>renovação das concessões</strong> (Decreto 12.068/2024 + aditivo assinado em mai/2026, ~R$ 130 bi até 2030). A <strong>ABRADEE</strong> propôs o <strong>reconhecimento anual intraciclo</strong>. A ANEEL <strong>acolheu o princípio, mas não fixou prazo</strong> de início — a regra de cálculo segue pendente.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">T</span>Transmissão — antecipação operacional</h4><p>Aqui não é regra nova: a empresa <strong>entrega a obra antes do prazo</strong> para receber a RAP mais cedo. A <strong>ISA Energia (CTEEP)</strong> antecipou 3 energizações em 2025 (uma em 22 meses) → <strong>~R$ 200 mi de receita anual adicional</strong>.</p></div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Impacto</th><th>Efeito</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Empresa</strong></td><td>Remuneração mais cedo → <strong>melhora VPL e TIR</strong> e elimina o "carrego" do CapEx não remunerado.</td></tr>
+      <tr><td><strong>Consumidor / tarifa</strong></td><td>A tarifa <strong>sobe mais cedo</strong> — num ano com a conta já projetada em +8,6%. Tensão com a modicidade.</td></tr>
+      <tr><td><strong>Incentivo a investir</strong> <span class="pill low">arg. pró</span></td><td><strong>Acelera a expansão da rede</strong> — conectar a renovável do NE, reduzir curtailment, integrar subsistemas.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <span class="mk">O CONTRAPESO</span>
+    <p>Antecipar sem trava abre risco de <strong>"gold-plating"</strong>: como cada R$ de CapEx vira remuneração
+      mais rápido, a empresa é incentivada a <strong>inflar a base de ativos</strong>. O <strong>Fator X</strong>
+      (compartilhamento de produtividade) e as metas de qualidade do aditivo são os contrapesos — e é por isso que
+      a ANEEL acolheu o princípio sem cravar o gatilho.</p>
+  </div>
+
+  <h2 class="sec">A agenda regulatória de 2026</h2>
+  <p class="sec-sub">O que está vivo — e o que está em jogo em cada frente.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Tema</th><th>Status (jun/26)</th><th>O que está em jogo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ressarcimento de curtailment</strong> (Lei 15.269; CP 009/2025)</td><td>Regras p/ <strong>solar aprovadas (jun/26)</strong>; eólica pendente</td><td>Retroativo a set/23, pago via ESS, exige renúncia a ações. Exclui corte por sobreoferta. <strong>Risco de judicialização.</strong></td></tr>
+      <tr><td><strong>Recalibração do PLD / CVaR</strong> (CT PMO/PLD)</td><td><strong>CMSE decidiu manter</strong> (jun/26) p/ 2027</td><td>CVaR fica em <strong>15/40</strong>; candidatos (15/30, 15/35) avaliados para ciclos futuros. Mexe direto na formação de preço.</td></tr>
+      <tr><td><strong>WACC regulatório</strong></td><td><strong>Vigente</strong> (mar/26)</td><td>Distribuição 8,10% / transmissão-geração 8,00% real pós-imposto.</td></tr>
+      <tr><td><strong>Fator X / TOTEX</strong> (REN 1.148/2026)</td><td>Publicada; vigência <strong>jan/27</strong></td><td>Migração para produtividade TOTEX/PTF — redefine ganhadoras/perdedoras na distribuição.</td></tr>
+      <tr><td><strong>CDE — teto</strong> (Lei 15.269)</td><td>Orçamento 2026 R$ 52,7 bi; <strong>teto a partir de 2027</strong></td><td>Excedente vira encargo cobrado dos beneficiários do subsídio.</td></tr>
+      <tr><td><strong>RBSE</strong> (transmissão)</td><td><strong>TRF-1 anulou o "ke"</strong> (mai/26); ANEEL avalia recurso</td><td>~R$ 5,5 bi/ano (parcela anual; ~R$ 11 bi residuais do estoque de R$ 62 bi, até 2028); risco de cauda p/ ISA/CTEEP, Taesa, Eletrobras.</td></tr>
+      <tr><td><strong>Abertura ACL (baixa tensão) + SUI</strong> (Lei 15.269)</td><td>Lei sancionada; <strong>regras operacionais por vir</strong></td><td>C&amp;I ~nov/2027, residencial ~nov/2028.</td></tr>
+      <tr><td><strong>LRCAP baterias</strong> (Portaria 136/2026)</td><td>Leilões <strong>02 e 04/dez/2026</strong></td><td>1º leilão de armazenamento do país; suprimento por 15 anos a partir de ago/2028.</td></tr>
+      <tr><td><strong>Renovação de concessões (distribuição)</strong> (Decreto 12.068/2024)</td><td>Aditivos <strong>assinados (mai/26)</strong>; PDL no Congresso tenta sustar</td><td>+30 anos para 16 distribuidoras; ~R$ 130 bi até 2030. Enel ficou de fora.</td></tr>
+      <tr><td><strong>Fio B / GD</strong> (Lei 14.300; TS 23/2025)</td><td><strong>Fio B em 60%</strong> desde jan/26</td><td>Novo modelo de compensação só a partir de 2029.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">A LEITURA</span>
+    <p>Quase toda a pauta é a <strong>mesma tese vista de ângulos diferentes</strong>: a transição para uma matriz
+      renovável variável exige <strong>mais rede</strong> (antecipar CapEx), <strong>mais flexibilidade</strong>
+      (baterias/LRCAP), e um <strong>preço que reflita o novo risco</strong> (CVaR) e <strong>compense quem é
+      cortado</strong> (curtailment) — tudo enquanto se controla a <strong>conta de luz</strong> (CDE, modicidade).
+      O regulador está, em essência, <strong>repartindo o custo da transição</strong> entre empresas e consumidores,
+      uma decisão de cada vez.</p>
+  </div>
+
+  <p class="src-note">Atualizado em jun/2026. Fontes primárias: ANEEL (CP, NT, REN, despachos), MME, CCEE, ONS, TRF-1.
+    Ressalva: o tema "antecipação de CapEx" na distribuição vive dentro do processo do aditivo de renovação, não em
+    uma CP/NT dedicada com número próprio.</p>
 </section>
 
 </div>
@@ -1676,7 +1907,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.8</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v2.0</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2072,6 +2303,39 @@
         {label:'Norte',value:65,color:C.thermal},
         {label:'Nordeste',value:60,color:C.thermal},
       ],{labelW:90,valW:84,max:110,valFmt:v=>v+'% MLT'});
+    });
+    // ACOMPANHAMENTO: EAR sazonal — % típico mês a mês (SE/CO)
+    render('chart-ear-sazonal',m=>{
+      vcols(m,[
+        {label:'J',value:44,color:C.hydro,note:'úmido'},
+        {label:'F',value:53,color:C.hydro},
+        {label:'M',value:60,color:C.hydro},
+        {label:'A',value:64,color:C.hydro,bold:true,note:'pico'},
+        {label:'M',value:64,color:C.hydro,bold:true},
+        {label:'J',value:63,color:C.thermal},
+        {label:'J',value:60,color:C.thermal,note:'seco'},
+        {label:'A',value:55,color:C.thermal},
+        {label:'S',value:48,color:C.thermal},
+        {label:'O',value:42,color:C.thermal},
+        {label:'N',value:38,color:C.danger,bold:true,note:'vale'},
+        {label:'D',value:39,color:C.hydro},
+      ],{H:230,max:72,barW:34,axisFmt:v=>v+'%',valFmt:v=>v});
+    });
+    // ACOMPANHAMENTO: consumo de energia — Brasil (TWh)
+    render('chart-consumo',m=>{
+      lines(m,[
+        {label:'Consumo (TWh)',color:C.accent,data:[448,463,475,465,461,467,475,482,474,510,509,532,562]},
+      ],{xLabels:['12','13','14','15','16','17','18','19','20','21','22','23','24'],max:620,
+        everyOther:true,axisFmt:v=>fmt(v),endFmt:v=>fmt(v)});
+    });
+    // ACOMPANHAMENTO: EAR nos anos de crise (mínimo do SE/CO)
+    render('chart-ear-crise',m=>{
+      vcols(m,[
+        {label:'2001',value:20.6,color:C.danger,note:'racionam.'},
+        {label:'2014',value:15.1,color:C.danger,bold:true,note:'mín. série'},
+        {label:'2021',value:16.5,color:C.danger,note:'escassez'},
+        {label:'pico típ.',value:64,color:C.gray,faint:true,note:'abr/mai'},
+      ],{H:230,max:72,barW:50,axisFmt:v=>v+'%',valFmt:v=>fmt(v)+'%'});
     });
   }
   window.__renderCharts=renderAll;
