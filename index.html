@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.4 · 28 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.5 · 29 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -785,6 +785,108 @@
     </div>
   </div>
 
+  <div class="divider"></div>
+
+  <h2 class="sec">Dois preços, duas perguntas: a teoria curto × longo prazo</h2>
+  <p class="sec-sub">Por baixo de tudo — merit order, canibalização, missing money — há um arcabouço simples:
+    existem <strong>dois preços porque há duas perguntas econômicas</strong>. O curto prazo responde "como
+    <em>usar</em> a capacidade que existe?"; o longo prazo, "quanta e qual <em>construir</em>?".</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Dimensão</th><th>Curto prazo (spot / PLD)</th><th>Longo prazo (leilão / PPA)</th></tr></thead>
+    <tbody>
+      <tr><td>Pergunta</td><td>Como <strong>despachar</strong> o que existe</td><td>Se vale a pena <strong>construir</strong></td></tr>
+      <tr><td>Custo de referência</td><td><strong>SRMC</strong> — custo variável da usina marginal</td><td><strong>LRMC ≈ LCOE</strong> do entrante marginal</td></tr>
+      <tr><td>Sinal</td><td>Operacional, em tempo real</td><td>De investimento</td></tr>
+      <tr><td>Volatilidade</td><td>Altíssima</td><td>Travada (IPCA)</td></tr>
+      <tr><td>No Brasil</td><td>PLD (o CMO computado, capado)</td><td>ACR / leilão + garantia física</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 class="sub">Curto prazo — custo marginal (SRMC, <em>Short-Run Marginal Cost</em>)</h3>
+  <p>Com a capacidade fixa, o preço eficiente é o <strong>custo de produzir o próximo MWh</strong> — o custo
+    variável da última usina despachada (a marginal), que é a curva de mérito acima. Daí saem duas peças: a
+    <strong>renda inframarginal</strong> (toda usina mais barata embolsa <em>preço − seu custo</em>, e é isso que
+    recupera o <strong>custo fixo</strong>) e, quando a demanda encosta no teto da capacidade, o <strong>preço de
+    escassez</strong>: o preço sobe ao <strong>VOLL</strong> (<em>Value of Lost Load</em> — o valor de não levar um
+    apagão). São esses dois canais — renda inframarginal nas horas normais e renda de escassez nas horas de pico —
+    que o curto prazo <em>deveria</em> entregar para financiar a capacidade (a ideia central do <em>peak-load
+    pricing</em>: quem usa a capacidade na ponta paga por ela).</p>
+
+  <h3 class="sub">Longo prazo — custo de entrada (LRMC, <em>Long-Run Marginal Cost</em> ≈ LCOE)</h3>
+  <p>Quando se pode construir, o custo marginal passa a incluir o CAPEX da nova usina: o <strong>LRMC ≈ LCOE do
+    entrante marginal</strong>. No <strong>equilíbrio de entrada e saída</strong>, o preço tende ao LRMC — preço
+    baixo, ninguém investe, a escassez sobe e o preço sobe; preço alto, entra capacidade e o preço cai. E
+    <strong>qual</strong> tecnologia construir sai da <strong>curva de triagem</strong>: cruzando o custo fixo +
+    variável de cada fonte com as horas de uso, a mais barata muda conforme o fator de capacidade.</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 280" role="img" aria-label="Curva de triagem: custo anual por kW vs fator de capacidade, por tecnologia">
+        <!-- baseline -->
+        <line x1="46" y1="240" x2="570" y2="240" stroke="#d8d2c5"/>
+        <!-- envelope (lower = cheapest) -->
+        <path d="M46,219 L373.5,107.5 L443,94.9 L570,88.8" fill="none" stroke="#1b1f27" stroke-width="6" opacity="0.12" stroke-linejoin="round"/>
+        <!-- crossover verticals -->
+        <g stroke="#c9c2b4" stroke-width="1.4" stroke-dasharray="4 3">
+          <line x1="373.5" y1="240" x2="373.5" y2="107.5"/>
+          <line x1="443" y1="240" x2="443" y2="94.9"/>
+        </g>
+        <!-- technology lines -->
+        <polyline points="46,219 570,40.5" fill="none" stroke="#cf7d2e" stroke-width="2.4"/>
+        <polyline points="46,166.5 570,72" fill="none" stroke="#1f5f9e" stroke-width="2.4"/>
+        <polyline points="46,114 570,88.8" fill="none" stroke="#2f7d57" stroke-width="2.4"/>
+        <!-- line end labels -->
+        <g font-family="Inter,sans-serif" font-size="10.5" font-weight="600">
+          <text x="574" y="44" fill="#cf7d2e">gás ponta</text>
+          <text x="574" y="75" fill="#1f5f9e">gás CCGT</text>
+          <text x="574" y="92" fill="#2f7d57">base</text>
+        </g>
+        <!-- region labels -->
+        <g font-family="Inter,sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">
+          <text x="208" y="257" fill="#cf7d2e">ponta</text>
+          <text x="408" y="257" fill="#1f5f9e">intermediária</text>
+          <text x="506" y="257" fill="#2f7d57">base</text>
+        </g>
+        <!-- axes labels -->
+        <text x="46" y="273" font-family="IBM Plex Mono,monospace" font-size="10" fill="#9aa2ad">pouco uso</text>
+        <text x="570" y="273" font-family="IBM Plex Mono,monospace" font-size="10" fill="#9aa2ad" text-anchor="end">muito uso (alto fator de capacidade) →</text>
+        <text x="18" y="135" font-family="Inter,sans-serif" font-size="10.5" fill="#6b7480" transform="rotate(-90 18 135)" text-anchor="middle">custo anual /kW</text>
+      </svg>
+    </div>
+    <figcaption><span class="ti">A curva de triagem — o mix ótimo de longo prazo (ilustrativo)</span>
+      Para cada nível de uso, a tecnologia mais barata muda (linha grossa = envelope). <strong>Poucas horas → ponta</strong>
+      (pouco CAPEX, muito combustível); <strong>muitas horas → base</strong> (muito CAPEX, baixo variável). Cruzando
+      com a <strong>curva de duração de carga</strong> (a demanda ordenada da maior para a menor ao longo do ano —
+      quantas horas o sistema passa em cada nível), define-se quanto construir de cada — a teoria que orienta o
+      planejamento (PDE). É o <strong>complemento de longo prazo</strong> da curva de mérito (curto prazo) lá em cima.</figcaption>
+  </figure>
+
+  <div class="callout insight">
+    <span class="mk">A RECONCILIAÇÃO</span>
+    <p>O resultado elegante: num mercado perfeito — <strong>sem teto, com expectativas racionais e capacidade no
+      ótimo de longo prazo</strong> — a <strong>média temporal do spot iguala o LRMC de cada tecnologia</strong> do
+      mix ao mesmo tempo: as <em>rendas de escassez</em> das poucas horas apertadas quitam o custo fixo da ponta, e
+      as <em>rendas inframarginais</em> acumuladas em muitas horas quitam o CAPEX das usinas de base. Em tese, um
+      mercado "energy-only" sustentaria a capacidade ótima. Na prática, <strong>tetos de preço, renováveis de custo marginal ≈ 0 e
+      aversão a risco quebram essa igualdade</strong> — é o <em>missing money</em>. Por isso os mercados acoplam
+      instrumentos de longo prazo: mercados de capacidade, contratos e os leilões do ACR. O contrato é a ponte:
+      trava um preço perto do LRMC e deixa o spot apenas liquidar a diferença.</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">O ELO BRASILEIRO</span>
+    <p>No Brasil o <strong>PLD é um SRMC computado</strong> (o CMO dos modelos, capado por piso/teto e calculado por
+      submercado); o <strong>leilão/ACR é o sinal de LRMC</strong>, e a <strong>garantia física</strong> é o proxy
+      de capacidade firme. O elo elegante: o <strong>"valor da água" é um SRMC <em>intertemporal</em></strong> — o
+      custo de oportunidade de usar a água hoje já carrega a expectativa de escassez futura (formalmente, é a
+      <em>variável dual</em> do reservatório: o preço-sombra da restrição de armazenamento — quanto vale ter 1 MWh
+      a mais guardado). Por isso o preço de curto prazo brasileiro <strong>já embute o longo prazo</strong>, e
+      "chuva farta hoje" derruba o PLD — algo que sistemas térmicos puros não têm de forma natural.</p>
+  </div>
+
   <h2 class="sec">Os incentivos aos renováveis — e a virada</h2>
   <p class="sec-sub">O Brasil construiu, em ~20 anos, uma camada densa de subsídios a renováveis — que fazia sentido
     quando eram caras. Agora que são as mais baratas, o subsídio à <em>energia</em> foi retirado.</p>
@@ -1347,7 +1449,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.4</span><span class="badge">28 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.5</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
