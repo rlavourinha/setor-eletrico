@@ -217,7 +217,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v1.6 · 29 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v1.7 · 29 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -235,6 +235,7 @@
       <button class="tab" data-t="mercado"><span class="num">06</span>Mercado &amp; preço</button>
       <button class="tab" data-t="regulacao"><span class="num">07</span>Regulação econômica</button>
       <button class="tab" data-t="mundo"><span class="num">08</span>Internacional</button>
+      <button class="tab" data-t="acomp"><span class="num">09</span>Acompanhamento</button>
     </div>
   </div>
 </nav>
@@ -316,6 +317,8 @@
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
     <div class="card"><h4>08 · Internacional</h4><p>Seis eixos regulatórios, preços (varejo/atacado/tributos),
       preço negativo vs curtailment, mercados de capacidade, casos de estresse e as lições para o Brasil.</p></div>
+    <div class="card"><h4>09 · Acompanhamento</h4><p>O que monitorar diariamente: o termômetro do PLD, os indicadores
+      (preço, carga, hidrologia) com fontes ao vivo, o playbook de preço e as armadilhas de leitura.</p></div>
   </div>
 </section>
 
@@ -1513,6 +1516,155 @@
   </div>
 </section>
 
+<!-- ============================ ACOMPANHAMENTO ============================ -->
+<section class="panel" id="acomp">
+  <p class="lead">O que olhar <b>todo dia</b> para pensar demanda e preço. A regra de ouro: <b>o preço de curto
+    prazo não reage ao passado — reage ao risco futuro.</b> "Choveu" não basta; o modelo pergunta se choveu o
+    suficiente, nos lugares certos, para tirar o sistema da zona de risco. Abaixo, o mapa dos indicadores, de
+    onde puxá-los <b>ao vivo</b>, e como lê-los — com um <em>snapshot</em> datado de partida.</p>
+
+  <div class="kpis">
+    <div class="kpi hl"><div class="v">Amarela</div><div class="l">Bandeira tarifária vigente (R$ 1,885/100 kWh)</div><div class="src">ANEEL · jun/2026</div></div>
+    <div class="kpi"><div class="v">57–1.611</div><div class="l">PLD 2026: piso R$ 57,31 → teto horário R$ 1.611/MWh</div><div class="src">ANEEL</div></div>
+    <div class="kpi"><div class="v">~66<span class="u">%</span></div><div class="l">EAR do SE/CO — a "caixa d'água" (~70% do estoque)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
+    <div class="kpi"><div class="v">~83<span class="u">% MLT</span></div><div class="l">Afluência (ENA) do SE/CO — abaixo da média (seco)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Recorde de pico de demanda (não superado em 2026)</div><div class="src">ONS · fev/25</div></div>
+    <div class="kpi"><div class="v">100,3<span class="u">%</span></div><div class="l">GSF (geração hidro ÷ garantia física), fev/26</div><div class="src">CCEE</div></div>
+  </div>
+  <p class="src-note">Snapshot de 29/06/2026. Valores marcados "ao vivo" mudam diariamente — puxe-os dos painéis abaixo.</p>
+
+  <h2 class="sec">Como se forma o preço de curto prazo <span class="tag">a cadeia causal</span></h2>
+  <p class="sec-sub">O PLD não é preço de oferta e demanda spot — é a saída de um modelo que decide se compensa
+    <strong>usar água agora ou guardá-la</strong>. Quatro grupos de dados entram; o "valor da água" sai.</p>
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 250" role="img" aria-label="Cadeia causal do PLD: entradas, modelos, valor da água, CMO, PLD">
+        <!-- input boxes -->
+        <g font-family="Inter,sans-serif" font-size="11.5" fill="#1b1f27">
+          <rect x="6" y="14" width="178" height="44" rx="7" fill="#f4f1ea" stroke="#e7e2d8"/><rect x="6" y="14" width="4" height="44" fill="#cf7d2e"/><text x="20" y="40">Demanda · clima + carga</text>
+          <rect x="6" y="66" width="178" height="44" rx="7" fill="#f4f1ea" stroke="#e7e2d8"/><rect x="6" y="66" width="4" height="44" fill="#1f6f8b"/><text x="20" y="92">Afluência · ENA vs MLT</text>
+          <rect x="6" y="118" width="178" height="44" rx="7" fill="#f4f1ea" stroke="#e7e2d8"/><rect x="6" y="118" width="4" height="44" fill="#1f6f8b"/><text x="20" y="144">Estoque · EAR vs meta</text>
+          <rect x="6" y="170" width="178" height="44" rx="7" fill="#f4f1ea" stroke="#e7e2d8"/><rect x="6" y="170" width="4" height="44" fill="#be3c34"/><text x="20" y="196">Risco · CVaR 15/40</text>
+        </g>
+        <!-- convergence lines -->
+        <g stroke="#c9c2b4" stroke-width="1.4" fill="none">
+          <path d="M184,36 C220,36 222,118 250,120"/>
+          <path d="M184,88 L250,122"/>
+          <path d="M184,140 L250,128"/>
+          <path d="M184,192 C220,192 222,134 250,130"/>
+        </g>
+        <!-- central box -->
+        <rect x="250" y="92" width="178" height="66" rx="8" fill="#eaf1f8" stroke="#1f5f9e"/>
+        <text x="339" y="114" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="650" fill="#1f5f9e">Modelos de otimização</text>
+        <text x="339" y="131" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#3a4150">NEWAVE→DECOMP→DESSEM</text>
+        <text x="339" y="147" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-style="italic" fill="#6b7480">= valor da água</text>
+        <!-- arrows -->
+        <g stroke="#6b7480" stroke-width="1.6" fill="#6b7480">
+          <line x1="428" y1="125" x2="450" y2="125"/><polygon points="450,125 442,121 442,129"/>
+          <line x1="510" y1="125" x2="532" y2="125"/><polygon points="532,125 524,121 524,129"/>
+        </g>
+        <!-- CMO + PLD -->
+        <rect x="452" y="104" width="56" height="42" rx="7" fill="#fff" stroke="#d8d2c5"/>
+        <text x="480" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="650" fill="#1b1f27">CMO</text>
+        <rect x="534" y="104" width="120" height="42" rx="7" fill="#1f5f9e"/>
+        <text x="594" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">PLD</text>
+        <text x="594" y="138" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="#cfe0ef">capado (piso/teto)</text>
+      </svg>
+    </div>
+    <figcaption><span class="ti">Como nasce o preço de curto prazo</span>
+      Hidrologia (ENA, EAR), demanda (clima, carga), disponibilidade térmica e a aversão a risco (CVaR) alimentam
+      os modelos, que calculam o <strong>valor da água</strong> → o <strong>CMO</strong> (custo marginal) → o
+      <strong>PLD</strong> (o CMO truncado por piso e teto). É recalculado a cada despacho.</figcaption>
+  </figure>
+  <div class="callout insight">
+    <span class="mk">O APERTO DO CVaR</span>
+    <p>Um parâmetro mexeu muito no preço: o <strong>CVaR</strong> (aversão a risco) passou de <strong>25/35 para
+      15/40</strong> no PMO de jan/2025 — o modelo passou a preservar mais água e <strong>despachar térmica antes</strong>,
+      mantendo o CMO/PLD estruturalmente mais alto mesmo com hidrologia razoável. Por isso, em 2025–26, o PLD ficou
+      <strong>acima do piso em pleno período úmido</strong>. O modelo não reage ao passado; reage ao risco futuro.</p>
+  </div>
+
+  <h2 class="sec">Snapshot atual <span class="tag">29 jun 2026</span></h2>
+  <p class="sec-sub">Período seco entrando: afluências (ENA) abaixo da média em todos os subsistemas, despacho
+    térmico em alta, bandeira amarela. Puxe os valores ao vivo nos links da próxima seção.</p>
+  <figure>
+    <div class="chart" id="chart-ena"></div>
+    <figcaption><span class="ti">Afluência (ENA) por subsistema — % da média histórica (MLT)</span>
+      <strong>100% = média de longo termo (MLT)</strong>. Todos abaixo de 100% = período seco — não recompõe os
+      reservatórios. Note a heterogeneidade: o SE/CO (83%) puxa, mas Sul/NE em ~60–65% seguram o preço de todos.
+      ONS, semana recente de jun/2026 (PMO). Fonte: ONS (ENA Diário por Subsistema).</figcaption>
+  </figure>
+
+  <h2 class="sec">Painel de indicadores — o que puxar, e de onde</h2>
+  <p class="sec-sub">As fontes primárias para checar diariamente. ONS dados abertos: <strong>dados.ons.org.br</strong>;
+    CCEE: <strong>dadosabertos.ccee.org.br</strong>.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Indicador</th><th>Cadência</th><th>Fonte</th><th>O que sinaliza</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PLD horário</strong> / Painel de Preços</td><td>horário</td><td><a href="https://www.ccee.org.br/precos/painel-precos" target="_blank" rel="noopener">CCEE</a></td><td>Termômetro intradiário; spread entre submercados = restrição de transmissão</td></tr>
+      <tr><td><strong>CMO semi-horário</strong></td><td>semi-horário</td><td><a href="https://dados.ons.org.br/dataset/cmo-semi-horario" target="_blank" rel="noopener">ONS</a></td><td>Preço físico antes do teto; CMO &gt; teto = estresse escondido (encargo ESS)</td></tr>
+      <tr><td><strong>Carga e geração</strong> (tempo real)</td><td>tempo real</td><td><a href="https://www.ons.org.br/paginas/energia-agora/carga-e-geracao" target="_blank" rel="noopener">ONS</a></td><td>Demanda do dia + mix; carga acima do previsto → mais térmica → preço ↑</td></tr>
+      <tr><td><strong>EAR diário</strong> por subsistema</td><td>diário</td><td><a href="https://dados.ons.org.br/dataset/ear-diario-por-subsistema" target="_blank" rel="noopener">ONS</a></td><td>O <em>estoque</em>. Baixo vs a meta de risco → pouca folga → preço ↑</td></tr>
+      <tr><td><strong>ENA diário</strong> por subsistema</td><td>diário</td><td><a href="https://dados.ons.org.br/dataset/ena-diario-por-subsistema" target="_blank" rel="noopener">ONS</a></td><td>O <em>fluxo</em> (vs MLT). &lt; 100% não recompõe o reservatório → preço ↑</td></tr>
+      <tr><td><strong>Reservatórios</strong> (Energia Agora)</td><td>diário</td><td><a href="https://www.ons.org.br/paginas/energia-agora/reservatorios" target="_blank" rel="noopener">ONS</a></td><td>Mostra <em>onde</em> está a restrição (NE vs SE/CO)</td></tr>
+      <tr><td><strong>Balanço de energia</strong> (mix)</td><td>tempo real</td><td><a href="https://www.ons.org.br/paginas/energia-agora/balanco-de-energia" target="_blank" rel="noopener">ONS</a></td><td>Alta térmica = hidro/renovável fraca = preço ↑</td></tr>
+      <tr><td><strong>Intercâmbios</strong> entre subsistemas</td><td>diário</td><td><a href="https://dados.ons.org.br/dataset/intercambio-nacional" target="_blank" rel="noopener">ONS</a></td><td>No limite → submercados desacoplam → PLDs separam</td></tr>
+      <tr><td><strong>Curtailment</strong> (constrained-off)</td><td>diário</td><td><a href="https://dados.ons.org.br/dataset/restricao_coff_eolica_usi" target="_blank" rel="noopener">ONS</a></td><td>Corte renovável no NE = sobra + gargalo → preço regional deprimido</td></tr>
+      <tr><td><strong>Boletim Diário</strong> da Operação</td><td>diário (~15h)</td><td><a href="https://sdro.ons.org.br/SDRO/DIARIO/index.htm" target="_blank" rel="noopener">ONS/SDRO</a></td><td>Fechamento oficial do dia D-1</td></tr>
+      <tr><td><strong>PMO + revisões semanais</strong></td><td>mensal/semanal</td><td><a href="https://www.ons.org.br/paginas/energia-no-futuro/programacao-da-operacao" target="_blank" rel="noopener">ONS</a></td><td><strong>Antecipa o PLD</strong>: traduz clima/carga em CMO previsto</td></tr>
+      <tr><td><strong>Bandeira tarifária</strong></td><td>mensal</td><td><a href="https://www.gov.br/aneel/pt-br/assuntos/tarifas/bandeiras-tarifarias" target="_blank" rel="noopener">ANEEL</a></td><td>Custo repassado ao consumidor — sinal <em>confirmatório</em></td></tr>
+      <tr><td><strong>GSF mensal</strong></td><td>mensal</td><td><a href="https://www.ccee.org.br/pt/dados-e-analises/dados-geracao" target="_blank" rel="noopener">CCEE</a></td><td>GSF &lt; 1 = hidrelétricas expostas ao PLD no curto prazo</td></tr>
+      <tr><td><strong>Clima / ondas de calor</strong></td><td>diário · por evento</td><td><a href="https://avisos.inmet.gov.br/" target="_blank" rel="noopener">INMET</a></td><td><strong>Driver de demanda de ponta</strong> — o sinal antecedente mais rápido</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="sec">Playbook — quando o PLD sobe vs cai</h2>
+  <div class="twocol">
+    <div class="callout ok" style="background:var(--ok-soft);border:1px solid #cbe5d5;margin-top:0">
+      <span class="mk" style="background:var(--ok);color:#fff">PLD CAI 🟢</span>
+      <p>EAR <strong>confortável</strong> (acima da meta de risco) + ENA <strong>&gt; MLT</strong> + demanda amena.
+        O balanço fecha com hidro/renovável (custo ~0) e o modelo vê <strong>pouco risco futuro</strong> → o valor
+        da água desaba → CMO no piso.</p>
+    </div>
+    <div class="callout danger" style="margin-top:0">
+      <span class="mk">PLD SOBE 🔴</span>
+      <p>EAR <strong>baixo</strong> (abaixo da meta) + ENA <strong>&lt; MLT</strong> + onda de calor + CVaR
+        apertado. O modelo prefere <strong>queimar combustível agora a esvaziar o tanque</strong> → despacha
+        térmica (por mérito <em>ou</em> por segurança) → CMO salta ao CVU da térmica marginal (ou ao teto).</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <span class="mk">A LEITURA FINA (2025–26)</span>
+    <p>Por que "choveu mas o preço não caiu" no período úmido (fev/2026): o EAR do SE/CO ficou em ~57%
+      (<strong>não é conforto estrutural</strong>), a chuva foi <strong>heterogênea</strong> (Sul criticamente seco,
+      ~52% da MLT), o período seco se aproximava e o <strong>CVaR mais conservador (15/40)</strong> mandou preservar.
+      O modelo manteve postura defensiva, despachou térmica por segurança, e o PLD ficou <strong>acima do piso em
+      pleno período úmido</strong>.</p>
+  </div>
+
+  <h2 class="sec">Antecedentes vs atrasados, e as armadilhas</h2>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Para ANTECIPAR o preço (olhe estes)</th><th>Apenas CONFIRMAM (retrovisor)</th></tr></thead>
+    <tbody>
+      <tr><td>ENA semanal vs MLT; previsão de chuva/temperatura (INMET); EAR vs a meta de risco</td><td>PLD horário <em>realizado</em></td></tr>
+      <tr><td>PMO mensal e revisões semanais (DECOMP); mudanças de parâmetro (CVaR)</td><td>Bandeira tarifária acionada</td></tr>
+      <tr><td>Ordem de mérito / usinas em manutenção; mensagens de despacho por segurança</td><td>Carga verificada; GSF do mês</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="num">
+    <li><strong>"Choveu, logo cai" — errado</strong> se o reservatório seguir abaixo da meta. O valor da água é plurianual: 5 pontos de EAR partindo de um tanque vazio não tiram o sistema do risco.</li>
+    <li><strong>Olhar o EAR absoluto e ignorar a meta (CAR/CVaR).</strong> 60% pode ser conforto num ano e alerta noutro — o que importa é a distância para a trajetória-meta, e ela endureceu (15/40).</li>
+    <li><strong>Olhar só o Sudeste.</strong> Sistema integrado: um Sul a 52% da MLT segura o preço de todos. Leia os 4 subsistemas e as interligações.</li>
+    <li><strong>Confundir ENA (fluxo) com EAR (estoque).</strong> ENA alta com EAR baixo ainda é caro.</li>
+    <li><strong>Tomar o PLD realizado como previsão.</strong> Ele é retrovisor; para a frente, olhe o DECOMP/PMO e a previsão de chuva.</li>
+    <li><strong>Ignorar o despacho "fora da ordem de mérito".</strong> Térmica acionada por segurança (não por mérito) é o que descola o PLD do piso mesmo com hidro disponível.</li>
+  </ul>
+</section>
+
 </div>
 </main>
 
@@ -1525,7 +1677,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v1.6</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v1.7</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -1912,6 +2064,15 @@
         {label:'2024',value:77,color:C.accent},
         {label:'2025',value:108,color:C.ok,bold:true,note:'+40%'},
       ],{H:240,max:125,barW:50,axisFmt:v=>fmt(v),valFmt:v=>fmt(v)});
+    });
+    // ACOMPANHAMENTO: ENA por subsistema (% da MLT), snapshot
+    render('chart-ena',m=>{
+      hbars(m,[
+        {label:'SE/CO',value:83,color:C.hydro,bold:true},
+        {label:'Sul',value:65,color:C.thermal},
+        {label:'Norte',value:65,color:C.thermal},
+        {label:'Nordeste',value:60,color:C.thermal},
+      ],{labelW:90,valW:84,max:110,valFmt:v=>v+'% MLT'});
     });
   }
   window.__renderCharts=renderAll;
