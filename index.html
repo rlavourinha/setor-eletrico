@@ -216,7 +216,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v2.0 · 29 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v2.2 · 30 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -602,8 +602,8 @@
     <div class="kpi"><div class="v">3,3<span class="u">%a.a.</span></div><div class="l">Crescimento projetado da carga até 2034</div><div class="src">PDE 2034</div></div>
     <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda; 7 recordes só em 2025</div><div class="src">ONS</div></div>
     <div class="kpi"><div class="v">2027</div><div class="l">Quando o SIN passa a precisar de potência adicional</div><div class="src">PDE 2034</div></div>
-    <div class="kpi"><div class="v">25→50<span class="u">GW</span></div><div class="l">A rampa de carga líquida dobra (2024→2028)</div><div class="src">EPE</div></div>
-    <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no maior leilão da história (LRCAP 2026)</div><div class="src">CCEE</div></div>
+    <div class="kpi"><div class="v">25→50<span class="u">GW</span></div><div class="l">A rampa de carga líquida dobra (2024→2028)</div><div class="src">ONS (PAR/PEL)</div></div>
+    <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no LRCAP 2026 (maior leilão por volume financeiro)</div><div class="src">CCEE</div></div>
   </div>
 
   <h2 class="sec">Como a oferta cresce <span class="tag">Fase 2</span></h2>
@@ -695,10 +695,154 @@
     <span class="mk">O QUE OS LEILÕES REVELAM</span>
     <p>Os Leilões de Energia Nova de 2024 foram <strong>cancelados</strong> e só voltaram em 2025 — restritos a
       <strong>hidrelétricas</strong>. O sistema não queria mais energia intermitente (já sobra). Em paralelo, o
-      <strong>maior leilão de geração da história</strong> (LRCAP 2026, ~19 GW, R$ 515,7 bi) não contratou energia
+      <strong>maior leilão de geração da história por volume financeiro</strong> (LRCAP 2026, ~19 GW, R$ 515,7 bi) não contratou energia
       — contratou <strong>disponibilidade</strong>, ~80% em térmicas a gás. O TCU e o MPF contestaram o preço-teto
       (indícios de sobrepreço), mas o leilão foi mantido. <strong>O eixo migrou de "quanto MWh comprar" para
       "quanto MW disponível garantir"</strong> — com baterias como aposta estruturante a partir de dez/2026.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">Capacidade × potência: o que o LRCAP realmente compra <span class="tag">aprofundamento</span></h2>
+  <p class="sec-sub">O LRCAP não compra energia (MWh) nem usinas — compra <strong>disponibilidade de potência na ponta</strong>
+    (R$/MW-ano). Para entender o instrumento e o tamanho do problema que ele endereça, é preciso separar três palavras
+    que o mercado trata como sinônimas e não são: <strong>energia, potência e capacidade</strong>.</p>
+
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">E</span>Energia</h4><p><strong>MWmédio</strong> (ou GWh/ano) — a integral da potência no tempo (1 MWmédio ≈ 8,76 GWh/ano). Responde <em>"quanta eletricidade entrego ao longo do ano"</em>. Foi o gargalo do Brasil hidrotérmico: o risco era a <strong>água do reservatório</strong> ao longo das estações, não o instante.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">P</span>Potência</h4><p><strong>MW no instante</strong> — sobretudo na <strong>ponta</strong> (~18h–21h). Responde <em>"quantos MW entrego AGORA, na hora crítica"</em>. Virou o gargalo: a solar zera ao entardecer e a ponta líquida migrou para a noite.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--hydro)">C</span>Capacidade</h4><p>O <strong>atributo de estar disponível</strong> na ponta — independente de quanto se gere. É o que o LRCAP remunera. Uma usina pode ter muita <em>energia</em> (alto fator de capacidade médio) e pouca <em>potência firme</em> (não entrega às 19h) — e vice-versa.</p></div>
+  </div>
+
+  <h3 class="sub">Dois lastros, dois relógios</h3>
+  <p>Historicamente a usina só precisava comprovar um lastro: a <strong>garantia física de energia</strong>. A reforma
+    criou um segundo, paralelo — o <strong>lastro de potência</strong> — com critério e metodologia próprios.</p>
+  <div class="twocol">
+    <div class="card"><h4>Garantia física de ENERGIA <span class="tag">o lastro tradicional</span></h4>
+      <p>Quanto a usina pode <strong>vender em contrato</strong>, em <strong>MWmédio</strong> (REN ANEEL 1.009/2022).
+        Calculada no <strong>NEWAVE</strong>, igualando custo marginal de operação e de expansão (CMO = CME). Usa o
+        <strong>fator de capacidade médio do ano</strong>.</p>
+      <p>Critério de suprimento (CNPE 29/2019): <strong>CVaR<sub>1%</sub>(ENS) ≤ 5 MWh</strong> e
+        <strong>CVaR<sub>10%</sub>(CMO) ≤ R$ 800/MWh</strong>.</p></div>
+    <div class="card"><h4>Lastro de POTÊNCIA <span class="tag">o novo</span></h4>
+      <p>Quanto a usina entrega <strong>na ponta</strong>, em <strong>MW</strong> (MP 998/2020 → Lei 14.120/2021;
+        Decreto 10.707/2021). É o que o LRCAP contrata, em <strong>R$/MW-ano</strong>. Usa o fator de capacidade
+        <strong>no instante de ponta</strong> — daí o "derating" das fontes.</p>
+      <p>Critério de suprimento: <strong>LOLP anual ≤ 5%</strong> (prob. de déficit) e
+        <strong>CVaR<sub>5%</sub>(PNS) ≤ 5%</strong> da demanda máxima.</p></div>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">A MESMA USINA, DOIS RELÓGIOS</span>
+    <p>A disponibilidade de potência que o LRCAP precifica é
+      <strong>P = (Pn · FC<sub>máx</sub> − ΔP) · (1 − IP) · (1 − TEIF)</strong> (EPE-DEE-IT-016/2025).
+      <strong>Pn</strong> é a placa; <strong>FC<sub>máx</sub></strong> é o fator de capacidade <em>na ponta</em> — e é só
+      aqui que as fontes se separam radicalmente. O lastro de energia usa o FC <strong>médio do ano</strong>; o de
+      potência, a contribuição <strong>no instante crítico</strong>. Por isso a solar, campeã de energia barata, vale
+      quase <strong>zero</strong> como potência firme na ponta noturna.</p>
+  </div>
+
+  <figure>
+    <div class="chart" id="chart-credito-ponta"></div>
+    <figcaption><span class="ti">Contribuição firme para a ponta noturna (% da capacidade instalada)</span>
+      A mesma placa de MW vale coisas radicalmente diferentes na hora crítica. A <strong>solar</strong> zera à noite
+      (~0%); a <strong>eólica</strong> entra com 6% (NE) a 15% (Sul) de crédito firme no Balanço de Potência do PDE;
+      <strong>baterias</strong> de 4h cobrem cerca de metade da janela de risco de ponta (estimativa); <strong>térmica</strong> e <strong>hidro com
+      reservatório</strong> entregam quase a placa. Fonte: PDE 2034 (créditos VRE); térmica/hidro = disponibilidade
+      típica; BESS ~50% é estimativa (sem crédito oficial até o leilão de dez/2026).</figcaption>
+  </figure>
+
+  <div class="callout warn">
+    <span class="mk">O MUNDO JÁ PRECIFICA ISSO — E DE FORMA AINDA MAIS DURA</span>
+    <p>Os mercados de capacidade maduros medem a contribuição firme pelo <strong>ELCC</strong> (capacidade efetiva de
+      carregamento de carga), não pela placa. No leilão da <strong>PJM</strong> para 2026/27: solar fixa <strong>8%</strong>,
+      eólica onshore <strong>41%</strong>, bateria de 4h <strong>50%</strong>, gás de ciclo combinado <strong>74%</strong>,
+      nuclear <strong>95%</strong>. E ficou mais severo: ao trocar o ELCC <em>médio</em> pelo <em>marginal</em> (reforma
+      FERC), o crédito da solar <strong>desabou de ~33% para um dígito</strong> — cada MW novo de solar cai numa parte já
+      saturada da curva. No Reino Unido, a bateria de 4h leva <strong>41,7%</strong>. O recado para o desenho do LRCAP:
+      <strong>precificar capacidade pela placa do solar é um erro caro</strong>; o derating tem de ser pela ponta.</p>
+  </div>
+
+  <h3 class="sub">A evolução do LRCAP — de 4,6 GW (2021) a 19 GW (2026)</h3>
+  <p>O instrumento nasceu com a reforma da Eletrobras (Lei 14.182/2021). Foram, de fato, <strong>dois certames
+    realizados</strong> em cinco anos — separados por um vão de quatro anos em que o leilão foi adiado e cancelado.</p>
+  <figure>
+    <div class="chart" id="chart-lrcap-evol"></div>
+    <figcaption><span class="ti">Potência contratada por leilão de reserva de capacidade (GW)</span>
+      O salto de escala de 2026 é a medida do problema: <strong>4× o primeiro leilão</strong>. O leilão de baterias de
+      dez/2026 é pequeno em MW, mas estreia o armazenamento como produto de potência. Fonte: EPE/CCEE/ANEEL.</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Leilão</th><th>Data</th><th class="num">Potência</th><th class="num">Deságio</th><th>O que revelou</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1º LRCAP</strong></td><td>21/dez/2021</td><td class="num">4.633 MW</td><td class="num">−15,34%</td><td>17 térmicas (gás/óleo/diesel/bagaço); R$ 824,5 mil/MW-ano; suprimento desde jul/2026. Criticado por contratar <strong>térmicas inflexíveis</strong>.</td></tr>
+      <tr><td>(vão 2022–2025)</td><td>—</td><td class="num">nenhum</td><td class="num">—</td><td>O "LRCAP 2025" (27/jun/2025) foi <strong>cancelado</strong> (DOU 04/abr/2025) na guerra de liminares sobre CVU e fator de flexibilidade.</td></tr>
+      <tr><td><strong>2º LRCAP</strong></td><td>18/mar/2026</td><td class="num"><strong>18.977 MW</strong></td><td class="num">−5,52%</td><td>Gás (~80%), carvão (~1,3 GW) e <strong>ampliação de hidro</strong> (~2,5 GW, inédita). R$ 515,7 bi; ~R$ 38,9 bi/ano; prazos de 10–15 anos. 100 vencedores.</td></tr>
+      <tr><td>· óleo/diesel/biodiesel</td><td>20/mar/2026</td><td class="num">501 MW</td><td class="num">−50,14%</td><td>6 usinas; estreia das <strong>primeiras térmicas a biodiesel</strong> do país.</td></tr>
+      <tr><td><strong>LRCAP Baterias</strong></td><td>02 e 04/dez/2026</td><td class="num">~2 GW*</td><td class="num">a realizar</td><td>1º leilão de <strong>armazenamento (BESS)</strong>: ≥4h, ≥85% de eficiência, suprimento ago/2028, 15 anos. *Volume não fixado oficialmente.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">POR QUE QUASE NÃO ACONTECEU (2022–2025)</span>
+    <p>A cadência prevista era anual, mas <strong>nenhum LRCAP saiu entre 2022 e 2025</strong>. O de 2024 escorregou para
+      2025 e o de 2025 foi <strong>cancelado por judicialização</strong>: liminares no STJ (a pedido de geradores) sobre o
+      <strong>CVU máximo</strong> e o <strong>fator de flexibilidade</strong> da modelagem travaram o certame, e o MME
+      recomeçou do zero (Portarias 118/119 de out/2025). O instrumento não morreu — <strong>mudou de veículo legal</strong>
+      e voltou, gigante, em 2026. A lição: um mercado de capacidade dependente de portaria e desenho contestável é
+      <strong>refém de litígio</strong>.</p>
+  </div>
+
+  <h3 class="sub">Quanto precisa crescer — e a armadilha do "potência = energia"</h3>
+  <p>A intuição diz que, se falta potência, é porque a demanda de ponta cresce mais rápido que a de energia.
+    <strong>No Brasil, não é isso.</strong> No PDE 2034, energia e ponta crescem praticamente à <strong>mesma taxa
+    (~3,3% a.a.)</strong>: a carga de energia do SIN sobe de ~77 para 107 GWmédio (2024→2034, base que inclui perdas e
+    consumo próprio) e a ponta, para ~150 GW. O déficit de potência <strong>não vem
+    de a ponta correr mais</strong> — vem da <strong>composição da oferta nova</strong>.</p>
+  <p>A expansão é quase toda <strong>solar e eólica</strong>: a geração solar cresce <strong>+135%</strong> e a eólica
+    <strong>+58%</strong> de 2024 a 2034, contra +15% da hidro. São fontes que adicionam <strong>muita energia</strong> e
+    <strong>pouca potência firme na ponta noturna</strong>. Some-se a <strong>aposentadoria de ~14,5 GW de térmicas</strong>
+    (fim de CCEAR/PPT/CDE até 2034) e o resultado é um <strong>buraco de potência que abre mesmo com sobra de energia</strong>.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-pot-deficit"></div>
+      <figcaption><span class="ti">Necessidade de potência adicional do SIN (GW)</span>
+        Começa em <strong>2027</strong> (violação do LOLP &gt; 5%), chega a <strong>5,5 GW em 2028</strong> e a
+        <strong>~40 GW em nov/2034</strong> — enquanto o requisito de <em>energia</em> é bem menor e concentrado no
+        período seco. Os pontos de 2032–33 são leitura aproximada do gráfico do PDE; os extremos (5,5 e ~40) são
+        rotulados. Fonte: EPE, PDE 2034 (Caderno de Requisitos).</figcaption>
+    </figure>
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-ger-fonte"></div>
+      <figcaption><span class="ti">Geração por fonte — 2024 → 2034 (TWh)</span>
+        A oferta nova é <strong>variável</strong>: solar e eólica disparam, a hidro quase estagna e perde participação
+        na geração total do SIN (de ~56% para ~47%, sobre ~759 e ~1.045 TWh totais — não sobre as 3 séries plotadas).
+        Três séries independentes. Fonte: EPE, PDE 2034 (apresentação à Câmara, set/2025).</figcaption>
+    </figure>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">O DESCOLAMENTO: PLACA ≠ POTÊNCIA FIRME</span>
+    <p>É aqui que "capacidade × potência" deixa de ser semântica. Para entregar +38% de <em>energia</em> até 2034, o
+      sistema instala uma montanha de <strong>placa (MW nominais)</strong> de solar e vento — mas, como o crédito firme
+      dessas fontes na ponta é baixo (solar ~0, eólica 6–15%), a <strong>potência confiável às 19h cresce muito menos que
+      a placa</strong>. O sistema fica "gordo" de energia e "magro" de ponta. O LRCAP é o instrumento que compra
+      exatamente o que falta — <strong>MW na hora crítica</strong> — de quem ainda os tem: gás, hidro e, agora, baterias.</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>O Brasil migrou, em cinco anos, de um sistema que <strong>só contratava energia</strong> para um que contrata
+      energia <em>e</em> potência em trilhos separados. O LRCAP de 2026 (~19 GW, R$ 515,7 bi — o <strong>maior leilão de
+      geração da história por volume financeiro</strong>) comprou <strong>disponibilidade</strong>, não geração — e travou
+      ~80% disso em <strong>gás fóssil</strong> por até 15 anos, no momento em que a matriz se diz limpa. A aposta de saída
+      é o <strong>armazenamento</strong> (baterias, dez/2026; UHR no horizonte): potência firme <em>sem</em> queimar
+      combustível. Quem for analisar as empresas da cadeia precisa ler <strong>os dois lastros</strong> — uma geradora
+      solar com garantia física de energia cheia pode valer <strong>quase nada</strong> no novo mercado de potência.</p>
   </div>
 
   <h2 class="sec">Quanto custa gerar, por fonte</h2>
@@ -1356,7 +1500,7 @@
   </div>
   <ul class="clean">
     <li><strong>RTP vs RTA:</strong> a Revisão Tarifária Periódica (a cada ~4–5 anos) redefine tudo — Parcela B eficiente, base de ativos, WACC, metas. O Reajuste Anual só corrige a Parcela B por IPCA − Fator X.</li>
-    <li><strong>WACC re-parametrizado todo ano:</strong> 8,10% real (2026) na distribuição vs 7,16% (2025). Tratar como fixo no ciclo é erro comum.</li>
+    <li><strong>WACC re-parametrizado todo ano:</strong> 8,10% real (2026) na distribuição vs 8,03% (2025). Tratar como fixo no ciclo é erro comum.</li>
     <li><strong>Perdas não técnicas são P&amp;L direto:</strong> a distribuidora só recupera o nível <em>regulatório</em>; tudo acima sai do acionista. Light e Amazonas Energia são casos-limite (juntas, ~34% das perdas não técnicas do país).</li>
     <li><strong>Limite de repasse de 105%:</strong> sobras de compra de energia acima disso não são repassáveis — viram custo do acionista.</li>
   </ul>
@@ -1383,6 +1527,123 @@
       todos via CDE) já passa de R$ 5–7 bi/ano. A tentativa de taxar novos entrantes foi rejeitada no Congresso
       em out/2025. Fonte: Lei 14.300/2022, art. 27.</figcaption>
   </figure>
+
+  <div class="divider"></div>
+
+  <h2 class="sec">WACC e o valor de uma utility regulada <span class="tag">o múltiplo justo</span></h2>
+  <p class="sec-sub">A taxa que a ANEEL manda remunerar sobre a base de ativos é a <strong>dobradiça do valuation</strong>.
+    É <strong>nacional, por segmento</strong> (não por região) — remunera o risco <em>sistêmico</em> do negócio de
+    rede, não o idiossincrático da empresa. Em 2026: <strong>8,10% (distribuição)</strong> e <strong>8,00%
+    (transmissão/geração)</strong>, real após impostos.</p>
+
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-wacc"></div>
+      <figcaption><span class="ti">WACC regulatório (transm./ger., real após impostos)</span>
+        Caiu dos ~15–17% reais (antes de imp.) dos anos 2000 (17% em 2003, 15% em 2007) e ~11% no início dos anos
+        2010 para a faixa de ~7–8% (após imp.) hoje, acompanhando o juro real. <strong>Depois do piso de 2019,
+        ensaiou novo vale em 2025; 2026 reverteu para cima</strong> (repique da NTN-B/risco-país). Fonte: ANEEL (AIR
+        1/2019, Despachos 882/2025 e mar/2026). 2020–24 não plotados.</figcaption>
+    </figure>
+    <div class="callout warn" style="margin-top:0">
+      <span class="mk">A DEFASAGEM — 3 CAMADAS</span>
+      <p>(1) <strong>Cadência anual</strong> (vigência 1º/mar). (2) <strong>Médias móveis</strong> (~5 anos) suavizam:
+        um choque de juro entra com peso de só ~1/5 ao ano → o WACC fica <em>atrasado</em> em relação ao mercado.
+        (3) O <strong>"lock" do ciclo</strong> (dominante): o WACC vigente na revisão da empresa é <strong>cristalizado
+        por 4–5 anos</strong>. Uma transmissora cujo ciclo travou no piso de 2019 (<strong>7,11%</strong>) carrega essa
+        taxa por quase uma década; outra revisada em 2026 fixa <strong>8,00%</strong> — ~0,9 p.p. sobre a mesma base,
+        congelados. O que importa para o acionista é o WACC do <strong>ano da sua revisão</strong>, não o vigente.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Por que o ativo justo vale a base — e quando vale mais</h3>
+  <p>A receita ≈ <strong>WACC × RAB + depreciação + O&amp;M reconhecido</strong>. Se você investe R$ 1, ele entra na
+    base rendendo exatamente o WACC e devolve o principal via depreciação — descontado ao próprio WACC, vale R$ 1.
+    Logo, o valor justo ancora em <strong>1,0× a base (EV/RAB = 1,0×)</strong>. O prêmio ou desconto sobre 1× é uma
+    aposta sobre <strong>três spreads</strong>:</p>
+
+  <figure>
+    <div class="chart">
+      <svg viewBox="0 0 660 290" role="img" aria-label="Escada EV/RAB: prêmio e desconto sobre 1,0x da base regulatória">
+        <!-- zones -->
+        <rect x="150" y="30" width="480" height="125" fill="#2f7d57" opacity="0.07"/>
+        <rect x="150" y="155" width="480" height="100" fill="#be3c34" opacity="0.07"/>
+        <!-- axis -->
+        <line x1="150" y1="30" x2="150" y2="255" stroke="#d8d2c5"/>
+        <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#6b7480" text-anchor="end">
+          <text x="142" y="259">0,6×</text><text x="142" y="209">0,8×</text>
+          <text x="142" y="159" font-weight="700" fill="#1b1f27">1,0×</text>
+          <text x="142" y="109">1,2×</text><text x="142" y="34">1,5×</text>
+        </g>
+        <!-- 1.0x anchor -->
+        <line x1="150" y1="155" x2="630" y2="155" stroke="#1b1f27" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <text x="160" y="150" font-family="Inter,sans-serif" font-size="11" font-weight="650" fill="#1b1f27">caso-base: ganha exatamente o WACC (ROIC = r, sem crescimento)</text>
+        <!-- markers -->
+        <circle cx="300" cy="155" r="4" fill="#6b7480"/>
+        <circle cx="430" cy="80" r="4" fill="#2f7d57"/>
+        <circle cx="250" cy="218" r="4" fill="#be3c34"/>
+        <!-- zone labels -->
+        <g font-family="Inter,sans-serif" font-size="11.5" font-weight="650">
+          <text x="450" y="62" fill="#2f7d57">PRÊMIO (ROIC &gt; r)</text>
+          <text x="270" y="240" fill="#be3c34">DESCONTO (ROIC &lt; r)</text>
+        </g>
+        <g font-family="Inter,sans-serif" font-size="10" fill="#6b7480">
+          <text x="450" y="96">capital barato (r &lt; WACC)</text>
+          <text x="450" y="110">+ eficiência + leilões</text>
+          <text x="270" y="256">risco regulatório · underearning · RBSE</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><span class="ti">A escada EV/RAB — o múltiplo justo sobre a base</span>
+      O ponto de ancoragem é <strong>1,0×</strong>. Tudo que afasta disso é um dos três spreads abaixo.</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Spread</th><th>Prêmio (&gt;1×)</th><th>Desconto (&lt;1×)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Retorno real vs WACC</strong></td><td>eficiência: opex/capex abaixo do reconhecido → embolsa o spread</td><td><em>underearning</em>: perdas, execução ruim</td></tr>
+      <tr><td><strong>`r` do investidor vs WACC</strong></td><td>capital barato (estrangeiro) desconta o mesmo fluxo a taxa menor</td><td>risco regulatório/cauda (RBSE) eleva `r`</td></tr>
+      <tr><td><strong>Crescimento da RAB (`g`)</strong></td><td><strong>amplifica</strong> um spread positivo (leilões, reforços, M&amp;A)</td><td>amplifica um spread negativo (cresce destruindo valor)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">CRESCIMENTO É ALAVANCA, NÃO FONTE</span>
+    <p>A fórmula correta é <strong>EV/RAB = (ROIC − g) / (r − g)</strong>. Repare: <strong>se ROIC = r, o múltiplo é
+      1,0× para qualquer `g`</strong>. Por isso <strong>CapEx &gt; depreciação não gera múltiplo &gt; 1 por si só</strong>:
+      crescer a base investindo a um retorno igual ao custo de capital é <em>VPL zero</em> — a empresa fica maior, não
+      mais valiosa por unidade de base (adiciona R$ 1 de ativo que vale R$ 1). O crescimento só vira prêmio quando
+      <strong>ROIC &gt; r</strong> (capital barato, capex abaixo da RAB reconhecida, leilões com economics positivos) — e
+      aí <em>amplifica</em> o spread. Se o spread é negativo (capex acima da RAB reconhecida), crescer <strong>destrói
+      valor</strong>: a transmissora aumenta o EBITDA e negocia <em>abaixo</em> de 1×.</p>
+  </div>
+
+  <h3 class="sub">"Bond-like": por que WACC maior comprime o múltiplo</h3>
+  <p>O WACC tem <strong>dois efeitos opostos</strong>. <strong>Efeito-estoque:</strong> WACC maior = mais receita sobre
+    a base existente — bom para quem já <em>detém</em> o ativo. <strong>Efeito-desconto:</strong> o WACC é a melhor proxy
+    do <strong>custo de capital de mercado</strong> (juro real via NTN-B); quando sobe, o investidor desconta <em>toda</em>
+    utility a taxa maior → <strong>os múltiplos comprimem</strong>. No curto prazo o efeito-desconto domina: <strong>juro
+    real ↑ → WACC ↑ → múltiplo ↓</strong>, exatamente como um título de longa <em>duration</em>. Por isso utilities
+    reguladas são negociadas como <em>proxies</em> de duration, sensíveis à NTN-B longa.</p>
+
+  <div class="callout warn">
+    <span class="mk">POR QUE NÃO OLHAR P/L</span>
+    <p>O lucro contábil de utilities BR é poluído por <strong>itens não-caixa</strong> (VNR, componente financeiro da
+      RAB, indenizações tipo RBSE, atualização do ativo de concessão). Duas transmissoras idênticas em caixa podem ter
+      P/L muito diferente. As métricas honestas são a <strong>TIR implícita real</strong> (a taxa que zera o VP do fluxo
+      regulatório dado o preço — <strong>TIR &gt; WACC = ação barata</strong>), o <strong>dividend yield</strong> (a
+      máquina de payout de uma concessão madura) e o <strong>EV/RAB</strong>, que normaliza tudo de volta à base.</p>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">EXEMPLO — "TRANSMISSORA TEÓRICA S.A." (RAB R$ 1.000, WACC 8%)</span>
+    <p><strong>Caso-base</strong> (ganha o WACC, sem crescimento, r = 8%): VP = R$ 1.000 → <strong>1,0×</strong>.
+      <strong>Com spread</strong> (r = 6,5% por capital barato, e crescimento com economics positivo): <strong>~1,2–1,5×</strong>.
+      <strong>Com risco/underearning</strong> (r = 11%, ganha só 7% efetivo): <strong>~0,6–0,9×</strong> — mercado pagando
+      abaixo da base, e a tese de compra é "a TIR implícita está acima do WACC".</p>
+  </div>
 </section>
 
 <!-- ============================ MUNDO ============================ -->
@@ -1907,7 +2168,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v2.0</span><span class="badge">29 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v2.2</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2336,6 +2597,52 @@
         {label:'2021',value:16.5,color:C.danger,note:'escassez'},
         {label:'pico típ.',value:64,color:C.gray,faint:true,note:'abr/mai'},
       ],{H:230,max:72,barW:50,axisFmt:v=>v+'%',valFmt:v=>fmt(v)+'%'});
+    });
+    // REGULAÇÃO: WACC regulatório transm./ger. (real, após impostos)
+    render('chart-wacc',m=>{
+      vcols(m,[
+        {label:'15',value:7.33,color:C.hydro},
+        {label:'17',value:7.26,color:C.hydro},
+        {label:'19',value:7.11,color:C.hydro,note:'piso'},
+        {label:'25',value:7.89,color:C.accent},
+        {label:'26',value:8.00,color:C.accent,bold:true,note:'repique'},
+      ],{H:220,max:10,barW:48,axisFmt:v=>v+'%',valFmt:v=>fmt(v)+'%'});
+    });
+    // OFERTA & DEMANDA: contribuição firme para a ponta (% da placa)
+    render('chart-credito-ponta',m=>{
+      hbars(m,[
+        {label:'Solar FV (ponta noturna)',value:0,color:C.solar,bold:true},
+        {label:'Eólica (NE)',value:6,color:C.wind},
+        {label:'Eólica (Sul)',value:15,color:C.wind},
+        {label:'Bateria 4h',value:50,color:C.accent},
+        {label:'Térmica a gás',value:90,color:C.thermal},
+        {label:'Hidro c/ reservatório',value:95,color:C.hydro,bold:true},
+      ],{labelW:178,valW:54,max:100,valFmt:v=>v+'%'});
+    });
+    // OFERTA & DEMANDA: evolução do LRCAP (GW contratados por leilão)
+    render('chart-lrcap-evol',m=>{
+      vcols(m,[
+        {label:'1º · 2021',value:4.6,color:C.thermal,note:'térmicas'},
+        {label:'2º · 2026',value:19.0,color:C.accent,bold:true,note:'gás/UHE'},
+        {label:'bat. · dez/26',value:2.0,color:C.ok,faint:true,note:'alvo'},
+      ],{H:240,max:22,barW:60,axisFmt:v=>fmt(v)+'GW',valFmt:v=>fmt(v)});
+    });
+    // OFERTA & DEMANDA: necessidade de potência adicional (GW)
+    render('chart-pot-deficit',m=>{
+      vcols(m,[
+        {label:'2028',value:5.5,color:C.thermal,note:'início'},
+        {label:'2032',value:19,color:C.thermal,faint:true,note:'aprox.'},
+        {label:'2033',value:25,color:'#d9612e',faint:true,note:'aprox.'},
+        {label:'2034',value:40,color:C.danger,bold:true,note:'nov'},
+      ],{H:250,max:46,barW:50,axisFmt:v=>fmt(v)+'GW',valFmt:v=>fmt(v)});
+    });
+    // OFERTA & DEMANDA: geração por fonte 2024→2034 (TWh)
+    render('chart-ger-fonte',m=>{
+      lines(m,[
+        {label:'Hidro',color:C.hydro,data:[424,454,489]},
+        {label:'Eólica',color:C.wind,data:[114,132,180]},
+        {label:'Solar',color:C.solar,data:[26,39,61]},
+      ],{xLabels:['2024','2029','2034'],max:540,axisFmt:v=>fmt(v),endFmt:v=>fmt(v)});
     });
   }
   window.__renderCharts=renderAll;

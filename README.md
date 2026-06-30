@@ -12,10 +12,10 @@ Estudo de referência do setor elétrico brasileiro (Fases 1–3), construído *
 | **Contexto histórico** | O arco de 1879 a 2026: como cada instituição nasceu de uma crise, e por que o Brasil "desagrega" o que o mundo "agrega" (comparação institucional internacional) |
 | **Instituições** | Quem planeja (EPE), opera (ONS), regula (ANEEL) e liquida (CCEE) |
 | **Sistema físico** | Matriz, reservatórios como "bateria", os 4 submercados, despacho por custo (NEWAVE→DECOMP→DESSEM), curtailment |
-| **Oferta & demanda** | Crescimento histórico, a curva do pato, os leilões (LRCAP, BESS), custo por fonte (LCOE), formação de preço pela geração marginal (merit order, canibalização, missing money), a teoria curto × longo prazo (SRMC/LRMC, curva de triagem, a reconciliação) e o arco dos incentivos renováveis |
+| **Oferta & demanda** | Crescimento histórico, a curva do pato, os leilões (LRCAP, BESS), o aprofundamento **capacidade × potência** (os dois lastros — energia vs. potência —, a fórmula da disponibilidade, o crédito de capacidade/ELCC, a evolução do LRCAP de 2021 a 2026 + baterias, e as trajetórias do déficit de potência até 2034), custo por fonte (LCOE), formação de preço pela geração marginal (merit order, canibalização, missing money), a teoria curto × longo prazo (SRMC/LRMC, curva de triagem, a reconciliação) e o arco dos incentivos renováveis |
 | **Geração** | Quanto custa e quanto demora construir (CAPEX/prazo/fator de capacidade por fonte), o ciclo de caixa (curva J), o financiamento (project finance, BNDES, debêntures incentivadas), por que o Brasil parou de construir grandes hidrelétricas (+ UHR reversíveis) e o que muda com o avanço das baterias (capacidade vs arbitragem, complementaridade com a hidro, tensão com o gás) |
 | **Mercado & preço** | ACR vs ACL, abertura do mercado livre, formação do PLD, risco hidrológico (MRE/GSF), bandeiras |
-| **Regulação econômica** | Como cada segmento ganha dinheiro: RAP (transmissão), Parcela A/B + ativos regulatórios (distribuição), risco da geração |
+| **Regulação econômica** | Como cada segmento ganha dinheiro: RAP (transmissão), Parcela A/B + ativos regulatórios (distribuição), risco da geração; e **WACC × múltiplo justo** — o WACC regulatório (nacional, série histórica, defasagem do ciclo) e a ponte com o valuation (EV/RAB ancorado em 1,0×, por que crescimento é alavanca e não fonte, comportamento *bond-like*) |
 | **Internacional** | Seis eixos regulatórios (cost-based vs bid-based, nodal/zonal, energy-only vs capacidade, RIIO, abertura de varejo, camada supranacional); preços (varejo/atacado/tributos); preço negativo vs curtailment; armazenamento; casos de estresse (Uri, Ibéria, NEM); e as lições para o Brasil (copiar/evitar/preservar) |
 | **Acompanhamento** | Monitoramento de curto prazo: cadeia causal do PLD, painel de indicadores diários com fontes primárias ao vivo (ONS/CCEE/ANEEL/INMET), playbook e armadilhas; + histórico e **sazonalidade** (ciclo úmido/seco, EAR mês a mês, consumo) e **eventos climáticos** (El Niño/La Niña, a fase ENSO de cada crise, rios voadores, mudança climática) |
 | **Agenda regulatória** | O que está na mesa em 2026: a **antecipação do reconhecimento do CapEx** (lag regulatório, distribuição × transmissão, impactos) e o mapa das discussões — ressarcimento de curtailment, recalibração do PLD/CVaR, WACC, Fator X/TOTEX, CDE, RBSE, abertura do ACL, LRCAP de baterias |
@@ -32,4 +32,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v2.0 · 29 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v2.2 · 30 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
