@@ -216,7 +216,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v2.2 · 30 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v2.3 · 30 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -684,7 +684,7 @@
     <tbody>
       <tr><td><strong>39º LEN A-5</strong> · ago/2025</td><td>Energia nova — <strong>só hídrico</strong> (PCH/UHE)</td><td class="num">R$ 392,84/MWh · −3,16%</td><td>1ª contratação de geração nova em 3 anos; R$ 5,5 bi</td></tr>
       <tr><td><strong>LEE A-1/A-2/A-3</strong> · nov/2025</td><td>Energia existente (recontratação)</td><td class="num">R$ 205–213/MWh · −15,4%</td><td>R$ 6,48 bi; economia R$ 1,18 bi</td></tr>
-      <tr><td><strong>2º LRCAP</strong> · mar/2026</td><td><strong>Potência</strong> (térmicas + ampliação hidro)</td><td class="num">−5,52%</td><td><strong>~19 GW</strong>; R$ 515,7 bi (receita 15 anos); ~80% gás</td></tr>
+      <tr><td><strong>2º LRCAP</strong> · mar/2026</td><td><strong>Potência</strong> (térmicas + ampliação hidro)</td><td class="num">−5,52%</td><td><strong>~19 GW</strong>; R$ 515,7 bi (receita total, contratos de 10–15 anos); ~80% gás</td></tr>
       <tr><td><strong>LRCAP Baterias</strong> · dez/2026</td><td><strong>Potência via BESS</strong> (CVU=0, ≥4h)</td><td class="num">a realizar</td><td>1º leilão de armazenamento do país; início ago/2028</td></tr>
       <tr><td><strong>Transmissão 4/2025</strong> · out/2025</td><td>Linhas + subestações (RAP)</td><td class="num">−47,98%</td><td>R$ 5,53 bi; economia ~R$ 11,5 bi</td></tr>
     </tbody>
@@ -759,7 +759,8 @@
       eólica onshore <strong>41%</strong>, bateria de 4h <strong>50%</strong>, gás de ciclo combinado <strong>74%</strong>,
       nuclear <strong>95%</strong>. E ficou mais severo: ao trocar o ELCC <em>médio</em> pelo <em>marginal</em> (reforma
       FERC), o crédito da solar <strong>desabou de ~33% para um dígito</strong> — cada MW novo de solar cai numa parte já
-      saturada da curva. No Reino Unido, a bateria de 4h leva <strong>41,7%</strong>. O recado para o desenho do LRCAP:
+      saturada da curva. No Reino Unido, a reforma de 2024 endureceu o crédito da bateria curta — a de 2h vale só
+      <strong>~15–27%</strong>, e o degrau de alta duração foi removido. O recado para o desenho do LRCAP:
       <strong>precificar capacidade pela placa do solar é um erro caro</strong>; o derating tem de ser pela ponta.</p>
   </div>
 
@@ -832,6 +833,36 @@
       dessas fontes na ponta é baixo (solar ~0, eólica 6–15%), a <strong>potência confiável às 19h cresce muito menos que
       a placa</strong>. O sistema fica "gordo" de energia e "magro" de ponta. O LRCAP é o instrumento que compra
       exatamente o que falta — <strong>MW na hora crítica</strong> — de quem ainda os tem: gás, hidro e, agora, baterias.</p>
+  </div>
+
+  <h3 class="sub">O LRCAP de 2026 resolveu? Uma ponte até 2031</h3>
+  <p>Resposta curta: <strong>não resolveu — comprou uma ponte, e datada</strong>. O requisito do PDE é calculado sobre
+    o "parque existente e contratado", então os ~19 GW do 2º LRCAP <strong>abatem</strong> a curva do déficit. Mas os
+    produtos do leilão têm <strong>início de suprimento escalonado e param em 2031</strong> — nada foi contratado para
+    entrar a partir de 2032, quando o requisito ainda sobe rumo a ~40 GW.</p>
+  <p>Há uma sutileza que o número "19 GW" esconde. Decompondo: <strong>~8,9 GW é térmica nova</strong>,
+    <strong>~7,6 GW é recontratação de térmicas existentes</strong> (gás/carvão que perderiam o CCEAR — mantêm MW que
+    sairiam, mas não adicionam potência física) e <strong>~2,5 GW é ampliação de UHE</strong>. Ou seja, boa parte
+    <em>repõe</em> capacidade que sairia; a adição líquida é bem menor que os 19 GW de manchete. E o Caso Base ainda
+    <strong>retira ~14,5 GW de térmicas</strong> velhas até 2034, com a demanda subindo ~3,3%/a.</p>
+  <figure>
+    <div class="chart" id="chart-lrcap-entrega"></div>
+    <figcaption><span class="ti">Entrega do 2º LRCAP por ano de início de suprimento (GW)</span>
+      Potência com início de suprimento em cada ano (produtos do 2º LRCAP; somam 19 GW). A entrega <strong>concentra em
+      2028</strong> e <strong>seca em 2031</strong> — nada tem início ≥2032, enquanto o requisito segue rumo a ~40 GW
+      (2034). Cinza = produtos de recontratação de existentes (2026–27); hidro = ampliação de UHE (2030); os demais
+      misturam térmicas novas e existentes. +4,6 GW do 1º LRCAP (2021, desde 2026) e ~2 GW de baterias (2028) não
+      plotados. Fonte: EPE, Informe de Vencedores LRCAP 2026.</figcaption>
+  </figure>
+  <div class="callout warn">
+    <span class="mk">PONTE, NÃO SOLUÇÃO — E O PROBLEMA É PERENE</span>
+    <p>A EPE é explícita: a necessidade é <strong>"crescente e perene"</strong>, exigindo "expansão contínua". O próprio
+      legislador já reconheceu o buraco de 2032–34 — a <strong>Lei 15.269/2025</strong> mandou contratar <strong>3.000 MW
+      de PCHs</strong> como reserva (1.000 MW/ano em 2032, 2033 e 2034). Então <strong>sim, virão novos leilões</strong>:
+      adequação de capacidade não é conserto único. O incômodo estrutural é que o LRCAP ainda é <strong>ad hoc</strong> —
+      disparado portaria a portaria, com preço-teto revisto no fio do edital e <strong>~42 pontos da lei ainda por
+      regulamentar</strong> — e não um mercado recorrente e automático como o RPM anual da PJM ou o T-4/T-1 do Reino Unido.
+      Enquanto for assim, cada ciclo carrega <strong>risco de judicialização</strong> (o TCU já contestou preços-teto).</p>
   </div>
 
   <div class="callout warn">
@@ -1285,6 +1316,37 @@
     <div class="card"><h4><span class="ico" style="background:var(--solar)">🏠</span>A frente distribuída</h4><p>Com o <strong>Fio B subindo (60% em 2026 → 100% em 2029)</strong>, autoconsumo solar + bateria fica cada vez mais atraente. Baterias atrás do medidor podem crescer rápido, reshapeando a curva de carga "de baixo para cima" — com risco de <em>load defection</em> (consumidores saindo da rede via autogeração+bateria, erodindo o rateio dos custos de rede). A BYD já anunciou uma linha de BESS de US$ 98 mi no país.</p></div>
   </div>
 
+  <h3 class="sub">O desenho do leilão de dez/2026 — o primeiro só de baterias</h3>
+  <p>A <strong>Portaria MME 136/2026</strong> (1º/jun/2026) estruturou <strong>dois certames</strong> de reserva de
+    capacidade só para <strong>baterias eletroquímicas</strong> (BESS) — UHR e outras tecnologias ficaram de fora deste
+    ciclo. Contrata-se <strong>disponibilidade de potência</strong> (R$/MW-ano), CVU zero, receita fixa por 15 anos.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Item</th><th>Especificação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dois certames</strong></td><td><strong>02/dez</strong> — Armazenamento Nacional (exige conteúdo nacional via credenciamento BNDES/CFI; roda primeiro, com prioridade). <strong>04/dez</strong> — Armazenamento (aberto; disputa o remanescente).</td></tr>
+      <tr><td><strong>Volume</strong></td><td><strong>Não fixado na portaria</strong> — definido por estudos EPE/ONS. Demanda inicial indicativa ~2 GW (~8 GWh em 4h); ~18 GW de projetos aptos ao cadastro (competição forte).</td></tr>
+      <tr><td><strong>Requisitos</strong></td><td>≥ <strong>30 MW</strong>; descarga ≥ <strong>4 h</strong>; eficiência (RTE) ≥ <strong>85%</strong>; recarga ≤ 6 h; <strong>grid-forming</strong> obrigatório; baterias novas; máx. 2 ciclos/dia.</td></tr>
+      <tr><td><strong>Prazo / entrega</strong></td><td>Contrato de <strong>15 anos</strong> (subiu de 10, p/ bancabilidade); suprimento a partir de <strong>01/ago/2028</strong>; cadastro EPE 15/jun–31/jul/2026.</td></tr>
+      <tr><td><strong>Sinal locacional</strong></td><td>Fator <strong>β = 0,9</strong> (−10% no preço ofertado) em barramentos estratégicos — favorece <strong>NE e MG</strong>, onde está o curtailment a absorver.</td></tr>
+      <tr><td><strong>Incentivos</strong> (Lei 15.269/2025)</td><td><strong>REIDI</strong> (2026–2030) + <strong>imposto de importação zerado</strong> para BESS; teto de renúncia de R$ 1 bi/ano.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Não há preço-teto na portaria; a ABSAE/Aurora estima receita competitiva de <strong>~R$ 1,25 mi/MW-ano</strong> —
+    ~25% abaixo do teto das térmicas novas (R$ 2,9 mi). O que viabiliza o leilão agora é o <strong>colapso do custo</strong>:
+    o pack estacionário caiu para <strong>US$ 70/kWh em 2025</strong> (−45% no ano); o sistema turnkey de 4h, ~US$ 110–117/kWh (BNEF).</p>
+
+  <div class="callout insight">
+    <span class="mk">POR QUE NÃO PELA ARBITRAGEM — O NÚMERO</span>
+    <p>Com o <strong>PLD colado no piso (R$ 57,31/MWh em 2026)</strong> e sem volatilidade intradiária, a arbitragem não
+      paga a bateria: num estudo empírico (2018–22), o <strong>lucro médio por operação foi R$ 0,36</strong>, contra um
+      <strong>custo de degradação por ciclo ~15× maior</strong> — prejuízo acumulado em todos os submercados. E onde a
+      arbitragem funciona, ela <strong>se autofagocita</strong>: no ERCOT a receita da bateria caiu de <strong>US$ 149
+      para ~US$ 17/kW-ano (2023→25)</strong> à medida que a frota cresceu. Por isso o Brasil ancora no <strong>contrato
+      de capacidade</strong>, com arbitragem e ancilares (ainda embrionários) como <em>upside</em>, não como base.</p>
+  </div>
+
   <h3 class="sub">A chave: complementam a hidro, não a substituem</h3>
   <p>O Brasil já tem a maior "bateria" do mundo — os reservatórios (~291 GWmês). Mas essa é uma bateria
     <strong>sazonal</strong> (meses). A bateria de lítio é <strong>intradiária</strong> (horas). Resolvem problemas
@@ -1313,6 +1375,29 @@
       A bateria preenche o buraco <em>intradiário</em> que a perda de regularização (fio d'água) + a onda solar criaram.</figcaption>
   </figure>
 
+  <h3 class="sub">A terceira bateria: UHR — o armazenamento de longa duração</h3>
+  <p>Entre o reservatório <em>sazonal</em> e a bateria <em>diária</em> falta um degrau: armazenamento de <strong>horas a
+    dias</strong>, em escala de GW, com vida de meio século. É o que a <strong>usina hidrelétrica reversível (UHR)</strong>
+    faz — dois reservatórios em desnível: bombeia no vale de preço, gera na ponta. Em <em>ciclo fechado</em>, é uma
+    "bateria gigante" <strong>sem barrar um grande rio</strong> — licenciamento muito mais leve que o de uma UHE.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Atributo</th><th>UHR (reversível)</th><th>BESS (íon-lítio)</th></tr></thead>
+    <tbody>
+      <tr><td>Duração típica</td><td><strong>Horas a dias</strong> (grandes reservatórios)</td><td>~1–4 h (o leilão exige 4 h)</td></tr>
+      <tr><td>Vida útil</td><td><strong>50–80+ anos</strong> (obra civil)</td><td>~10–15 anos (degrada por ciclo)</td></tr>
+      <tr><td>CAPEX</td><td>~US$ 1.200–1.600/kW (depende do sítio)</td><td>Cai rápido; ~US$ 110/kWh (4h)</td></tr>
+      <tr><td>Prazo de construção</td><td><strong>5–10 anos</strong></td><td>&lt; 1 ano</td></tr>
+      <tr><td>Ponto forte</td><td>Longa duração, inércia, black-start</td><td>Resposta rápida, arbitragem intradiária, curtailment</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>O Brasil tem <strong>109,8 GW de hidrelétrica instalada e zero UHR em operação</strong>. A EPE publicou o
+    <strong>Roadmap de UHR em jan/2025</strong> e, com a ferramenta GeoUHR, mapeou só no <strong>Rio de Janeiro ~21 GW
+    em 15 sítios</strong> (de 23 identificados). Mas a UHR leva 5–10 anos e <strong>não é elegível no leilão de 2028</strong>
+    (só baterias) — sua materialização é <strong>evento da próxima década</strong>, dependente de um mecanismo que
+    remunere flexibilidade de longa duração, ainda inexistente. Enquanto isso, o BESS ganha os primeiros leilões.</p>
+
   <div class="callout insight">
     <span class="mk">FORÇA DE REFORMA</span>
     <p>Há um efeito de segunda ordem: como a bateria <em>precisa</em> de spread para operar por mercado (e não por
@@ -1324,8 +1409,8 @@
   <div class="callout danger">
     <span class="mk">O RISCO: O MISSING MONEY DAS BATERIAS</span>
     <p>A necessidade de <strong>flexibilidade</strong> é enorme — a rampa de carga líquida dobra para ~50 GW até
-      2028 — e a bateria é uma das respostas. Mas a contratação prevista é <strong>modesta</strong> (~1,7 GW no 1º
-      leilão; a EPE projeta ~6,6 GW de armazenamento até 2035). Se a única receita for a capacidade administrada
+      2028 — e a bateria é uma das respostas. Mas a contratação prevista é <strong>modesta</strong> (demanda inicial ~2 GW,
+      não fixada em portaria; a EPE saltou de ~600 MW no PDE 2034 para ~6 GW no PDE 2035). Se a única receita for a capacidade administrada
       (LRCAP), o volume fica <strong>refém da disposição fiscal/tarifária</strong> — o mesmo debate da CDE — e pode
       <strong>subdimensionar frente ao que a transição pede</strong>. É o <em>missing money</em> (a receita que o
       preço de curto prazo não cobre para pagar a capacidade) aplicado às baterias.</p>
@@ -2168,7 +2253,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v2.2</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v2.3</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2635,6 +2720,20 @@
         {label:'2033',value:25,color:'#d9612e',faint:true,note:'aprox.'},
         {label:'2034',value:40,color:C.danger,bold:true,note:'nov'},
       ],{H:250,max:46,barW:50,axisFmt:v=>fmt(v)+'GW',valFmt:v=>fmt(v)});
+    });
+    // OFERTA & DEMANDA: entrega do 2º LRCAP por ano de início de suprimento (GW)
+    render('chart-lrcap-entrega',m=>{
+      vcols(m,[
+        {label:'26',value:1.96,color:C.gray,note:'recontr.'},
+        {label:'27',value:1.70,color:C.gray,note:'recontr.'},
+        {label:'28',value:7.39,color:C.accent,bold:true,note:'pico'},
+        {label:'29',value:2.80,color:C.accent},
+        {label:'30',value:2.31,color:C.hydro,note:'UHE'},
+        {label:'31',value:2.81,color:C.accent},
+        {label:'32',value:0,color:C.danger,faint:true,note:'nada'},
+        {label:'33',value:0,color:C.danger,faint:true},
+        {label:'34',value:0,color:C.danger,faint:true,note:'req.~40'},
+      ],{H:250,max:8.4,barW:34,axisFmt:v=>fmt(v)+'GW',valFmt:v=>fmt(v)});
     });
     // OFERTA & DEMANDA: geração por fonte 2024→2034 (TWh)
     render('chart-ger-fonte',m=>{
