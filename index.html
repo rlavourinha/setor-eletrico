@@ -71,6 +71,15 @@
     background:var(--accent-soft);padding:3px 9px;border-radius:6px;font-weight:500}
   .sec-sub{color:var(--muted);font-size:14.5px;margin:0 0 22px;max-width:760px}
   h3.sub{font-size:18px;font-weight:650;margin:34px 0 10px;letter-spacing:-.01em}
+  /* Destaque de conteúdo novo — auto-reversível (ver HIGHLIGHT no script do rodapé) */
+  .is-new{position:relative}
+  .is-new::before{content:"";position:absolute;left:-14px;top:.14em;bottom:.14em;width:3px;border-radius:2px;background:#2f9e63}
+  .flag-new{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;margin-left:10px;
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    color:#1c6b45;background:#e7f5ec;border:1px solid #b4dcc4;border-radius:999px;padding:2px 9px}
+  .flag-new::before{content:"";width:5px;height:5px;border-radius:50%;background:#2f9e63;animation:newpulse 2.2s ease-out infinite}
+  @keyframes newpulse{0%{box-shadow:0 0 0 0 rgba(47,158,99,.5)}70%{box-shadow:0 0 0 6px rgba(47,158,99,0)}100%{box-shadow:0 0 0 0 rgba(47,158,99,0)}}
+  @media(prefers-reduced-motion:reduce){.flag-new::before{animation:none}}
   p{margin:0 0 15px;max-width:800px}
   p.tight{margin-bottom:8px}
   .panel p, .panel li{color:var(--ink-soft)}
@@ -835,7 +844,7 @@
       exatamente o que falta — <strong>MW na hora crítica</strong> — de quem ainda os tem: gás, hidro e, agora, baterias.</p>
   </div>
 
-  <h3 class="sub">O LRCAP de 2026 resolveu? Uma ponte até 2031</h3>
+  <h3 class="sub" data-since="2.3">O LRCAP de 2026 resolveu? Uma ponte até 2031</h3>
   <p>Resposta curta: <strong>não resolveu — comprou uma ponte, e datada</strong>. O requisito do PDE é calculado sobre
     o "parque existente e contratado", então os ~19 GW do 2º LRCAP <strong>abatem</strong> a curva do déficit. Mas os
     produtos do leilão têm <strong>início de suprimento escalonado e param em 2031</strong> — nada foi contratado para
@@ -1316,7 +1325,7 @@
     <div class="card"><h4><span class="ico" style="background:var(--solar)">🏠</span>A frente distribuída</h4><p>Com o <strong>Fio B subindo (60% em 2026 → 100% em 2029)</strong>, autoconsumo solar + bateria fica cada vez mais atraente. Baterias atrás do medidor podem crescer rápido, reshapeando a curva de carga "de baixo para cima" — com risco de <em>load defection</em> (consumidores saindo da rede via autogeração+bateria, erodindo o rateio dos custos de rede). A BYD já anunciou uma linha de BESS de US$ 98 mi no país.</p></div>
   </div>
 
-  <h3 class="sub">O desenho do leilão de dez/2026 — o primeiro só de baterias</h3>
+  <h3 class="sub" data-since="2.3">O desenho do leilão de dez/2026 — o primeiro só de baterias</h3>
   <p>A <strong>Portaria MME 136/2026</strong> (1º/jun/2026) estruturou <strong>dois certames</strong> de reserva de
     capacidade só para <strong>baterias eletroquímicas</strong> (BESS) — UHR e outras tecnologias ficaram de fora deste
     ciclo. Contrata-se <strong>disponibilidade de potência</strong> (R$/MW-ano), CVU zero, receita fixa por 15 anos.</p>
@@ -1375,7 +1384,7 @@
       A bateria preenche o buraco <em>intradiário</em> que a perda de regularização (fio d'água) + a onda solar criaram.</figcaption>
   </figure>
 
-  <h3 class="sub">A terceira bateria: UHR — o armazenamento de longa duração</h3>
+  <h3 class="sub" data-since="2.3">A terceira bateria: UHR — o armazenamento de longa duração</h3>
   <p>Entre o reservatório <em>sazonal</em> e a bateria <em>diária</em> falta um degrau: armazenamento de <strong>horas a
     dias</strong>, em escala de GW, com vida de meio século. É o que a <strong>usina hidrelétrica reversível (UHR)</strong>
     faz — dois reservatórios em desnível: bombeia no vale de preço, gera na ponta. Em <em>ciclo fechado</em>, é uma
@@ -2748,6 +2757,21 @@
   renderAll();
   window.addEventListener('resize',()=>{}); // svg is responsive via viewBox
 })();
+</script>
+<script>
+  // Destaque de conteúdo novo — AUTO-REVERSÍVEL.
+  // Regra: cada bloco novo recebe data-since="X.Y". Só as versões listadas em HIGHLIGHT ganham o selo "novo".
+  // No próximo publish: troque HIGHLIGHT para a nova versão (ou deixe [] p/ nada) — os blocos antigos revertem sozinhos.
+  (function(){
+    var HIGHLIGHT=['2.3'];
+    document.querySelectorAll('[data-since]').forEach(function(el){
+      if(HIGHLIGHT.indexOf(el.getAttribute('data-since'))<0)return;
+      el.classList.add('is-new');
+      var b=document.createElement('span');
+      b.className='flag-new';b.textContent='novo';
+      el.appendChild(b);
+    });
+  })();
 </script>
 </body>
 </html>
