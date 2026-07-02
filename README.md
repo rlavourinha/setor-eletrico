@@ -24,6 +24,14 @@ Estudo de referência do setor elétrico brasileiro (Fases 1–3), construído *
 
 ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congresso · IEA · EIA · Eurostat · Ofgem · FERC.
 
+## Navegação (v3.0)
+
+- **Deep-link por hash**: `#aba` ou `#aba/seção` (ex.: `…/#regulacao/regulacao-wacc`) — favoritável e compartilhável; F5 preserva o lugar.
+- **"Nesta aba"**: sumário automático no topo de cada aba longa; botão ↑ flutuante.
+- **Glossário**: 33 siglas com tooltip na primeira ocorrência por aba + lista completa no rodapé.
+- **"Se você tem 15 minutos"**: as 10 teses do estudo, na Visão geral, com links.
+- **Chips 📌**: valores conjunturais carregam a data de referência (âmbar quando envelhecidos); a ausência do chip significa dado estrutural.
+
 ## Notas técnicas
 
 - Gráficos em **SVG inline** renderizados por JavaScript puro — sem CDN, sem bibliotecas. Funciona atrás de firewall corporativo.
@@ -32,4 +40,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v2.3 · 30 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v3.0 · 30 jun 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*

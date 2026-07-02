@@ -80,6 +80,53 @@
   .flag-new::before{content:"";width:5px;height:5px;border-radius:50%;background:#2f9e63;animation:newpulse 2.2s ease-out infinite}
   @keyframes newpulse{0%{box-shadow:0 0 0 0 rgba(47,158,99,.5)}70%{box-shadow:0 0 0 6px rgba(47,158,99,0)}100%{box-shadow:0 0 0 0 rgba(47,158,99,0)}}
   @media(prefers-reduced-motion:reduce){.flag-new::before{animation:none}}
+  /* ---- v3: navegação e releitura ---- */
+  h2.sec,h3.sub{scroll-margin-top:120px}
+  .toc{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline;margin:14px 0 20px;
+    padding:10px 12px;background:var(--panel,#fbf9f4);border:1px solid #eee7da;border-radius:10px}
+  .toc .toc-t{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--faint,#9aa2ad);margin-right:4px}
+  .toc a{font-size:12.5px;color:var(--accent);text-decoration:none;background:var(--accent-soft,#e8f0f8);
+    padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .toc a:hover{text-decoration:underline}
+  .xref{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--accent);
+    text-decoration:none;background:var(--accent-soft,#e8f0f8);border:1px solid #d5e2ef;
+    padding:3px 11px;border-radius:999px;margin:2px 0}
+  .xref:hover{text-decoration:underline}
+  .xref::before{content:"→";font-weight:700}
+  .gl{border-bottom:1px dotted var(--accent);cursor:help;position:relative}
+  .gl:hover::after,.gl:focus::after{content:attr(data-def);position:absolute;left:50%;bottom:1.55em;
+    transform:translateX(-50%);background:#1b1f27;color:#f4f1ea;padding:9px 12px;border-radius:9px;
+    font-size:12px;line-height:1.45;font-weight:400;font-style:normal;width:max-content;max-width:min(300px,84vw);
+    z-index:60;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none}
+  #totop{position:fixed;bottom:20px;right:20px;width:42px;height:42px;border-radius:50%;
+    background:var(--ink,#1b1f27);color:#f4f1ea;border:none;font-size:19px;cursor:pointer;
+    display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.28);z-index:70;opacity:.85}
+  #totop:hover{opacity:1}
+  #totop.on{display:flex}
+  .asof{display:inline-block;vertical-align:middle;margin-left:7px;font-family:var(--mono);
+    font-size:10px;font-weight:600;letter-spacing:.03em;color:#7a828e;background:#f0ede5;
+    border:1px solid #e2dccd;border-radius:999px;padding:1px 8px;white-space:nowrap}
+  .asof.old{color:#8a6210;background:#f7edd4;border-color:#e8d5a4}
+  .jornada{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0 6px}
+  .jornada .jstep{font-size:12px;font-weight:600;padding:6px 11px;border-radius:9px;
+    background:var(--accent-soft,#e8f0f8);color:#2a4a68;border:1px solid #d5e2ef}
+  .jornada .jstep small{display:block;font-weight:500;font-size:10.5px;color:var(--faint,#9aa2ad)}
+  .jornada .jarr{color:#c9c2b4;font-weight:700}
+  .jornada .jstep.live{background:#e7f5ec;border-color:#b4dcc4;color:#1c6b45}
+  .cards .card.go{cursor:pointer;transition:border-color .12s, transform .12s}
+  .cards .card.go:hover{border-color:var(--accent);transform:translateY(-1px)}
+  #glossario dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:3px 26px;margin:12px 0 0}
+  #glossario .gi{padding:7px 0;border-bottom:1px solid #eee7da}
+  #glossario dt{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--ink,#1b1f27)}
+  #glossario dd{margin:2px 0 0;font-size:12.5px;color:var(--muted,#6b7480);line-height:1.45}
+  #glossario summary{cursor:pointer;font-weight:650;font-size:14px;color:var(--ink-soft,#3a4150)}
+  @media(max-width:560px){
+    .tab{padding:7px 9px;font-size:12px}
+    .tab .num{display:none}
+    figure .chart{overflow-x:auto}
+    figure .chart svg{min-width:520px}
+  }
   p{margin:0 0 15px;max-width:800px}
   p.tight{margin-bottom:8px}
   .panel p, .panel li{color:var(--ink-soft)}
@@ -225,7 +272,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v2.3 · 30 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v3.0 · 30 jun 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -308,27 +355,52 @@
       líquida e ajustes estatísticos. Fonte: EPE, Balanço Energético Nacional 2026 (ano-base 2025).</figcaption>
   </figure>
 
-  <h2 class="sec">Como navegar este estudo</h2>
+  <h2 class="sec" data-since="3.0">Se você tem 15 minutos <span class="tag">as 10 teses do estudo</span></h2>
+  <p class="sec-sub">O estudo inteiro, destilado. Cada tese é aprofundada numa aba — clique para ir direto.</p>
+  <ol style="max-width:820px;padding-left:22px;display:grid;gap:9px">
+    <li><strong>O problema do sistema inverteu:</strong> sobra energia barata, falta <strong>potência firme na ponta</strong>. Todo o resto — leilões, preço, agenda — decorre disso. <a class="xref" href="#od">aba 04</a></li>
+    <li><strong>O PLD não é um preço de mercado</strong> — é um custo computado por modelo, com teto e piso administrados. Não o leia como sinal puro de escassez. <a class="xref" href="#mercado">aba 06</a></li>
+    <li><strong>O reservatório é a bateria sazonal do país;</strong> a solar abriu um buraco <em>intradiário</em> que só flexibilidade (gás, baterias, UHR) fecha. <a class="xref" href="#geracao">aba 05</a></li>
+    <li><strong>Há dois lastros, não um:</strong> energia (MWmédio no ano) ≠ potência firme (MW às 19h). A solar tem crédito ~zero na ponta noturna. <a class="xref" href="#od">aba 04</a></li>
+    <li><strong>O LRCAP de 2026 comprou uma ponte até 2031</strong>, não uma solução — o requisito de potência é perene e virão novos leilões. <a class="xref" href="#od">aba 04</a></li>
+    <li><strong>Curtailment é o risco novo da geração renovável</strong> (~20% da eólica+solar cortada) — e a maior parte não é ressarcida. <a class="xref" href="#regulacao">aba 07</a></li>
+    <li><strong>Cada elo ganha de um jeito:</strong> a transmissão vende <em>disponibilidade</em> (RAP), a distribuição vende <em>eficiência</em> (Parcela B), a geração vende <em>contrato + exposição</em>. <a class="xref" href="#regulacao">aba 07</a></li>
+    <li><strong>Lucro IFRS de distribuidora não é caixa</strong> (VNR, CVA): siga o caixa regulatório, não o P&amp;L contábil. <a class="xref" href="#regulacao">aba 07</a></li>
+    <li><strong>EV/RAB ancora em 1,0×</strong> — crescimento só cria valor se ROIC &gt; custo de capital; CapEx &gt; depreciação por si não gera prêmio. <a class="xref" href="#regulacao">aba 07</a></li>
+    <li><strong>O WACC que importa é o do ano da revisão da SUA empresa</strong> (cristalizado por 4–5 anos), não o vigente hoje. <a class="xref" href="#regulacao">aba 07</a></li>
+  </ol>
+
+  <h2 class="sec" data-since="3.0">Como navegar este estudo</h2>
+  <div class="jornada" aria-label="Ordem sugerida de leitura">
+    <span class="jstep">01–02<small>por quê &amp; quem</small></span><span class="jarr">→</span>
+    <span class="jstep">03<small>Fase 1 · física</small></span><span class="jarr">→</span>
+    <span class="jstep">04–06<small>Fase 2 · comercial</small></span><span class="jarr">→</span>
+    <span class="jstep">07<small>Fase 3 · regulação</small></span><span class="jarr">→</span>
+    <span class="jstep">08<small>lente externa</small></span><span class="jarr">→</span>
+    <span class="jstep live">09–10<small>painéis vivos</small></span>
+  </div>
+  <p class="sec-sub" style="margin-top:4px">Primeira leitura: linear, 01→08. Releitura: <strong>09 e 10 são os painéis
+    vivos</strong> (mudam a cada versão); o resto é referência estável. Os cards abaixo são clicáveis.</p>
   <div class="cards c2">
-    <div class="card"><h4>01 · Contexto histórico</h4><p>O arco de 1879 a 2026: como cada instituição nasceu
+    <div class="card go" data-goto="historia"><h4>01 · Contexto histórico</h4><p>O arco de 1879 a 2026: como cada instituição nasceu
       de uma crise, e por que o Brasil "desagrega" o que o mundo "agrega".</p></div>
-    <div class="card"><h4>02 · Instituições</h4><p>Quem <strong>planeja, opera, regula e liquida</strong>.
+    <div class="card go" data-goto="inst"><h4>02 · Instituições</h4><p>Quem <strong>planeja, opera, regula e liquida</strong>.
       A arquitetura de governança — e por que ONS e CCEE são entes privados.</p></div>
-    <div class="card"><h4>03 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
+    <div class="card go" data-goto="fisico"><h4>03 · Sistema físico</h4><p>Matriz, reservatórios como bateria, os 4 submercados,
       despacho por custo e a cadeia de modelos NEWAVE → DECOMP → DESSEM.</p></div>
-    <div class="card"><h4>04 · Oferta &amp; demanda</h4><p>Crescimento, desafios (curva do pato), leilões (LRCAP),
+    <div class="card go" data-goto="od"><h4>04 · Oferta &amp; demanda</h4><p>Crescimento, desafios (curva do pato), leilões (LRCAP),
       custo por fonte (LCOE) e como o preço deveria se comportar pela geração marginal.</p></div>
-    <div class="card"><h4>05 · Geração</h4><p>Quanto custa e quanto demora construir, o ciclo de caixa (curva J),
+    <div class="card go" data-goto="geracao"><h4>05 · Geração</h4><p>Quanto custa e quanto demora construir, o ciclo de caixa (curva J),
       o financiamento — e por que o Brasil parou de construir grandes hidrelétricas.</p></div>
-    <div class="card"><h4>06 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
+    <div class="card go" data-goto="mercado"><h4>06 · Mercado &amp; preço</h4><p>ACR vs ACL, formação do PLD pelo "valor da água",
       o risco hidrológico (MRE/GSF), bandeiras e a abertura do mercado livre.</p></div>
-    <div class="card"><h4>07 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
+    <div class="card go" data-goto="regulacao"><h4>07 · Regulação econômica</h4><p>O coração da análise: <strong>como cada segmento
       ganha dinheiro</strong>. RAP, Parcela A/B, BRR, WACC regulatório, ativos regulatórios não-caixa.</p></div>
-    <div class="card"><h4>08 · Internacional</h4><p>Seis eixos regulatórios, preços (varejo/atacado/tributos),
+    <div class="card go" data-goto="mundo"><h4>08 · Internacional</h4><p>Seis eixos regulatórios, preços (varejo/atacado/tributos),
       preço negativo vs curtailment, mercados de capacidade, casos de estresse e as lições para o Brasil.</p></div>
-    <div class="card"><h4>09 · Acompanhamento</h4><p>O que monitorar diariamente: o termômetro do PLD, os indicadores
+    <div class="card go" data-goto="acomp"><h4>09 · Acompanhamento</h4><p>O que monitorar diariamente: o termômetro do PLD, os indicadores
       (preço, carga, hidrologia) com fontes ao vivo, o playbook de preço e as armadilhas de leitura.</p></div>
-    <div class="card"><h4>10 · Agenda regulatória</h4><p>O que está na mesa em 2026: a antecipação do reconhecimento do
+    <div class="card go" data-goto="agenda"><h4>10 · Agenda regulatória</h4><p>O que está na mesa em 2026: a antecipação do reconhecimento do
       CapEx e seus impactos, e o mapa das discussões (curtailment, CVaR, WACC, Fator X, CDE, RBSE, abertura, baterias).</p></div>
   </div>
 </section>
@@ -460,6 +532,10 @@
 
 <!-- ============================ INSTITUIÇÕES ============================ -->
 <section class="panel" id="inst">
+  <p class="lead">Nenhuma decisão que afeta seu investimento no setor é tomada num lugar só. Esta aba mapeia
+    <b>quem decide o quê</b> — e por que a arquitetura brasileira fragmenta deliberadamente funções que em
+    outros países vivem sob o mesmo teto.</p>
+
   <h2 class="sec">Quem planeja, opera, regula e liquida <span class="tag">Fase 1</span></h2>
   <p class="sec-sub">A separação de funções é o esqueleto do setor. A regra de ouro: <strong>quem planeja não
     decide, quem opera não precifica, quem regula não opera, e quem liquida não despacha.</strong></p>
@@ -506,6 +582,10 @@
 
 <!-- ============================ SISTEMA FÍSICO ============================ -->
 <section class="panel" id="fisico">
+  <p class="lead">Antes de preço e regulação, elétrons e água. Esta aba mostra a <b>máquina física</b> por baixo
+    de tudo: a matriz, os reservatórios como bateria, os 4 submercados e o despacho central — a gramática que
+    o resto do estudo usa o tempo todo.</p>
+
   <h2 class="sec">A máquina física <span class="tag">Fase 1</span></h2>
   <p class="sec-sub">Um sistema <strong>hidrotérmico de base hídrica</strong>, do tamanho de um continente,
     com a maior "bateria" do mundo feita de água — e uma onda renovável que está reescrevendo suas regras.</p>
@@ -524,8 +604,9 @@
       <figure style="margin-top:0">
         <div class="chart" id="chart-ear"></div>
         <figcaption><span class="ti">Energia armazenada por subsistema (% do máximo)</span>
-          Padrão sazonal típico em abr/2026: Norte e Nordeste cheios após o período úmido; Sul quase vazio.
-          Número que muda diariamente. Fonte: ONS.</figcaption>
+          <span data-asof="abr/26">Retrato de abril/2026</span>, que ilustra o padrão sazonal recorrente: Norte e
+          Nordeste cheios após o período úmido; Sul quase vazio. O número muda diariamente — o valor vivo está na
+          aba 09. Fonte: ONS.</figcaption>
       </figure>
     </div>
   </div>
@@ -587,7 +668,8 @@
       Construir mais linha não resolve; só armazenamento e flexibilidade resolvem. <strong>Refere-se apenas ao
       corte por razão energética</strong>; o curtailment total (todas as causas) é bem maior — ~14,6 TWh em 2024.
       Só 2024 é fechamento do ONS (4.330 GWh); 2022–23 ilustram a trajetória e 2025 é estimativa de mercado (Volt
-      Robotics), não diretamente comparável. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.</figcaption>
+      Robotics), não diretamente comparável. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.
+      <a class="xref" href="#regulacao">quem é ressarcido (aba 07)</a></figcaption>
   </figure>
   <div class="callout warn">
     <span class="mk">A VILÃ SILENCIOSA</span>
@@ -596,6 +678,15 @@
       mesma forma — empurrando o corte para os parques centralizados, que então pedem indenização. É um conflito
       distributivo embutido na "curva do pato". A rampa de carga líquida que a hidro precisa absorver deve subir
       de ~25 GW (2024) para ~50 GW (2028).</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>O SIN foi desenhado como uma máquina de <strong>estoque sazonal</strong> — guardar água da cheia para a seca —
+      e está virando uma máquina de <strong>fluxo intradiário</strong>, onde o desafio é atravessar as horas entre o
+      sol se pôr e a demanda cair. Guarde três coisas: o despacho é <strong>central e por custo</strong> (ninguém "escolhe"
+      gerar); os <strong>4 submercados</strong> definem onde o preço abre; e a <strong>MMGD</strong> é a força invisível
+      que deprime a carga líquida ao meio-dia. Essa gramática física explica o preço (aba 06) e os leilões (aba 04).</p>
   </div>
 </section>
 
@@ -712,7 +803,7 @@
 
   <div class="divider"></div>
 
-  <h2 class="sec">Capacidade × potência: o que o LRCAP realmente compra <span class="tag">aprofundamento</span></h2>
+  <h2 class="sec" id="od-capacidade">Capacidade × potência: o que o LRCAP realmente compra <span class="tag">aprofundamento</span></h2>
   <p class="sec-sub">O LRCAP não compra energia (MWh) nem usinas — compra <strong>disponibilidade de potência na ponta</strong>
     (R$/MW-ano). Para entender o instrumento e o tamanho do problema que ele endereça, é preciso separar três palavras
     que o mercado trata como sinônimas e não são: <strong>energia, potência e capacidade</strong>.</p>
@@ -791,7 +882,7 @@
       <tr><td>(vão 2022–2025)</td><td>—</td><td class="num">nenhum</td><td class="num">—</td><td>O "LRCAP 2025" (27/jun/2025) foi <strong>cancelado</strong> (DOU 04/abr/2025) na guerra de liminares sobre CVU e fator de flexibilidade.</td></tr>
       <tr><td><strong>2º LRCAP</strong></td><td>18/mar/2026</td><td class="num"><strong>18.977 MW</strong></td><td class="num">−5,52%</td><td>Gás (~80%), carvão (~1,3 GW) e <strong>ampliação de hidro</strong> (~2,5 GW, inédita). R$ 515,7 bi; ~R$ 38,9 bi/ano; prazos de 10–15 anos. 100 vencedores.</td></tr>
       <tr><td>· óleo/diesel/biodiesel</td><td>20/mar/2026</td><td class="num">501 MW</td><td class="num">−50,14%</td><td>6 usinas; estreia das <strong>primeiras térmicas a biodiesel</strong> do país.</td></tr>
-      <tr><td><strong>LRCAP Baterias</strong></td><td>02 e 04/dez/2026</td><td class="num">~2 GW*</td><td class="num">a realizar</td><td>1º leilão de <strong>armazenamento (BESS)</strong>: ≥4h, ≥85% de eficiência, suprimento ago/2028, 15 anos. *Volume não fixado oficialmente.</td></tr>
+      <tr><td><strong>LRCAP Baterias</strong></td><td>02 e 04/dez/2026</td><td class="num">~2 GW*</td><td class="num">a realizar</td><td>1º leilão de <strong>armazenamento (BESS)</strong>: ≥4h, ≥85% de eficiência, suprimento ago/2028, 15 anos. *Volume não fixado oficialmente. <a class="xref" href="#geracao/geracao-baterias">o desenho completo (aba 05)</a></td></tr>
     </tbody>
   </table>
   </div>
@@ -1297,7 +1388,7 @@
 
   <div class="divider"></div>
 
-  <h2 class="sec">Baterias — o que muda no Brasil <span class="tag">a fronteira</span></h2>
+  <h2 class="sec" id="geracao-baterias">Baterias — o que muda no Brasil <span class="tag">a fronteira</span></h2>
   <p class="sec-sub">O mundo já está <strong>fundo</strong> nas baterias — não é mais "se", é "quão rápido". O
     Brasil entra agora, ~5–6 anos atrás, e de um jeito próprio: <strong>pela porta da capacidade, não da arbitragem</strong>.</p>
 
@@ -1348,7 +1439,10 @@
 
   <div class="callout insight">
     <span class="mk">POR QUE NÃO PELA ARBITRAGEM — O NÚMERO</span>
-    <p>Com o <strong>PLD colado no piso (R$ 57,31/MWh em 2026)</strong> e sem volatilidade intradiária, a arbitragem não
+    <p>O problema não é o nível do PLD — é a forma: <strong>plano ao longo do dia</strong>. Mesmo com o preço bem acima
+      do piso em 2025–26 (média 2025 ~R$ 157; mai/26 entre R$ 143 e R$ 249 por submercado), o PLD quase não varia entre
+      o meio-dia e a ponta — a hidro e o piso/teto administrados achatam o <em>spread intradiário</em>, que é o que
+      remunera bateria. Sem spread, a arbitragem não
       paga a bateria: num estudo empírico (2018–22), o <strong>lucro médio por operação foi R$ 0,36</strong>, contra um
       <strong>custo de degradação por ciclo ~15× maior</strong> — prejuízo acumulado em todos os submercados. E onde a
       arbitragem funciona, ela <strong>se autofagocita</strong>: no ERCOT a receita da bateria caiu de <strong>US$ 149
@@ -1424,10 +1518,24 @@
       <strong>subdimensionar frente ao que a transição pede</strong>. É o <em>missing money</em> (a receita que o
       preço de curto prazo não cobre para pagar a capacidade) aplicado às baterias.</p>
   </div>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>Construir geração ficou <strong>barato e rápido</strong> (solar em meses, a custo de mínima histórica) — e por isso
+      a energia em si vale pouco. O valor migrou para o que é <strong>escasso</strong>: firmeza, flexibilidade e o instante
+      da ponta. Daí a inversão do funil de investimento: quem constrói VRE enfrenta curtailment e canibalização; quem
+      entrega <strong>capacidade na hora certa</strong> (gás contratado, hidro existente, baterias via LRCAP) captura a
+      renda nova. A UHR é a aposta da próxima década; o ciclo de caixa (curva J) e o financiamento continuam sendo onde
+      projetos morrem.</p>
+  </div>
 </section>
 
 <!-- ============================ MERCADO & PREÇO ============================ -->
 <section class="panel" id="mercado">
+  <p class="lead">Aqui a energia vira contrato e o contrato vira preço. Esta aba explica <b>onde se compra e
+    vende</b> (ACR × ACL), <b>como nasce o PLD</b> (e por que ele é um modelo, não um mercado) e o risco que
+    já quebrou geradoras: o <b>GSF</b>.</p>
+
   <h2 class="sec">Onde a energia é vendida — e como nasce o preço <span class="tag">Fase 2</span></h2>
   <p class="sec-sub">Dois ambientes contratuais paralelos, ambos liquidados na CCEE, com lógicas opostas: o
     <strong>ACR</strong> é compra centralizada via leilão; o <strong>ACL</strong> é contratação bilateral livre.</p>
@@ -1504,7 +1612,7 @@
 
   <div class="divider"></div>
 
-  <h2 class="sec">O risco hidrológico: MRE e GSF</h2>
+  <h2 class="sec" id="mercado-gsf">O risco hidrológico: MRE e GSF</h2>
   <p>A <strong>garantia física</strong> é quanto uma usina pode <em>vender</em> em contrato (seu lastro), sempre
     inferior à capacidade instalada. O <strong>MRE (Mecanismo de Realocação de Energia)</strong> socializa o
     risco hidrológico: realoca energia das hidrelétricas que geraram acima da garantia física para as que
@@ -1530,13 +1638,26 @@
   <figure>
     <div class="chart" id="chart-band"></div>
     <figcaption><span class="ti">Bandeiras tarifárias — acréscimo na conta (R$ por 100 kWh)</span>
-      Acionadas mensalmente pela ANEEL conforme PLD/CMO e risco hidrológico. Em 2026: jan–abr verde, maio e junho
-      amarela. Em 2021, a seca exigiu até uma bandeira extra "Escassez Hídrica" de R$ 14,20. Fonte: ANEEL REH 3.306/2024.</figcaption>
+      Acionadas mensalmente pela ANEEL conforme PLD/CMO e risco hidrológico. Em 2026: jan–abr verde; <span data-asof="jul/26">mai, jun e jul
+      amarela</span> (3º mês seguido — anúncio ANEEL de 26/jun). Em 2021, a seca exigiu até uma bandeira extra "Escassez Hídrica" de R$ 14,20. Fonte: ANEEL REH 3.306/2024.</figcaption>
   </figure>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>O "preço" brasileiro é três coisas empilhadas: um <strong>PLD que é modelo capado</strong> (não mercado), um
+      <strong>ACR</strong> que soca o custo da segurança na tarifa via leilão, e <strong>bandeiras</strong> que repassam a
+      conjuntura ao consumidor com atraso mínimo. Para a análise de empresas, o que importa: contrato hidro <strong>não é
+      livre de risco</strong> (o GSF já quebrou geradora), a exposição ao PLD é onde mora o desvio de resultado, e a
+      migração ao ACL muda <em>quem</em> carrega o risco de preço — não o risco em si.</p>
+  </div>
 </section>
 
 <!-- ============================ REGULAÇÃO ECONÔMICA ============================ -->
 <section class="panel" id="regulacao">
+  <p class="lead">Se você só ler uma aba, leia esta. No setor elétrico, <b>o desenho regulatório determina quase
+    toda a remuneração</b> de cada elo — errar a mecânica de um segmento é errar a empresa inteira. Aqui: como
+    cada fio ganha, o WACC que remunera, e por que o lucro contábil engana.</p>
+
   <h2 class="sec">Como cada segmento ganha dinheiro <span class="tag">Fase 3 · o coração</span></h2>
   <p class="sec-sub">Aqui mora o alfa. A remuneração de cada elo é quase totalmente determinada pelo desenho
     regulatório — e os três fios ganham dinheiro de formas radicalmente diferentes.</p>
@@ -1602,7 +1723,8 @@
   <h3 class="sub">Geração — contrato vs. exposição ao PLD</h3>
   <p>Dois vetores de receita: a <strong>parcela contratada</strong> (preço × energia, limitada à garantia física)
     e a <strong>exposição ao curto prazo</strong> (o desvio entre gerado e contratado liquidado ao PLD). É o
-    segmento de maior risco: preço (PLD entre R$ 57 e R$ 1.611/MWh em 2026), hidrologia (GSF) e curtailment.</p>
+    segmento de maior risco: preço (PLD entre R$ 57 e R$ 1.611/MWh em 2026), hidrologia (GSF) e curtailment.
+    <a class="xref" href="#mercado/mercado-gsf">como o GSF funciona (aba 06)</a></p>
   <div class="callout warn">
     <span class="mk">RISCO RENOVÁVEL</span>
     <p>O <strong>curtailment por motivo energético não é ressarcido</strong>. A Lei 15.269/2025 garante
@@ -1624,7 +1746,7 @@
 
   <div class="divider"></div>
 
-  <h2 class="sec">WACC e o valor de uma utility regulada <span class="tag">o múltiplo justo</span></h2>
+  <h2 class="sec" id="regulacao-wacc">WACC e o valor de uma utility regulada <span class="tag">o múltiplo justo</span></h2>
   <p class="sec-sub">A taxa que a ANEEL manda remunerar sobre a base de ativos é a <strong>dobradiça do valuation</strong>.
     É <strong>nacional, por segmento</strong> (não por região) — remunera o risco <em>sistêmico</em> do negócio de
     rede, não o idiossincrático da empresa. Em 2026: <strong>8,10% (distribuição)</strong> e <strong>8,00%
@@ -1738,6 +1860,16 @@
       <strong>Com risco/underearning</strong> (r = 11%, ganha só 7% efetivo): <strong>~0,6–0,9×</strong> — mercado pagando
       abaixo da base, e a tese de compra é "a TIR implícita está acima do WACC".</p>
   </div>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>Três máquinas de dinheiro: a <strong>transmissão vende disponibilidade</strong> (RAP — o bond do setor), a
+      <strong>distribuição vende eficiência sobre a Parcela B</strong> (e devolve o resto), e a <strong>geração vende
+      contrato + exposição</strong> — é o único elo que carrega os dois lastros (energia e potência, aba 04) e os riscos
+      de hidrologia e curtailment. O múltiplo justo ancora na base (<strong>1,0× RAB</strong>); tudo acima ou abaixo é
+      aposta em três spreads — capital, execução e regulatório. E o mantra: <strong>o lucro IFRS mente; siga o caixa
+      regulatório</strong>.</p>
+  </div>
 </section>
 
 <!-- ============================ MUNDO ============================ -->
@@ -1789,7 +1921,7 @@
   <div class="cards c3">
     <div class="card"><h4>🇳🇴 Nord Pool — hidro por mercado</h4><p>O contraponto <strong>decisivo</strong>: a Noruega é ~96% hidrelétrica e <strong>precifica a água por mercado</strong>, não por otimizador. O "valor da água" emerge dos lances. Relativiza o argumento de que "hidro exige despacho central" — embora a Noruega tenha forte interconexão europeia e reservatórios de regulação plurianual, condições que o SIN ilhado não tem.</p></div>
     <div class="card"><h4>🇬🇧 Reino Unido — RIIO nas redes</h4><p>O <strong>RIIO</strong> remunera redes por <strong>resultado e eficiência</strong> (totex, incentivos), não por CAPEX. RIIO-3 (2026–31): £28,1 bi de totex com meta de <strong>−1% de custo ao ano</strong>. É o benchmark que falta ao Brasil.</p></div>
-    <div class="card"><h4>🇺🇸 PJM — mercado de capacidade</h4><p>Preço <strong>nodal (LMP)</strong> + leilão de capacidade que paga por MW disponível: <strong>US$ 329/MW-dia</strong> (26/27), recorde. Resolve o <em>missing money</em> (a receita que o preço de curto prazo não cobre para pagar a capacidade) que o energy-only puro não resolve — ao custo de subsidiar capacidade fóssil.</p></div>
+    <div class="card"><h4>🇺🇸 PJM — mercado de capacidade</h4><p>Preço <strong>nodal (LMP)</strong> + leilão de capacidade que paga por MW disponível: <strong>US$ 329/MW-dia</strong> (26/27), recorde. Resolve o <em>missing money</em> (a receita que o preço de curto prazo não cobre para pagar a capacidade) que o energy-only puro não resolve — ao custo de subsidiar capacidade fóssil. <a class="xref" href="#od/od-capacidade">capacidade × potência no Brasil (aba 04)</a></p></div>
   </div>
 
   <h2 class="sec">Preços — varejo, atacado e o paradoxo</h2>
@@ -1899,7 +2031,7 @@
     <div class="kpi"><div class="v">~66<span class="u">%</span></div><div class="l">EAR do SE/CO — a "caixa d'água" (~70% do estoque)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
     <div class="kpi"><div class="v">~83<span class="u">% MLT</span></div><div class="l">Afluência (ENA) do SE/CO — abaixo da média (seco)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
     <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Recorde de pico de demanda (não superado em 2026)</div><div class="src">ONS · fev/25</div></div>
-    <div class="kpi"><div class="v">100,3<span class="u">%</span></div><div class="l">GSF (geração hidro ÷ garantia física), fev/26</div><div class="src">CCEE</div></div>
+    <div class="kpi"><div class="v">100,3<span class="u">%</span></div><div class="l" data-asof="fev/26">GSF (geração hidro ÷ garantia física) — último úmido; no seco (mai–nov) cai tipicamente p/ ~0,7–0,9</div><div class="src">CCEE · InfoMercado</div></div>
   </div>
   <p class="src-note">Snapshot de 29/06/2026. Valores marcados "ao vivo" mudam diariamente — puxe-os dos painéis abaixo.</p>
 
@@ -2095,8 +2227,9 @@
   <div class="callout danger">
     <span class="mk">ONDE ESTAMOS — JUN/2026</span>
     <p>A La Niña de 2024–25 terminou, passou por neutro, e o Pacífico está esquentando: o índice Niño-3.4 estava em
-      <strong>~+0,7 °C (CPC, início de jun/2026)</strong>, sob <strong>"El Niño Advisory"</strong>, com fortalecimento
-      previsto até o verão 2026–27 (até ~63% de chance de El Niño forte). <strong>Leitura para o setor:</strong> tende a
+      <strong>~+0,7 °C (CPC, diagnóstico de 11/jun/2026)</strong>, sob <strong>"El Niño Advisory"</strong> — e o CPC
+      atribui <strong>~63% de chance de um El Niño MUITO FORTE (very strong) em nov–jan</strong>, a classe de 2015–16 e
+      2023–24 <span data-asof="jun/26"></span>. Próximo diagnóstico: ~9/jul. <strong>Leitura para o setor:</strong> tende a
       <strong>chuva abaixo da média no Norte/Nordeste</strong> (reservatórios do NE e do São Francisco sob atenção) e
       <strong>calor no SE/CO</strong> (pressão de demanda), com provável alívio no Sul. Como o sinal no SE/CO é ambíguo,
       o risco mais provável é <strong>NE seco + carga elevada por calor</strong>.</p>
@@ -2139,6 +2272,15 @@
     <div class="card"><h4><span class="ico" style="background:var(--hydro)">🌊</span>Dipolo do Atlântico</h4><p>Anomalias de temperatura entre Atlântico Norte e Sul deslocam a ZCIT — o <strong>2º maior controle</strong> (depois do ENSO) da chuva do Nordeste. Pode somar ou cancelar o sinal do Pacífico.</p></div>
     <div class="card"><h4><span class="ico" style="background:var(--wind)">🌳</span>Rios voadores / Amazônia</h4><p>A floresta evapotranspira umidade que vira chuva no <strong>Centro-Sul — onde estão os maiores reservatórios</strong>. Desmatamento + aquecimento enfraquecem esse transporte: <strong>a Amazônia é infraestrutura hídrica do parque hidrelétrico</strong>.</p></div>
     <div class="card"><h4><span class="ico" style="background:var(--danger)">🌡️</span>Mudança climática</h4><p>Tendências: <strong>menos chuva no NE/Norte</strong>, secas mais severas e maior variabilidade (bateria hídrica menos confiável), e <strong>ondas de calor</strong> que elevam a demanda de pico estruturalmente.</p></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="mk">A LEITURA</span>
+    <p>A rotina semanal cabe em cinco olhadas: <strong>EAR</strong> (o estoque), <strong>ENA</strong> (o fluxo),
+      <strong>bandeira</strong> (o repasse), <strong>GSF</strong> (o risco do gerador hídrico) e <strong>PLD</strong>
+      (o termômetro) — mais o céu (INMET/ENSO), que é o sinal mais antecedente de todos. Regra desta aba: <strong>tudo
+      aqui envelhece</strong>; os números impressos são o retrato da versão, os links ao vivo são a verdade. Se só puder
+      olhar um indicador no seco, olhe a ENA — ela erra antes dos outros.</p>
   </div>
 </section>
 
@@ -2223,12 +2365,13 @@
     <tbody>
       <tr><td><strong>Ressarcimento de curtailment</strong> (Lei 15.269; CP 009/2025)</td><td>Regras p/ <strong>solar aprovadas (jun/26)</strong>; eólica pendente</td><td>Retroativo a set/23, pago via ESS, exige renúncia a ações. Exclui corte por sobreoferta. <strong>Risco de judicialização.</strong></td></tr>
       <tr><td><strong>Recalibração do PLD / CVaR</strong> (CT PMO/PLD)</td><td><strong>CMSE decidiu manter</strong> (jun/26) p/ 2027</td><td>CVaR fica em <strong>15/40</strong>; candidatos (15/30, 15/35) avaliados para ciclos futuros. Mexe direto na formação de preço.</td></tr>
-      <tr><td><strong>WACC regulatório</strong></td><td><strong>Vigente</strong> (mar/26)</td><td>Distribuição 8,10% / transmissão-geração 8,00% real pós-imposto.</td></tr>
+      <tr><td><strong>WACC regulatório</strong></td><td><strong>Vigente</strong> (mar/26)</td><td>Distribuição 8,10% / transmissão-geração 8,00% real pós-imposto. <a class="xref" href="#regulacao/regulacao-wacc">WACC × valuation (aba 07)</a></td></tr>
       <tr><td><strong>Fator X / TOTEX</strong> (REN 1.148/2026)</td><td>Publicada; vigência <strong>jan/27</strong></td><td>Migração para produtividade TOTEX/PTF — redefine ganhadoras/perdedoras na distribuição.</td></tr>
       <tr><td><strong>CDE — teto</strong> (Lei 15.269)</td><td>Orçamento 2026 R$ 52,7 bi; <strong>teto a partir de 2027</strong></td><td>Excedente vira encargo cobrado dos beneficiários do subsídio.</td></tr>
-      <tr><td><strong>RBSE</strong> (transmissão)</td><td><strong>TRF-1 anulou o "ke"</strong> (mai/26); ANEEL avalia recurso</td><td>~R$ 5,5 bi/ano (parcela anual; ~R$ 11 bi residuais do estoque de R$ 62 bi, até 2028); risco de cauda p/ ISA/CTEEP, Taesa, Eletrobras.</td></tr>
+      <tr><td><strong>RBSE</strong> (transmissão)</td><td><strong>TRF-1 anulou o "ke"</strong> (mai/26); ANEEL avalia recurso. <strong>Próximo marco: homologação da RAP 26/27 (jul/26)</strong> — 1º ciclo que pode refletir a anulação</td><td>~R$ 5,5 bi/ano (parcela anual; ~R$ 11 bi residuais do estoque de R$ 62 bi, até 2028); risco de cauda p/ ISA Energia (CTEEP), Taesa, Axia Energia (ex-Eletrobras).</td></tr>
+      <tr><td><strong>Angra 3</strong> (CNPE / Eletronuclear)</td><td>Estudos de modelagem <strong>em atualização</strong> (resolução CNPE out/25); decisão retomar × abandonar pendente</td><td>BNDES estima <strong>~R$ 23 bi p/ concluir vs ~R$ 21 bi p/ abandonar</strong>; a obra parada custa ~R$ 1 bi/ano e o TCU pressiona. Afeta ENBPar/Eletronuclear e o preço da "firmeza" nuclear.</td></tr>
       <tr><td><strong>Abertura ACL (baixa tensão) + SUI</strong> (Lei 15.269)</td><td>Lei sancionada; <strong>regras operacionais por vir</strong></td><td>C&amp;I ~nov/2027, residencial ~nov/2028.</td></tr>
-      <tr><td><strong>LRCAP baterias</strong> (Portaria 136/2026)</td><td>Leilões <strong>02 e 04/dez/2026</strong></td><td>1º leilão de armazenamento do país; suprimento por 15 anos a partir de ago/2028.</td></tr>
+      <tr><td><strong>LRCAP baterias</strong> (Portaria 136/2026)</td><td>Leilões <strong>02 e 04/dez/2026</strong></td><td>1º leilão de armazenamento do país; suprimento por 15 anos a partir de ago/2028. <a class="xref" href="#geracao/geracao-baterias">o desenho do leilão (aba 05)</a></td></tr>
       <tr><td><strong>Renovação de concessões (distribuição)</strong> (Decreto 12.068/2024)</td><td>Aditivos <strong>assinados (mai/26)</strong>; PDL no Congresso tenta sustar</td><td>+30 anos para 16 distribuidoras; ~R$ 130 bi até 2030. Enel ficou de fora.</td></tr>
       <tr><td><strong>Fio B / GD</strong> (Lei 14.300; TS 23/2025)</td><td><strong>Fio B em 60%</strong> desde jan/26</td><td>Novo modelo de compensação só a partir de 2029.</td></tr>
     </tbody>
@@ -2262,7 +2405,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v2.3</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v3.0</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2299,12 +2442,14 @@
     p.setAttribute('aria-labelledby','tab-'+p.id);
     p.setAttribute('tabindex','0');
   });
-  function show(id){
+  function show(id,writeHash){
     tabs.forEach(t=>{const on=t.dataset.t===id;t.classList.toggle('active',on);t.setAttribute('aria-selected',on?'true':'false');});
     panels.forEach(p=>p.classList.toggle('active',p.id===id));
     window.scrollTo({top:0,behavior:'instant'});
+    if(writeHash!==false)history.replaceState(null,'','#'+id);
     if(window.__renderCharts) window.__renderCharts();
   }
+  window.__showTab=show;
   tabs.forEach((t,i)=>{
     t.addEventListener('click',()=>show(t.dataset.t));
     // keyboard navigation between tabs (left/right)
@@ -2763,7 +2908,7 @@
   // Regra: cada bloco novo recebe data-since="X.Y". Só as versões listadas em HIGHLIGHT ganham o selo "novo".
   // No próximo publish: troque HIGHLIGHT para a nova versão (ou deixe [] p/ nada) — os blocos antigos revertem sozinhos.
   (function(){
-    var HIGHLIGHT=['2.3'];
+    var HIGHLIGHT=['3.0'];
     document.querySelectorAll('[data-since]').forEach(function(el){
       if(HIGHLIGHT.indexOf(el.getAttribute('data-since'))<0)return;
       el.classList.add('is-new');
@@ -2771,6 +2916,140 @@
       b.className='flag-new';b.textContent='novo';
       el.appendChild(b);
     });
+  })();
+</script>
+<script>
+  // v3: navegação e releitura — sumário por aba, deep-link por hash, glossário, voltar-ao-topo, chips de data.
+  (function(){
+    var panels=document.querySelectorAll('.panel');
+
+    // 1) Âncoras + mini-sumário "Nesta aba" (gerados dos h2.sec de cada painel)
+    function slug(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').split('-').slice(0,5).join('-');}
+    panels.forEach(function(p){
+      var hs=p.querySelectorAll('h2.sec');
+      if(hs.length<3)return;
+      var toc=document.createElement('nav');toc.className='toc';
+      toc.innerHTML='<span class="toc-t">Nesta aba</span>';
+      hs.forEach(function(h){
+        var t=(h.childNodes[0]&&h.childNodes[0].textContent||h.textContent).trim();
+        if(!h.id)h.id=p.id+'-'+slug(t);
+        var a=document.createElement('a');a.href='#'+p.id+'/'+h.id;a.textContent=t;
+        toc.appendChild(a);
+      });
+      var lead=p.querySelector('.lead');
+      if(lead)lead.insertAdjacentElement('afterend',toc);
+      else p.insertBefore(toc,p.firstElementChild);
+    });
+
+    // 2) Deep-link: #aba ou #aba/ancora — restaura no load, reage a cliques em âncoras internas
+    function applyHash(){
+      var h=decodeURIComponent(location.hash.slice(1));if(!h)return;
+      var parts=h.split('/'),tab=parts[0],sec=parts[1];
+      if(!document.querySelector('.panel[id="'+tab+'"]'))return;
+      window.__showTab(tab,false);
+      if(sec){var el=document.getElementById(sec);
+        if(el)setTimeout(function(){el.scrollIntoView({block:'start'});},80);}
+    }
+    window.addEventListener('hashchange',applyHash);
+
+    // 3) Cards de navegação clicáveis (Visão geral)
+    document.querySelectorAll('.card.go').forEach(function(c){
+      c.setAttribute('role','link');c.setAttribute('tabindex','0');
+      function go(){window.__showTab(c.dataset.goto);}
+      c.addEventListener('click',go);
+      c.addEventListener('keydown',function(e){if(e.key==='Enter')go();});
+    });
+
+    // 4) Voltar ao topo
+    var top=document.createElement('button');top.id='totop';top.title='Voltar ao topo';
+    top.setAttribute('aria-label','Voltar ao topo');top.textContent='↑';
+    top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    document.body.appendChild(top);
+    window.addEventListener('scroll',function(){top.classList.toggle('on',window.scrollY>700);},{passive:true});
+
+    // 5) Chips de data em valores conjunturais (data-asof="mmm/aa"); âmbar quando >2 meses antes da versão
+    var VER=new Date(2026,5,30);
+    var MES={jan:0,fev:1,mar:2,abr:3,mai:4,jun:5,jul:6,ago:7,set:8,out:9,nov:10,dez:11};
+    document.querySelectorAll('[data-asof]').forEach(function(el){
+      var v=el.getAttribute('data-asof'),m=v.match(/^([a-z]{3})\/(\d{2})$/);
+      var chip=document.createElement('span');chip.className='asof';chip.textContent='📌 '+v;
+      if(m){var d=new Date(2000+parseInt(m[2],10),MES[m[1]],15);
+        if((VER-d)/86400000>62)chip.classList.add('old');}
+      el.appendChild(chip);
+    });
+
+    // 6) Glossário: tooltips na 1ª ocorrência por aba + <dl> no rodapé (mesma fonte de dados)
+    var GLOSS={
+      'PLD':'Preço de Liquidação das Diferenças — o preço de curto prazo, calculado por modelo (não negociado), com teto e piso administrados.',
+      'CMO':'Custo Marginal de Operação — o custo da próxima usina a despachar; a matéria-prima do PLD.',
+      'GSF':'Generation Scaling Factor — geração hidráulica do MRE ÷ garantia física. Abaixo de 1, os hidráulicos compram a diferença ao PLD.',
+      'MRE':'Mecanismo de Realocação de Energia — condomínio que reparte a geração hidráulica entre as usinas participantes.',
+      'RAP':'Receita Anual Permitida — a receita fixa da transmissora, paga por disponibilidade, independente do fluxo de energia.',
+      'RAB':'Base de Ativos Regulatória (Regulatory Asset Base) — o capital sobre o qual a distribuidora/transmissora é remunerada.',
+      'BRR':'Base de Remuneração Regulatória — nome ANEEL da base de ativos na distribuição.',
+      'RBSE':'Rede Básica do Sistema Existente — ativos pré-2000 das transmissoras renovadas, indenizados desde 2017.',
+      'CVaR':'Conditional Value at Risk — média dos piores cenários; a régua de aversão a risco dos modelos de despacho.',
+      'LOLP':'Loss of Load Probability — probabilidade de déficit de potência; critério ≤5% ao ano.',
+      'ELCC':'Effective Load Carrying Capability — quanto uma fonte realmente contribui para a ponta (crédito de capacidade).',
+      'RTE':'Round-Trip Efficiency — eficiência de ida e volta de um armazenamento (energia devolvida ÷ absorvida).',
+      'ACR':'Ambiente de Contratação Regulada — o "varejo cativo": distribuidoras compram em leilão para os consumidores.',
+      'ACL':'Ambiente de Contratação Livre — mercado livre: consumidor negocia energia bilateralmente.',
+      'CDE':'Conta de Desenvolvimento Energético — o fundo de subsídios do setor (R$ ~52 bi/ano), pago na tarifa.',
+      'EAR':'Energia Armazenada — o nível dos reservatórios, em % da capacidade máxima.',
+      'ENA':'Energia Natural Afluente — a "chuva convertida em energia" que chega aos reservatórios.',
+      'MLT':'Média de Longo Termo — a média histórica da ENA; a régua do que é "normal".',
+      'SRMC':'Short-Run Marginal Cost — custo marginal de curto prazo; o que o despacho otimiza.',
+      'LRMC':'Long-Run Marginal Cost — custo marginal de longo prazo, incluindo o capital; o que os leilões sinalizam.',
+      'LRCAP':'Leilão de Reserva de Capacidade — contrata potência disponível (R$/MW-ano), não energia.',
+      'UHR':'Usina Hidrelétrica Reversível (pumped-storage) — bombeia água no vale de preço e gera na ponta.',
+      'BESS':'Battery Energy Storage System — armazenamento em baterias de grande porte.',
+      'MMGD':'Micro e Minigeração Distribuída — solar de telhado e afins; gera "atrás do medidor" e deprime a carga líquida.',
+      'TUST':'Tarifa de Uso do Sistema de Transmissão.',
+      'TUSD':'Tarifa de Uso do Sistema de Distribuição (o "Fio B" é sua parcela de rede).',
+      'VNR':'Valor Novo de Reposição — reavaliação da base de ativos a custo de reposição; lucro contábil não-caixa.',
+      'CVA':'Conta de Compensação de Variação de Valores da Parcela A — difere no tempo variações de custo não gerenciável.',
+      'GF':'Garantia Física — o lastro de energia (MWmédio) que uma usina pode vender em contrato.',
+      'SIN':'Sistema Interligado Nacional — a rede elétrica unificada que atende >99% da carga do país.',
+      'VRE':'Variable Renewable Energy — renováveis variáveis (eólica e solar), não despacháveis.',
+      'ESS':'Encargos de Serviços do Sistema — encargo que cobre custos de operação fora da ordem de mérito.',
+      'EER':'Encargo de Energia de Reserva — paga a reserva de capacidade contratada nos leilões.'
+    };
+    var terms=Object.keys(GLOSS).sort(function(a,b){return b.length-a.length;});
+    var rx=new RegExp('\\b('+terms.join('|')+')\\b');
+    panels.forEach(function(p){
+      var seen={};
+      var els=p.querySelectorAll('p,li,td');
+      for(var i=0;i<els.length;i++){
+        var el=els[i];
+        if(el.closest('svg,figcaption,a,.toc,.kpi,.callout .mk'))continue;
+        var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+        var node;
+        while((node=walker.nextNode())){
+          if(node.parentElement.closest('a,.gl,svg,code'))continue;
+          var m=node.textContent.match(rx);
+          if(!m||seen[m[1]])continue;
+          var term=m[1];seen[term]=true;
+          var span=document.createElement('span');
+          span.className='gl';span.tabIndex=0;span.setAttribute('data-def',GLOSS[term]);
+          span.textContent=term;
+          var after=node.splitText(m.index);after.textContent=after.textContent.slice(term.length);
+          node.parentNode.insertBefore(span,after);
+        }
+      }
+    });
+    var foot=document.querySelector('footer .wrap')||document.querySelector('footer');
+    if(foot){
+      var det=document.createElement('details');det.id='glossario';
+      var kk=Object.keys(GLOSS).sort();
+      var items='';
+      for(var j=0;j<kk.length;j++){items+='<div class="gi"><dt>'+kk[j]+'</dt><dd>'+GLOSS[kk[j]]+'</dd></div>';}
+      det.innerHTML='<summary>Glossário — as siglas do setor ('+kk.length+' termos)</summary><dl>'+items+'</dl>';
+      foot.insertBefore(det,foot.firstElementChild);
+    }
+
+    // por último: restaura o estado da URL (depois de âncoras existirem)
+    applyHash();
   })();
 </script>
 </body>
