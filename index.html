@@ -597,7 +597,7 @@
         como complemento e segurança. Os <strong>reservatórios são a bateria do sistema</strong>: armazenam as
         águas do período úmido para o período seco, numa regulação que chega a ser <strong>plurianual</strong>.</p>
       <p>A capacidade total de armazenamento ≈ <strong>291 GWmês</strong> — equivale a guardar cerca de
-        <strong>3,5 meses do consumo médio</strong> do país. Nenhum parque de baterias de lítio no mundo chega
+        <strong>~3,8 meses da carga média do SIN</strong> (291 GWmês ÷ carga de ~77 GWmédio). Nenhum parque de baterias de lítio no mundo chega
         perto; o 1º leilão de baterias (BESS) do Brasil só começa a suprir em 2028.</p>
     </div>
     <div>
@@ -703,7 +703,7 @@
     <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda; 7 recordes só em 2025</div><div class="src">ONS</div></div>
     <div class="kpi"><div class="v">2027</div><div class="l">Quando o SIN passa a precisar de potência adicional</div><div class="src">PDE 2034</div></div>
     <div class="kpi"><div class="v">25→50<span class="u">GW</span></div><div class="l">A rampa de carga líquida dobra (2024→2028)</div><div class="src">ONS (PAR/PEL)</div></div>
-    <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no LRCAP 2026 (maior leilão por volume financeiro)</div><div class="src">CCEE</div></div>
+    <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no LRCAP 2026 (maior leilão por volume financeiro)</div><div class="src">EPE · Informe de Vencedores</div></div>
   </div>
 
   <h2 class="sec">Como a oferta cresce <span class="tag">Fase 2</span></h2>
@@ -921,8 +921,10 @@
       <div class="chart" id="chart-ger-fonte"></div>
       <figcaption><span class="ti">Geração por fonte — 2024 → 2034 (TWh)</span>
         A oferta nova é <strong>variável</strong>: solar e eólica disparam, a hidro quase estagna e perde participação
-        na geração total do SIN (de ~56% para ~47%, sobre ~759 e ~1.045 TWh totais — não sobre as 3 séries plotadas).
-        Três séries independentes. Fonte: EPE, PDE 2034 (apresentação à Câmara, set/2025).</figcaption>
+        na geração total do SIN (de ~56% para ~47%, sobre ~759 e ~1.045 TWh totais — não sobre as 3 fontes plotadas).
+        Três marcos do PDE (2024/2029/2034), não trajetória anual. <strong>Nota de escopo:</strong> aqui a solar é só a
+        <em>centralizada</em> (26 TWh em 2024); os ~88 TWh da matriz na Visão geral somam telhado (MMGD).
+        Fonte: EPE, PDE 2034 (apresentação à Câmara, set/2025).</figcaption>
     </figure>
   </div>
 
@@ -1721,7 +1723,8 @@
   </ul>
 
   <h3 class="sub">Geração — contrato vs. exposição ao PLD</h3>
-  <p>Dois vetores de receita: a <strong>parcela contratada</strong> (preço × energia, limitada à garantia física)
+  <p>Lembre da aba 04: a geradora carrega <strong>dois lastros</strong> — energia (garantia física, MWmédio) e potência (MW firmes na ponta) — e cada um vira receita por um canal próprio. <a class="xref" href="#od/od-capacidade">os dois lastros (aba 04)</a></p>
+  <p>No lastro de energia, dois vetores: a <strong>parcela contratada</strong> (preço × energia, limitada à garantia física)
     e a <strong>exposição ao curto prazo</strong> (o desvio entre gerado e contratado liquidado ao PLD). É o
     segmento de maior risco: preço (PLD entre R$ 57 e R$ 1.611/MWh em 2026), hidrologia (GSF) e curtailment.
     <a class="xref" href="#mercado/mercado-gsf">como o GSF funciona (aba 06)</a></p>
@@ -1731,6 +1734,17 @@
       ressarcimento apenas para cortes por indisponibilidade externa e confiabilidade — não por sobreoferta, que
       responde pela maior parte dos cortes. Tese de eólica/solar precisa descontar curtailment não ressarcível,
       não só o preço de venda.</p>
+  </div>
+
+  <div class="callout insight">
+    <span class="mk">EXEMPLO — "GERADORA HÍDRICA TEÓRICA S.A." (GF 100 MWmédios, 90% contratada a R$ 200/MWh)</span>
+    <p>Receita contratada: 90 MWm × 8.760 h × R$ 200 ≈ <strong>R$ 158 mi/ano</strong> — parece um bond.
+      <strong>Ano bom (GSF = 1,00):</strong> o MRE aloca os 100 MWm; honra o contrato e ainda vende os 10 MWm
+      descontratados ao PLD (~R$ 157) ⇒ <strong>+R$ 14 mi</strong> de upside.
+      <strong>Ano seco (GSF = 0,85):</strong> o MRE aloca só 85 MWm; faltam <strong>5 MWm para honrar o contrato</strong>,
+      comprados ao PLD de seca (digamos R$ 600) ⇒ <strong>−R$ 26 mi</strong>, e o upside sumiu. Entre os dois cenários,
+      um swing de <strong>~R$ 40 mi (~25% da receita)</strong> — sem a empresa operar nada diferente. A alavanca de
+      risco é o <strong>% contratado</strong>: quem vende 100% da GF maximiza receita e maximiza a exposição ao GSF.</p>
   </div>
 
   <h3 class="sub">Geração distribuída — o subsídio em extinção</h3>
@@ -1952,7 +1966,7 @@
 
   <div class="callout warn">
     <span class="mk">O PARADOXO TARIFÁRIO</span>
-    <p>Geração barata, conta cara: <strong>~44% da conta brasileira é tributo + encargo + subsídio</strong> (apenas
+    <p>Geração barata, conta cara: <strong>~44,8% da conta brasileira é tributo + encargo + subsídio</strong> (PwC/Acende, 2024; apenas
       ~1/3 do valor pago é a energia em si). O ICMS é ~81% da parte tributária; a CDE financia subsídios cruzados
       (irrigação, carvão, baixa renda, GD). Na UE, "taxes &amp; levies" pesam ~25–28% — <strong>menos</strong> que
       no Brasil — e o preço alto vem da geração cara (gás marginal). Ou seja: <strong>Europa cara na geração; Brasil
@@ -2586,14 +2600,15 @@
       ],{labelW:160,valW:70,valFmt:v=>fmt(v)+' TWh'});
       legend(m,[{label:'Renovável',color:C.hydro},{label:'Térmica fóssil',color:C.thermal},{label:'Nuclear',color:C.nuclear}]);
     });
-    // FÍSICO: EAR by subsystem
+    // FÍSICO: EAR by subsystem (cores neutras — as cores de fonte ficam p/ matriz/geração)
     render('chart-ear',m=>{
       vcols(m,[
-        {label:'Norte',value:97,color:C.thermal},
-        {label:'Nordeste',value:96,color:C.solar},
-        {label:'SE/CO',value:66,color:C.hydro,bold:true},
-        {label:'Sul',value:32,color:C.wind},
+        {label:'Norte',value:97,color:C.gray},
+        {label:'Nordeste',value:96,color:C.gray},
+        {label:'SE/CO',value:66,color:C.accent,bold:true},
+        {label:'Sul',value:32,color:C.danger},
       ],{H:230,max:100,barW:50,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
+      legend(m,[{label:'SE/CO — o reservatório que importa',color:C.accent},{label:'Sul — atenção',color:C.danger}]);
     });
     // FÍSICO: curtailment
     render('chart-curt',m=>{
@@ -2889,13 +2904,20 @@
         {label:'34',value:0,color:C.danger,faint:true,note:'req.~40'},
       ],{H:250,max:8.4,barW:34,axisFmt:v=>fmt(v)+'GW',valFmt:v=>fmt(v)});
     });
-    // OFERTA & DEMANDA: geração por fonte 2024→2034 (TWh)
+    // OFERTA & DEMANDA: geração por fonte 2024→2034 (TWh) — 3 marcos do PDE, colunas (sem fingir trajetória anual)
     render('chart-ger-fonte',m=>{
-      lines(m,[
-        {label:'Hidro',color:C.hydro,data:[424,454,489]},
-        {label:'Eólica',color:C.wind,data:[114,132,180]},
-        {label:'Solar',color:C.solar,data:[26,39,61]},
-      ],{xLabels:['2024','2029','2034'],max:540,axisFmt:v=>fmt(v),endFmt:v=>fmt(v)});
+      vcols(m,[
+        {label:'2024',value:424,color:C.hydro,note:'hidro'},
+        {label:'2029',value:454,color:C.hydro},
+        {label:'2034',value:489,color:C.hydro,bold:true},
+        {label:'2024',value:114,color:C.wind,note:'eólica'},
+        {label:'2029',value:132,color:C.wind},
+        {label:'2034',value:180,color:C.wind,bold:true},
+        {label:'2024',value:26,color:C.solar,note:'solar'},
+        {label:'2029',value:39,color:C.solar},
+        {label:'2034',value:61,color:C.solar,bold:true},
+      ],{H:260,max:540,barW:34,axisFmt:v=>fmt(v)});
+      legend(m,[{label:'Hidro',color:C.hydro},{label:'Eólica',color:C.wind},{label:'Solar (centralizada)',color:C.solar}]);
     });
   }
   window.__renderCharts=renderAll;
