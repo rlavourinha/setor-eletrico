@@ -272,7 +272,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v3.0 · 30 jun 2026</span>
+      <span class="chip"><span class="dot"></span>v3.1 · 03 jul 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -336,9 +336,9 @@
     do país. Roraima entrou no SIN em setembro de 2025 — pela primeira vez todos os 26 estados + DF estão interligados.</p>
 
   <div class="kpis">
-    <div class="kpi hl"><div class="v">259,5<span class="u">GW</span></div><div class="l">Capacidade instalada total (com geração distribuída)</div><div class="src">MME · fim 2025</div></div>
+    <div class="kpi hl"><div class="v">~268<span class="u">GW</span></div><div class="l" data-asof="jun/26">Capacidade instalada total (218 GW centralizada + &gt;50 GW MMGD); fim de 2025: 259,5</div><div class="src">MME/ANEEL</div></div>
     <div class="kpi"><div class="v">775,9<span class="u">TWh</span></div><div class="l">Geração total no ano</div><div class="src">EPE BEN 2026</div></div>
-    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda instantânea (onda de calor, 26/fev)</div><div class="src">ONS · 2025</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda instantânea (onda de calor, 26/fev/26)</div><div class="src">ONS · fev/2026</div></div>
     <div class="kpi"><div class="v">86,8<span class="u">%</span></div><div class="l">Matriz renovável (na geração)</div><div class="src">EPE BEN 2026</div></div>
     <div class="kpi"><div class="v">~291<span class="u">GWmês</span></div><div class="l">"Bateria" do sistema: energia armazenável em reservatórios</div><div class="src">ONS</div></div>
     <div class="kpi"><div class="v">&gt;191<span class="u">mil km</span></div><div class="l">Linhas de transmissão (Rede Básica)</div><div class="src">MME · fim 2025</div></div>
@@ -369,6 +369,52 @@
     <li><strong>EV/RAB ancora em 1,0×</strong> — crescimento só cria valor se ROIC &gt; custo de capital; CapEx &gt; depreciação por si não gera prêmio. <a class="xref" href="#regulacao">aba 07</a></li>
     <li><strong>O WACC que importa é o do ano da revisão da SUA empresa</strong> (cristalizado por 4–5 anos), não o vigente hoje. <a class="xref" href="#regulacao">aba 07</a></li>
   </ol>
+
+  <h2 class="sec" data-since="3.1">O mapa da cadeia <span class="tag">a ponte para a Fase 4</span></h2>
+  <p class="sec-sub">Onde mora o dinheiro, quem o captura, e com que régua avaliar cada elo. Este é o insumo
+    que o estudo inteiro prepara — o ponto de partida da análise de empresas.</p>
+  <figure>
+    <div class="chart" id="chart-pools"></div>
+    <figcaption><span class="ti">Pools de receita anuais por elo (R$ bi/ano, ordem de grandeza)</span>
+      Transmissão = RAP homologada (ANEEL, ciclo 26/27). *Distribuição = "Receita de Distribuição" (Parcela B) agregada
+      homologada — R$ 80,65 bi em 2024, dobrou desde 2017 (R$ 40,1 bi); fonte primária: Informativo Tarifário MME/ANEEL.
+      Geração = consumo × preço médio (estimativa própria, sensível ao preço); comercialização = volume ACL × margem.
+      A geração é o maior pool — e o único exposto a preço/hidrologia. Fonte: ANEEL/MME; CCEE; estimativas sinalizadas.</figcaption>
+  </figure>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Elo</th><th class="num">Pool (R$ bi/ano)</th><th>Players listados (B3)</th><th>Régua de valuation</th><th>Riscos-chave</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Transmissão</strong></td><td class="num"><strong>55,0</strong> (oficial)</td><td>AXIA3 (~35% da RAP), ISAE4, TAEE11, ALUP11 — top-3 ≈ metade do pool</td><td><strong>TIR real implícita vs NTN-B</strong> (snapshot: ISA ~9,6%, Alupar ~11%, Taesa ~7,6% vs NTN-B ~7%); EV/RAP</td><td>Revisões (categoria do contrato!), RBSE, IGP-M×IPCA <a class="xref" href="#regulacao">aba 07</a></td></tr>
+      <tr><td><strong>Distribuição</strong></td><td class="num"><strong>80,7</strong> (2024, oficial*)</td><td>EQTL3, ENGI11, NEOE3, CPFE3, CMIG4, CPLE6, LIGT3 — Enel e EDP fora da B3</td><td><strong>EV/RAB</strong> (&gt;1× = expectativa de spread) + P/L fwd</td><td>Perdas vs regulatório, ciclo de revisão, caixa ≠ IFRS <a class="xref" href="#regulacao">aba 07</a></td></tr>
+      <tr><td><strong>Geração</strong></td><td class="num">~140–165 (estim.)</td><td>AXIA3 (44 GW, ~17% do país), EGIE3, AURE3, SRNA3, ENEV3 (térmica/gás) — o elo menos concentrado</td><td><strong>EV/EBITDA</strong> (~4–6× em 2025–26) + TIR real do portfólio de contratos</td><td>Dois lastros, GSF, curtailment, % contratado <a class="xref" href="#mercado/mercado-gsf">aba 06</a></td></tr>
+      <tr><td><strong>Comercialização</strong></td><td class="num">~0,5–1,6 (estim.)</td><td>Sem player puro listado — o valor está nos desks das geradoras (Axia, Engie, Auren)</td><td>Margem (R$/MWh) × volume; qualidade do risco</td><td>Quebras em cadeia (passivo &gt;R$ 10 bi em 2024–26), garantias CCEE <a class="xref" href="#mercado">aba 06</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <span class="mk">TRÊS AVISOS DE MAPA</span>
+    <p>(1) <strong>Eletrobras agora é Axia Energia</strong> (AXIA3/AXIA5/AXIA6 desde 10/nov/2025; não existe AXIA11) —
+      mesma companhia, mesmas concessões; encadeie as séries com ELET3. É o ativo mais "mapa da cadeia" da bolsa: maior
+      geradora (~17%) <em>e</em> maior transmissora (~35% da RAP). (2) O maior pool (geração) é também o mais
+      <strong>volátil</strong> — os pools de fio são menores porém contratados/regulados. (3) O vetor novo de demanda são os
+      <strong>data centers</strong>: ~26 GW pedidos até 2038 (+ ~28 GW de hidrogênio; MME/PNAST, dez/25), dos quais o ONS
+      validou <strong>~7 GW</strong> (fev/26) — ainda assim ~10% da carga média do SIN; o incentivo (REDATA/MP 1.318)
+      caducou em fev/26 e virou o PL 278/2026, pendente no Senado.</p>
+  </div>
+
+  <h3 class="sub" data-since="3.1">Checklist da Fase 4 — o que verificar em cada empresa</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Segmento</th><th>Antes de abrir o release, responda</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Transmissora</strong></td><td>Qual a <strong>categoria de cada contrato</strong> (renovado 12.783 / licitado 1999–2006 com degrau / pós-2006 com revisão)? Em que ano a revisão travou o WACC? Mix IGP-M×IPCA? Exposição RBSE? Pipeline de reforços autorizados?</td></tr>
+      <tr><td><strong>Distribuidora</strong></td><td>Ano da última/próxima <strong>revisão tarifária</strong>? Perdas reais vs nível regulatório? EBITDA regulatório vs IFRS (VNR/CVA)? Mercado da concessão cresce? Sobrecontratação &gt;105%?</td></tr>
+      <tr><td><strong>Geradora</strong></td><td><strong>% contratado por ano</strong> (o hedge do GSF)? Preço médio e vencimento dos contratos? Exposição a curtailment (fonte e submercado)? Tem receita de capacidade (LRCAP)? Térmica: CVU e flexibilidade?</td></tr>
+      <tr><td><strong>Integrada</strong></td><td>Decomponha por elo antes de qualquer múltiplo consolidado — <strong>errar a mistura é errar a empresa</strong> (a tese das três camadas, lá de cima).</td></tr>
+    </tbody>
+  </table>
+  </div>
 
   <h2 class="sec" data-since="3.0">Como navegar este estudo</h2>
   <div class="jornada" aria-label="Ordem sugerida de leitura">
@@ -671,6 +717,19 @@
       Robotics), não diretamente comparável. Fonte: ONS RT DGL-ONS 0189/2025; pv magazine.
       <a class="xref" href="#regulacao">quem é ressarcido (aba 07)</a></figcaption>
   </figure>
+
+  <div class="callout insight" data-since="3.1">
+    <span class="mk">OS 4 NÚMEROS DE CURTAILMENT — QUAL É QUAL</span>
+    <p>Circulam números aparentemente contraditórios porque medem <strong>coisas diferentes</strong>:
+      (1) <strong>4,3 TWh (2024)</strong> = ONS, só corte por <em>razão energética</em> (sobreoferta);
+      (2) <strong>14,6 TWh / R$ 1,6 bi (2024)</strong> = Volt Robotics, <em>todas as causas</em>, 1.445 usinas;
+      (3) <strong>~20,7% / R$ 6,5 bi (2025)</strong> = % da <em>geração potencial</em> eólica+solar cortada
+      (corte ÷ (gerado + cortado)) ≈ 4.021 MWmédios ≈ ~35 TWh — e R$ 6,5 bi é <em>receita perdida estimada</em>,
+      não indenização (picos mensais: out/25 = 30,4%);
+      (4) <strong>17,2% (jan–abr/26)</strong> = mesmo conceito, arrefecendo vs 2025 mas acima de jan–abr/25 (15,3%).
+      Regra de ressarcimento (REN 1.030/1.073): <strong>só indisponibilidade externa é compensada</strong> —
+      por isso a perda financeira é muito maior que a indenização.</p>
+  </div>
   <div class="callout warn">
     <span class="mk">A VILÃ SILENCIOSA</span>
     <p>A <strong>geração solar de telhado (MMGD)</strong> é a vilã do meio-dia: sem ela, o pico de sobreoferta de
@@ -700,7 +759,7 @@
   <div class="kpis">
     <div class="kpi hl"><div class="v">562<span class="u">TWh</span></div><div class="l">Consumo de energia (2025); +0,2% no ano, após +5,6% em 2024</div><div class="src">EPE</div></div>
     <div class="kpi"><div class="v">3,3<span class="u">%a.a.</span></div><div class="l">Crescimento projetado da carga até 2034</div><div class="src">PDE 2034</div></div>
-    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda; 7 recordes só em 2025</div><div class="src">ONS</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Pico de demanda (26/fev/26 — 7º recorde só no verão de 2026)</div><div class="src">ONS</div></div>
     <div class="kpi"><div class="v">2027</div><div class="l">Quando o SIN passa a precisar de potência adicional</div><div class="src">PDE 2034</div></div>
     <div class="kpi"><div class="v">25→50<span class="u">GW</span></div><div class="l">A rampa de carga líquida dobra (2024→2028)</div><div class="src">ONS (PAR/PEL)</div></div>
     <div class="kpi"><div class="v">~19<span class="u">GW</span></div><div class="l">Potência contratada no LRCAP 2026 (maior leilão por volume financeiro)</div><div class="src">EPE · Informe de Vencedores</div></div>
@@ -1442,7 +1501,7 @@
   <div class="callout insight">
     <span class="mk">POR QUE NÃO PELA ARBITRAGEM — O NÚMERO</span>
     <p>O problema não é o nível do PLD — é a forma: <strong>plano ao longo do dia</strong>. Mesmo com o preço bem acima
-      do piso em 2025–26 (média 2025 ~R$ 157; mai/26 entre R$ 143 e R$ 249 por submercado), o PLD quase não varia entre
+      do piso em 2025–26 (média 2025 ~R$ 157; 1S26 rodando entre ~R$ 200 e R$ 310, pico &gt;R$ 380 em fevereiro), o PLD quase não varia entre
       o meio-dia e a ponta — a hidro e o piso/teto administrados achatam o <em>spread intradiário</em>, que é o que
       remunera bateria. Sem spread, a arbitragem não
       paga a bateria: num estudo empírico (2018–22), o <strong>lucro médio por operação foi R$ 0,36</strong>, contra um
@@ -1556,8 +1615,9 @@
   <figure>
     <div class="chart" id="chart-acl"></div>
     <figcaption><span class="ti">Participação do mercado livre (ACL) no consumo nacional</span>
-      O ACL chegou a <strong>~42% do consumo</strong> no fim de 2025 — recorde histórico (CCEE). A abertura do
-      Grupo A (alta tensão) em jan/2024 disparou as migrações. Anos anteriores ilustram a trajetória. Fonte: CCEE.</figcaption>
+      De ~25% (2016) a <strong>42% (2025)</strong> — recorde histórico. A abertura do Grupo A (alta tensão) em
+      jan/2024 disparou as migrações (30.183 MWmédios; ~85 mil unidades na CCEE, 10× as de 2016). Série CCEE
+      (consumo contabilizado). Fonte: CCEE, Balanço 2025.</figcaption>
   </figure>
 
   <h3 class="sub">A abertura do mercado livre — cronograma vigente</h3>
@@ -1634,6 +1694,33 @@
       permanece: o MRE <strong>socializa</strong> o risco hidrológico, não o elimina.</p>
   </div>
 
+  <h3 class="sub" data-since="3.1">Comercialização — o elo órfão</h3>
+  <p>Entre gerador e consumidor livre existe um elo que <strong>explodiu sem supervisão prudencial</strong>:
+    <strong>~506 comercializadoras</strong> registradas na CCEE (eram 191 em 2017), das quais ~122 ativas no varejo.
+    A ANEEL autoriza, a CCEE liquida — <strong>ninguém supervisiona balanço</strong>. O modelo: comprar no atacado e
+    vender com spread, carregando risco de preço, de crédito e de lastro. As margens são finas e voláteis: a Auren
+    reportou <strong>R$ 6,0/MWh no 1T24 → R$ 15,8/MWh no 1T25</strong>, quando a volatilidade abriu os spreads.
+    O <strong>top-20 concentra ~54% do volume</strong>.</p>
+  <div class="callout danger">
+    <span class="mk">AS QUEBRAS — O PASSIVO REGULATÓRIO DA ABERTURA</span>
+    <p>Duas ondas documentadas: <strong>2018–19</strong> (Cowat, calote de R$ 90 mi; Vega, quebrada apostando na queda
+      do PLD; 10 desligadas pela CCEE no ciclo) e a <strong>onda atual de 2024–26, com passivo acumulado &gt;R$ 10 bi</strong>
+      (2W Ecobank ~R$ 2,2 bi; Tradener R$ 1,7 bi em RJ; Electra R$ 1,3 bi; Eletron e Gold ~R$ 1,1 bi cada). Sintoma da
+      desconfiança: geradores passaram a liquidar ~10% do consumo direto na CCEE, sem contrato bilateral. A resposta foi
+      <strong>colateral</strong> — aporte mensal de garantias por classe de agente — que virou a barreira real de entrada.
+      Nota: a crise hídrica de <strong>2021 estressou</strong> o elo (PLD no teto), mas as quebras formais concentram-se
+      em 2018–19 e 2024–26.</p>
+  </div>
+  <div class="callout warn">
+    <span class="mk">A ABERTURA DE 2027–28 PASSA POR AQUI</span>
+    <p>O cronograma da Lei 15.269/2025: baixa tensão C&amp;I em até 24 meses (<strong>~nov/2027</strong>), abertura
+      total com residenciais em até 36 (<strong>~nov/2028</strong>), com o <strong>SUI</strong> (Supridor de Última
+      Instância) cobrindo o consumidor cujo varejista falhar. Para a Fase 4: a distribuidora tende a virar
+      <strong>"fio + SUI"</strong> (perde margem de suprimento, não o fio); geradoras integradas com braço de
+      comercialização (Axia, Engie, Auren, Cemig) ganham canal; e o <strong>risco sistêmico do elo órfão</strong> —
+      quebras em cadeia às vésperas de milhões de consumidores migrarem — é o passivo não resolvido da abertura.</p>
+  </div>
+
   <h3 class="sub">Bandeiras tarifárias</h3>
   <p>Sinalizam ao consumidor o custo variável de geração (despacho de térmicas em anos secos). Valores em vigor
     desde abril/2024:</p>
@@ -1694,6 +1781,34 @@
       na indenização) — decisões a dias de distância, sujeitas a recurso. Impacto relevante para Eletrobras, ISA
       Energia (CTEEP) e Taesa: do estoque de R$ 62 bi, ~80% já foi pago, restando <strong>~R$ 11 bi até 2028</strong>
       (≈ R$ 5,5 bi/ano nas três últimas parcelas).</p>
+  </div>
+
+  <h3 class="sub" data-since="3.1">Os três tipos de contrato de transmissão — o primeiro filtro de qualquer análise</h3>
+  <p>"Transmissora" não é uma coisa só: o mesmo MW-km rende <strong>fluxos radicalmente diferentes</strong> conforme a
+    safra do contrato. Antes de qualquer múltiplo, decomponha a RAP da empresa pelas três categorias:</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Categoria</th><th>Origem</th><th>Índice</th><th>Revisão?</th><th>A pegadinha</th></tr></thead>
+    <tbody>
+      <tr><td><strong>I — Renovados</strong> (Lei 12.783/2013)</td><td>9 contratos das ex-estatais (Axia, ISA/CTEEP, Cemig-GT, Copel-GT...)</td><td>IPCA</td><td><strong>Sim</strong>, quinquenal (regime de custo do serviço)</td><td>Carregam a <strong>RBSE</strong> — a indenização é parte relevante do fluxo e é o risco de cauda (TRF-1 suspendeu o "ke" em mai/26; ANEEL já cortou ~R$ 5,6 bi em 2025)</td></tr>
+      <tr><td><strong>II — Licitados 1999–2006</strong></td><td>Leilões da 1ª onda (TSN, Novatrans, ETEO...)</td><td><strong>IGP-M</strong></td><td>Não (só reforços, desde 2019)</td><td>O <strong>degrau</strong>: a RAP cai para <strong>50% no 16º ano</strong> de operação (receita antecipada p/ amortizar o project finance). Nas grandes já passou (Taesa ~2016–19), mas confira o vencimento — concessões expiram 2030–2035</td></tr>
+      <tr><td><strong>III — Licitados pós-2006</strong></td><td>Leilões modernos (deságios de 40–51%)</td><td>IPCA</td><td><strong>Sim</strong>: anos 5, 10 e 15 (rediscute custo de dívida e reforços; preserva a TIR do lance)</td><td>O deságio agressivo do leilão <strong>comprime o retorno incremental</strong> — crescer por leilão vale menos que crescer por reforço</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="cards c3">
+    <div class="card"><h4><span class="ico" style="background:var(--ok)">↺</span>Reforços &amp; melhorias — o motor orgânico</h4><p>Obras em instalações <strong>já concedidas</strong>, outorgadas por resolução ANEEL <strong>sem leilão</strong>: RAP incremental a WACC regulatório <strong>cheio, sem competição</strong>, capturável só pela incumbente. ISA Energia tem <strong>R$ 6,3 bi autorizados p/ 2026–30</strong>; na Taesa, a relação RAP/capex dos reforços ronda <strong>~18%</strong>. É por isso que reforço vale mais que lote de leilão.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--accent)">📉</span>Parcela Variável — o risco operacional é pequeno</h4><p>A perda típica das grandes é <strong>consistentemente &lt;2% da RAP</strong> (Taesa 0,3% em 2019 e 1,8% em 2024; CTEEP ~1,3–1,4%). Disponibilidade &gt;99,5% é a norma — o risco relevante da transmissora <strong>não é operacional, é regulatório/financeiro</strong>.</p></div>
+    <div class="card"><h4><span class="ico" style="background:var(--thermal)">⚠</span>IGP-M × IPCA — o risco escondido no indexador</h4><p>Categoria II indexa em <strong>IGP-M</strong> — que rodou <strong>negativo</strong> em 2025 (−1,05%) e em jun/26 (−0,50%), comprimindo o reajuste dos ativos antigos. Exposição concentrada em <strong>Taesa (~60% da receita ainda IGP-M)</strong> e Alupar; ISA e Axia são essencialmente IPCA.</p></div>
+  </div>
+  <div class="callout insight">
+    <span class="mk">O RUNWAY</span>
+    <p>O pipeline sustenta a tese de crescimento do segmento: PET/PELP da EPE mapeia <strong>~R$ 35–39 bi</strong> em
+      obras ainda não licitadas até ~2030, e o PDE 2034 projeta <strong>R$ 129–153 bi de capex 2025–2034</strong> —
+      puxado pelo escoamento do NE (onde mora o curtailment). Mas os deságios de <strong>40–51%</strong> nos leilões
+      recentes mostram competição feroz: o retorno está nos <strong>reforços e na gestão do portfólio</strong>, não em
+      vencer lote. A RAP total do setor foi de R$ 25,7 bi (19/20) para <strong>R$ 54,95 bi (26/27)</strong> — mais que
+      dobrou em 7 ciclos.</p>
   </div>
 
   <h3 class="sub">Distribuição — a mais complexa</h3>
@@ -1757,6 +1872,37 @@
       todos via CDE) já passa de R$ 5–7 bi/ano. A tentativa de taxar novos entrantes foi rejeitada no Congresso
       em out/2025. Fonte: Lei 14.300/2022, art. 27.</figcaption>
   </figure>
+
+  <h3 class="sub" data-since="3.1">A anatomia da CDE — o orçamento paralelo do setor</h3>
+  <p>A <strong>CDE</strong> é onde o Brasil esconde a política pública dentro da tarifa: <strong>R$ 52,7 bi
+    propostos para 2026</strong> (+7% vs 2025), dos quais <strong>R$ 47,8 bi rateados aos consumidores</strong>
+    (CDE-Uso, +15,4%) via TUSD/TUST — <strong>o consumidor livre não escapa</strong> (só da energia, não do encargo).
+    Cresceu <strong>+257% de 2010 a 2024</strong>, mais que o dobro do IPCA: nenhum componente da conta subiu tanto.</p>
+  <div class="twocol">
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-cde-traj"></div>
+      <figcaption><span class="ti">Orçamento anual da CDE (R$ bi correntes)</span>
+        De R$ 14 bi (2013) a R$ 52,7 bi (2026, proposta ANEEL em consulta). O salto de 2025 (+32%) veio da
+        Tarifa Social ampliada (Lei 15.235) e da explosão da rubrica MMGD. Fonte: ANEEL (orçamentos anuais).</figcaption>
+    </figure>
+    <figure style="margin-top:0">
+      <div class="chart" id="chart-cde-rubrica"></div>
+      <figcaption><span class="ti">CDE 2026 por rubrica (R$ bi, proposta)</span>
+        A maior rubrica são os <strong>descontos a fontes incentivadas</strong> (TUSD+TUST ~R$ 19,6 bi); a que mais
+        cresce é a <strong>MMGD (+87%)</strong> — o subsídio ao telhado solar. Carvão −84% (fim programado).
+        Fonte: ANEEL (deliberação dez/2025, em CP); CCC estimada.</figcaption>
+    </figure>
+  </div>
+  <div class="callout warn">
+    <span class="mk">O TETO DE 2027 — E QUEM PAGA A CONTA</span>
+    <p>A <strong>Lei 15.269/2025 impõe teto à CDE a partir de 2027</strong>; o excedente vira o <strong>ECR</strong>,
+      cobrado <strong>dos próprios beneficiários</strong> dos subsídios que causaram o estouro — inversão inédita do
+      ônus. A lei também <strong>vedou o desconto de TUSD/TUST para novos migrantes ao ACL</strong> (estanca a maior
+      rubrica na margem, preserva o estoque). O debate distributivo é o coração: a baixa tensão residencial subsidia o
+      telhado solar de renda alta, o grande consumidor incentivado e o irrigante — regressividade apontada pela própria
+      ANEEL. Para a Fase 4: <strong>quem perde subsídio é tese de investimento</strong> (incentivadas, MMGD); quem
+      repassa (distribuidoras) carrega o risco político do repasse.</p>
+  </div>
 
   <div class="divider"></div>
 
@@ -2040,14 +2186,14 @@
     onde puxá-los <b>ao vivo</b>, e como lê-los — com um <em>snapshot</em> datado de partida.</p>
 
   <div class="kpis">
-    <div class="kpi hl"><div class="v">Amarela</div><div class="l">Bandeira tarifária vigente (R$ 1,885/100 kWh)</div><div class="src">ANEEL · jun/2026</div></div>
-    <div class="kpi"><div class="v">57–1.611</div><div class="l">PLD 2026: piso R$ 57,31 → teto horário R$ 1.611/MWh</div><div class="src">ANEEL</div></div>
+    <div class="kpi hl"><div class="v">Amarela</div><div class="l">Bandeira de julho — 3º mês seguido (R$ 1,885/100 kWh)</div><div class="src">ANEEL · anúncio 26/jun/26</div></div>
+    <div class="kpi"><div class="v">~200<span class="u">R$/MWh</span></div><div class="l">PLD médio jun/26 (SE/CO); 1T26 R$ 311, pico &gt;R$ 380 em fev; CCEE projeta ~R$ 286 p/ jul. Piso 57,31 / teto 1.611</div><div class="src">CCEE</div></div>
     <div class="kpi"><div class="v">~66<span class="u">%</span></div><div class="l">EAR do SE/CO — a "caixa d'água" (~70% do estoque)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
     <div class="kpi"><div class="v">~83<span class="u">% MLT</span></div><div class="l">Afluência (ENA) do SE/CO — abaixo da média (seco)</div><div class="src">ONS · jun/26 · ao vivo</div></div>
-    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Recorde de pico de demanda (não superado em 2026)</div><div class="src">ONS · fev/25</div></div>
-    <div class="kpi"><div class="v">100,3<span class="u">%</span></div><div class="l" data-asof="fev/26">GSF (geração hidro ÷ garantia física) — último úmido; no seco (mai–nov) cai tipicamente p/ ~0,7–0,9</div><div class="src">CCEE · InfoMercado</div></div>
+    <div class="kpi"><div class="v">106,5<span class="u">GW</span></div><div class="l">Recorde de pico (26/fev/26, 7º do ano; sem novo recorde no inverno)</div><div class="src">ONS · fev/26</div></div>
+    <div class="kpi"><div class="v">92<span class="u">%</span></div><div class="l" data-asof="mar/26">GSF médio do 1T26 (jan 81,2 · fev 100,3 · mar 94,5); proj. ~93% no 2T — no seco cai mais</div><div class="src">CCEE · InfoMercado / Axia 1T26</div></div>
   </div>
-  <p class="src-note">Snapshot de 29/06/2026. Valores marcados "ao vivo" mudam diariamente — puxe-os dos painéis abaixo.</p>
+  <p class="src-note">Snapshot de 30/06/2026 (fechamento de junho, ata CMSE de 01/07). Valores marcados "ao vivo" mudam diariamente — puxe-os dos painéis abaixo.</p>
 
   <h2 class="sec">Como se forma o preço de curto prazo <span class="tag">a cadeia causal</span></h2>
   <p class="sec-sub">O PLD não é preço de oferta e demanda spot — é a saída de um modelo que decide se compensa
@@ -2107,8 +2253,8 @@
     <div class="chart" id="chart-ena"></div>
     <figcaption><span class="ti">Afluência (ENA) por subsistema — % da média histórica (MLT)</span>
       <strong>100% = média de longo termo (MLT)</strong>. Todos abaixo de 100% = período seco — não recompõe os
-      reservatórios. Note a heterogeneidade: o SE/CO (83%) puxa, mas Sul/NE em ~60–65% seguram o preço de todos.
-      ONS, semana recente de jun/2026 (PMO). Fonte: ONS (ENA Diário por Subsistema).</figcaption>
+      reservatórios. Note a heterogeneidade: o SE/CO (93%) quase normal, mas <strong>NE e Norte em ~58–59%</strong> —
+      é lá que o El Niño morde primeiro. Fechamento de junho/2026 (CMSE). Fonte: ONS (ENA por Subsistema).</figcaption>
   </figure>
 
   <h2 class="sec">Painel de indicadores — o que puxar, e de onde</h2>
@@ -2383,7 +2529,7 @@
       <tr><td><strong>Fator X / TOTEX</strong> (REN 1.148/2026)</td><td>Publicada; vigência <strong>jan/27</strong></td><td>Migração para produtividade TOTEX/PTF — redefine ganhadoras/perdedoras na distribuição.</td></tr>
       <tr><td><strong>CDE — teto</strong> (Lei 15.269)</td><td>Orçamento 2026 R$ 52,7 bi; <strong>teto a partir de 2027</strong></td><td>Excedente vira encargo cobrado dos beneficiários do subsídio.</td></tr>
       <tr><td><strong>RBSE</strong> (transmissão)</td><td><strong>TRF-1 anulou o "ke"</strong> (mai/26); ANEEL avalia recurso. <strong>Próximo marco: homologação da RAP 26/27 (jul/26)</strong> — 1º ciclo que pode refletir a anulação</td><td>~R$ 5,5 bi/ano (parcela anual; ~R$ 11 bi residuais do estoque de R$ 62 bi, até 2028); risco de cauda p/ ISA Energia (CTEEP), Taesa, Axia Energia (ex-Eletrobras).</td></tr>
-      <tr><td><strong>Angra 3</strong> (CNPE / Eletronuclear)</td><td>Estudos de modelagem <strong>em atualização</strong> (resolução CNPE out/25); decisão retomar × abandonar pendente</td><td>BNDES estima <strong>~R$ 23 bi p/ concluir vs ~R$ 21 bi p/ abandonar</strong>; a obra parada custa ~R$ 1 bi/ano e o TCU pressiona. Afeta ENBPar/Eletronuclear e o preço da "firmeza" nuclear.</td></tr>
+      <tr><td><strong>Angra 3</strong> (CNPE / Eletronuclear)</td><td>Estudos de modelagem <strong>em atualização</strong> (resolução CNPE out/25); decisão retomar × abandonar pendente</td><td>BNDES (nov/25): <strong>concluir é a opção mais viável</strong> — R$ 23,9 bi p/ terminar vs R$ 21,9–26,0 bi p/ abandonar; obra 66% pronta; entrada mar/2033; tarifa de equilíbrio R$ 778–817/MWh. Parada custa ~R$ 1 bi/ano. <strong>Saiu da pauta do CNPE de jun/26</strong>; decisão política esperada no 2S26.</td></tr>
       <tr><td><strong>Abertura ACL (baixa tensão) + SUI</strong> (Lei 15.269)</td><td>Lei sancionada; <strong>regras operacionais por vir</strong></td><td>C&amp;I ~nov/2027, residencial ~nov/2028.</td></tr>
       <tr><td><strong>LRCAP baterias</strong> (Portaria 136/2026)</td><td>Leilões <strong>02 e 04/dez/2026</strong></td><td>1º leilão de armazenamento do país; suprimento por 15 anos a partir de ago/2028. <a class="xref" href="#geracao/geracao-baterias">o desenho do leilão (aba 05)</a></td></tr>
       <tr><td><strong>Renovação de concessões (distribuição)</strong> (Decreto 12.068/2024)</td><td>Aditivos <strong>assinados (mai/26)</strong>; PDL no Congresso tenta sustar</td><td>+30 anos para 16 distribuidoras; ~R$ 130 bi até 2030. Enel ficou de fora.</td></tr>
@@ -2419,7 +2565,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v3.0</span><span class="badge">30 jun 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v3.1</span><span class="badge">03 jul 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2600,6 +2746,16 @@
       ],{labelW:160,valW:70,valFmt:v=>fmt(v)+' TWh'});
       legend(m,[{label:'Renovável',color:C.hydro},{label:'Térmica fóssil',color:C.thermal},{label:'Nuclear',color:C.nuclear}]);
     });
+    // OVERVIEW: pools de receita por elo (R$ bi/ano)
+    render('chart-pools',m=>{
+      hbars(m,[
+        {label:'Geração',value:152,color:C.gray,txt:'~140–165 (estim.)'},
+        {label:'Transmissão (RAP)',value:55,color:C.accent,bold:true,txt:'55,0 (oficial)'},
+        {label:'Distribuição (Parcela B)',value:80.65,color:C.accent,txt:'80,7 (2024, oficial)'},
+        {label:'Comercialização',value:1.1,color:C.gray,txt:'~0,5–1,6 (estim.)'},
+      ],{labelW:190,valW:120,max:170,valFmt:(v,d)=>d.txt});
+      legend(m,[{label:'Pool oficial (ANEEL)',color:C.accent},{label:'Estimativa/triangulação',color:C.gray}]);
+    });
     // FÍSICO: EAR by subsystem (cores neutras — as cores de fonte ficam p/ matriz/geração)
     render('chart-ear',m=>{
       vcols(m,[
@@ -2623,12 +2779,17 @@
     // MERCADO: ACL share
     render('chart-acl',m=>{
       vcols(m,[
-        {label:'2021',value:30,color:C.gray},
-        {label:'2022',value:33,color:C.gray},
-        {label:'2023',value:36,color:C.accent},
-        {label:'2024',value:40,color:C.accent},
-        {label:'2025',value:42,color:C.ok,bold:true},
-      ],{H:240,max:50,barW:46,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>v+'%'});
+        {label:'16',value:25.5,color:C.gray},
+        {label:'17',value:29.4,color:C.gray},
+        {label:'18',value:30.2,color:C.gray},
+        {label:'19',value:30.3,color:C.gray},
+        {label:'20',value:31.5,color:C.gray},
+        {label:'21',value:34.5,color:C.accent},
+        {label:'22',value:35.9,color:C.accent},
+        {label:'23',value:36.7,color:C.accent},
+        {label:'24',value:39,color:C.accent},
+        {label:'25',value:42,color:C.ok,bold:true},
+      ],{H:240,max:50,barW:30,axisFmt:v=>v.toFixed(0)+'%',valFmt:v=>fmt(v)});
     });
     // MERCADO: bandeiras
     render('chart-band',m=>{
@@ -2640,13 +2801,18 @@
         {label:'Escassez 2021*',value:14.20,color:'#7a2520'},
       ],{labelW:128,valW:74,max:15,valFmt:v=>'R$ '+fmt(v)});
     });
-    // REGULAÇÃO: RAP transmissão
+    // REGULAÇÃO: RAP transmissão — série completa por ciclo
     render('chart-rap',m=>{
       vcols(m,[
-        {label:'24/25',value:46.7,color:C.hydro},
-        {label:'25/26',value:50.3,color:C.hydro},
-        {label:'26/27',value:55.0,color:C.accent,bold:true},
-      ],{H:230,max:62,barW:56,axisFmt:v=>'R$'+fmt(v)+'bi',valFmt:v=>fmt(v)});
+        {label:'19/20',value:25.7,color:C.gray,faint:true,note:'aprox.'},
+        {label:'20/21',value:31.3,color:C.hydro},
+        {label:'21/22',value:31.9,color:C.hydro},
+        {label:'22/23',value:41.9,color:C.hydro},
+        {label:'23/24',value:47.9,color:C.gray,faint:true,note:'aprox.'},
+        {label:'24/25',value:47.4,color:C.hydro},
+        {label:'25/26',value:50.2,color:C.gray,faint:true,note:'aprox.'},
+        {label:'26/27',value:54.95,color:C.accent,bold:true,note:'+9,4%'},
+      ],{H:250,max:62,barW:36,axisFmt:v=>'R$'+fmt(v)+'bi',valFmt:v=>fmt(v)});
     });
     // REGULAÇÃO: Parcela A vs B
     render('chart-parcela',m=>{
@@ -2654,6 +2820,36 @@
         {label:'Parcela A (repasse neutro)',value:75,color:C.gray},
         {label:'Parcela B (a margem real)',value:25,color:C.accent,bold:true},
       ],{labelW:210,valW:54,max:100,rowH:46,valFmt:v=>v+'%'});
+    });
+    // REGULAÇÃO: CDE — trajetória do orçamento
+    render('chart-cde-traj',m=>{
+      vcols(m,[
+        {label:'13',value:14.1,color:C.gray},
+        {label:'14',value:18.1,color:C.gray},
+        {label:'15',value:25.2,color:C.thermal,note:'crise'},
+        {label:'16',value:18.3,color:C.gray},
+        {label:'17',value:16,color:C.gray},
+        {label:'18',value:20.1,color:C.gray},
+        {label:'19',value:20.2,color:C.gray},
+        {label:'20',value:21.9,color:C.gray},
+        {label:'21',value:23.9,color:C.gray},
+        {label:'22',value:32.1,color:C.thermal},
+        {label:'23',value:35,color:C.thermal},
+        {label:'24',value:37.2,color:C.thermal},
+        {label:'25',value:49.2,color:C.danger},
+        {label:'26',value:52.7,color:C.danger,bold:true,note:'proposta'},
+      ],{H:250,max:60,barW:22,axisFmt:v=>'R$'+fmt(v),valFmt:v=>fmt(v)});
+    });
+    // REGULAÇÃO: CDE 2026 por rubrica
+    render('chart-cde-rubrica',m=>{
+      hbars(m,[
+        {label:'Descontos TUSD (incentivadas etc.)',value:15.88,color:C.thermal,bold:true},
+        {label:'CCC / sistemas isolados',value:11.5,color:C.gray},
+        {label:'Tarifa Social (baixa renda)',value:10.43,color:C.accent},
+        {label:'MMGD / GD (+87%)',value:6.86,color:C.danger,bold:true},
+        {label:'Descontos TUST',value:3.73,color:C.thermal},
+        {label:'Demais (carvão −84%, LpT −33%...)',value:4.3,color:C.gray},
+      ],{labelW:225,valW:60,max:17.5,valFmt:v=>fmt(v)});
     });
     // REGULAÇÃO: Fio B
     render('chart-fiob',m=>{
@@ -2813,10 +3009,10 @@
     // ACOMPANHAMENTO: ENA por subsistema (% da MLT), snapshot
     render('chart-ena',m=>{
       hbars(m,[
-        {label:'SE/CO',value:83,color:C.hydro,bold:true},
-        {label:'Sul',value:65,color:C.thermal},
-        {label:'Norte',value:65,color:C.thermal},
-        {label:'Nordeste',value:60,color:C.thermal},
+        {label:'SE/CO',value:93,color:C.hydro,bold:true},
+        {label:'Sul',value:82,color:C.thermal},
+        {label:'Nordeste',value:59,color:C.danger},
+        {label:'Norte',value:58,color:C.danger},
       ],{labelW:90,valW:84,max:110,valFmt:v=>v+'% MLT'});
     });
     // ACOMPANHAMENTO: EAR sazonal — % típico mês a mês (SE/CO)
@@ -2930,7 +3126,7 @@
   // Regra: cada bloco novo recebe data-since="X.Y". Só as versões listadas em HIGHLIGHT ganham o selo "novo".
   // No próximo publish: troque HIGHLIGHT para a nova versão (ou deixe [] p/ nada) — os blocos antigos revertem sozinhos.
   (function(){
-    var HIGHLIGHT=['3.0'];
+    var HIGHLIGHT=['3.1'];
     document.querySelectorAll('[data-since]').forEach(function(el){
       if(HIGHLIGHT.indexOf(el.getAttribute('data-since'))<0)return;
       el.classList.add('is-new');
