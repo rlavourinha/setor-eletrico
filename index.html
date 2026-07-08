@@ -272,7 +272,7 @@
     <p class="subtitle">Como o sistema é organizado, operado, precificado e regulado — e onde o desenho
       brasileiro se afasta do resto do mundo. Mapa de referência <em>antes</em> de olhar as empresas da cadeia.</p>
     <div class="head-meta">
-      <span class="chip"><span class="dot"></span>v3.1 · 03 jul 2026</span>
+      <span class="chip"><span class="dot"></span>v3.2 · 08 jul 2026</span>
       <span class="chip scope">Fontes primárias: ONS · ANEEL · EPE · CCEE · MME · IEA · Eurostat</span>
     </div>
   </div>
@@ -1123,9 +1123,10 @@
         <div class="chart" id="chart-pld"></div>
         <figcaption><span class="ti">PLD médio anual (R$/MWh)</span>
           A projeção de início de 2025 era ~R$ 59 (perto do <strong>piso</strong>), mas o realizado foi
-          <strong>~R$ 157</strong> — acima de 2024. No Brasil a canibalização aparece como <strong>curtailment
-          físico</strong>, não como PLD baixo: o piso administrado e a hidro amortecem o preço, e afluências abaixo
-          da média mantiveram os reservatórios apertados. *proj. jan/2025. Fonte: CCEE (PLDx).</figcaption>
+          <strong>R$ 223</strong> (média das mensais SE/CO, base oficial CCEE) — 3,8× a projeção. No Brasil a
+          canibalização aparece como <strong>curtailment físico</strong>, não como PLD baixo: o piso administrado e
+          a hidro amortecem o preço, e a seca do 2º semestre apertou. *proj. jan/2025. Fonte: CCEE (dados abertos).
+          <a class="xref" href="#mercado/mercado-pld-serie">a série completa 2001–2025 (aba 06)</a></figcaption>
       </figure>
     </div>
     <div class="callout danger" style="margin-top:0">
@@ -1501,7 +1502,7 @@
   <div class="callout insight">
     <span class="mk">POR QUE NÃO PELA ARBITRAGEM — O NÚMERO</span>
     <p>O problema não é o nível do PLD — é a forma: <strong>plano ao longo do dia</strong>. Mesmo com o preço bem acima
-      do piso em 2025–26 (média 2025 ~R$ 157; 1S26 rodando entre ~R$ 200 e R$ 310, pico &gt;R$ 380 em fevereiro), o PLD quase não varia entre
+      do piso em 2025–26 (média 2025 R$ 223 no SE/CO; 1S26 rodando entre ~R$ 200 e R$ 310, pico &gt;R$ 380 em fevereiro), o PLD quase não varia entre
       o meio-dia e a ponta — a hidro e o piso/teto administrados achatam o <em>spread intradiário</em>, que é o que
       remunera bateria. Sem spread, a arbitragem não
       paga a bateria: num estudo empírico (2018–22), o <strong>lucro médio por operação foi R$ 0,36</strong>, contra um
@@ -1672,6 +1673,22 @@
       é o nível dos reservatórios e a postura do CMSE.</p>
   </div>
 
+
+  <h3 class="sub" id="mercado-pld-serie" data-since="3.2">O PLD em um quarto de século</h3>
+  <p>A série anual inteira, calculada da base oficial da CCEE. O padrão que ela ensina: o PLD brasileiro não
+    oscila — <strong>alterna regimes</strong>. Anos inteiros no piso (2003–05, 2022) e anos de crise a 5–10× isso
+    (2001, 2014, 2017, 2021). É o retrato do sistema de estoque: quando sobra água o preço morre; quando falta,
+    o teto é a única fronteira.</p>
+  <figure>
+    <div class="chart" id="chart-pld-serie"></div>
+    <figcaption><span class="ti">PLD médio anual — SE/CO (R$/MWh nominais, 2001–2025)</span>
+      Extremos: <strong>2001</strong> racionamento (394); <strong>2003–05</strong> sobra pós-racionamento, encostado
+      no piso (13–29); <strong>2014</strong> pico histórico (<strong>690</strong>, com teto semanal ainda em R$ 822);
+      <strong>2021</strong> crise hídrica (280, meses no teto de R$ 584); <strong>2022</strong> reservatórios cheios
+      (59, piso quase o ano todo); <strong>2025</strong> seca do 2º semestre (223). Valores nominais — teto e piso
+      mudam por ano, o que afeta comparações. Fonte: CCEE, dados abertos (médias mensais oficiais; média anual simples).</figcaption>
+  </figure>
+
   <div class="divider"></div>
 
   <h2 class="sec" id="mercado-gsf">O risco hidrológico: MRE e GSF</h2>
@@ -1683,10 +1700,22 @@
     das garantias físicas. <strong>GSF &lt; 1 = déficit</strong>: a geradora tem de <strong>comprar a energia
     faltante no spot ao PLD</strong> para honrar contratos.</p>
 
+
+  <figure>
+    <div class="chart" id="chart-gsf-serie"></div>
+    <figcaption><span class="ti">GSF anual do MRE (%, 2001–2025)</span>
+      Acima de 100 = o condomínio hidrelétrico gerou mais que a garantia física (2005–12, auge 112,9 em 2011).
+      O <strong>mergulho estrutural começa em 2013</strong> — mais térmica na margem, GF calibrada para um sistema
+      que mudou — e o GSF nunca mais voltou a 100 de forma sustentada: <strong>2015 = 84,3; 2017 = 79,4;
+      2021 = 72,9 (mínimo histórico)</strong>. 2001–08 aproximados (rótulos do gráfico oficial CCEE);
+      2024–25 calculados da base aberta. Fonte: CCEE.</figcaption>
+  </figure>
+
   <div class="callout danger">
     <span class="mk">A CRISE DO GSF</span>
-    <p>Em 2014–15, seca severa + despacho térmico por segurança + sobrecontratação derrubaram o GSF de ~0,91
-      para ~0,79, com o PLD no teto. As geradoras tiveram de comprar caro justamente quando o spot estava no
+    <p>Em 2014–15, seca severa + despacho térmico por segurança + sobrecontratação derrubaram o GSF a
+      <strong>90,7% (2014) e 84,3% (2015)</strong> — e ele seguiu afundando até 79,4% (2017) e 72,9% (2021) —
+      com o PLD no teto. As geradoras tiveram de comprar caro justamente quando o spot estava no
       máximo — um <strong>short estrutural disparado pela mesma variável (seca) que eleva o preço de cobertura</strong>.
       Estimativas de perdas: R$ 13 bi (ANEEL) a R$ 18,5 bi (APINE/ABRAGE) só em 2014. Dizimou o caixa das hidrelétricas.</p>
     <p>Repactuado pelas Leis 13.203/2015 e 14.052/2020 (prêmio de risco + extensão de outorga). A <strong>última
@@ -1855,10 +1884,10 @@
     <span class="mk">EXEMPLO — "GERADORA HÍDRICA TEÓRICA S.A." (GF 100 MWmédios, 90% contratada a R$ 200/MWh)</span>
     <p>Receita contratada: 90 MWm × 8.760 h × R$ 200 ≈ <strong>R$ 158 mi/ano</strong> — parece um bond.
       <strong>Ano bom (GSF = 1,00):</strong> o MRE aloca os 100 MWm; honra o contrato e ainda vende os 10 MWm
-      descontratados ao PLD (~R$ 157) ⇒ <strong>+R$ 14 mi</strong> de upside.
+      descontratados ao PLD (~R$ 220) ⇒ <strong>+R$ 19 mi</strong> de upside.
       <strong>Ano seco (GSF = 0,85):</strong> o MRE aloca só 85 MWm; faltam <strong>5 MWm para honrar o contrato</strong>,
       comprados ao PLD de seca (digamos R$ 600) ⇒ <strong>−R$ 26 mi</strong>, e o upside sumiu. Entre os dois cenários,
-      um swing de <strong>~R$ 40 mi (~25% da receita)</strong> — sem a empresa operar nada diferente. A alavanca de
+      um swing de <strong>~R$ 45 mi (~29% da receita)</strong> — sem a empresa operar nada diferente. A alavanca de
       risco é o <strong>% contratado</strong>: quem vende 100% da GF maximiza receita e maximiza a exposição ao GSF.</p>
   </div>
 
@@ -2565,7 +2594,7 @@
           benchmark internacional. Construído antes do estudo das empresas da cadeia. Documento autocontido,
           sem dependências externas de dados.</p>
         <div class="badge-row">
-          <span class="badge">v3.1</span><span class="badge">03 jul 2026</span><span class="badge">dados: 2024–2026</span>
+          <span class="badge">v3.2</span><span class="badge">08 jul 2026</span><span class="badge">dados: 2024–2026</span>
         </div>
       </div>
       <div>
@@ -2950,14 +2979,30 @@
         {label:'Gás de ponta (OCGT)',value:700,color:'#9a5b2e'},
       ],{labelW:160,valW:82,max:760,valFmt:v=>'R$ '+fmt(v)});
     });
+    // MERCADO: PLD médio anual SE/CO 2001-2025 (série oficial CCEE)
+    render('chart-pld-serie',m=>{
+      lines(m,[
+        {label:'PLD médio anual SE/CO (R$/MWh)',color:C.thermal,
+         data:[394.57,37.36,13.21,19.03,28.88,67.30,96.99,135.29,38.74,69.99,29.46,166.64,262.54,690.00,288.11,93.91,323.04,287.83,227.10,177.00,279.61,58.99,72.17,127.88,223.46]},
+      ],{xLabels:['01','','03','','05','','07','','09','','11','','13','','15','','17','','19','','21','','23','','25'],
+        max:760,H:290,axisFmt:v=>'R$'+Math.round(v),endFmt:v=>'R$'+Math.round(v)});
+    });
+    // MERCADO: GSF anual do MRE 2001-2025
+    render('chart-gsf-serie',m=>{
+      lines(m,[
+        {label:'GSF anual (%); acima de 100 = gerou acima da GF',color:C.hydro,
+         data:[86,89,93,96,102,101,105,103,107.85,108.76,112.87,107.64,99.13,90.70,84.28,86.86,79.36,81.52,81.11,80.10,72.91,85.30,89.70,86,82]},
+      ],{xLabels:['01','','03','','05','','07','','09','','11','','13','','15','','17','','19','','21','','23','','25'],
+        max:125,H:270,axisFmt:v=>Math.round(v)+'%',endFmt:v=>Math.round(v)+'%'});
+    });
     // OFERTA & DEMANDA: PLD médio (R$/MWh) 2024 vs 2025
     render('chart-pld',m=>{
       vcols(m,[
-        {label:'2024',value:128,color:C.thermal,note:'realizado'},
-        {label:'2025',value:157,color:C.thermal,bold:true,note:'realizado'},
+        {label:'2024',value:127.88,color:C.thermal,note:'realizado'},
+        {label:'2025',value:223.46,color:C.thermal,bold:true,note:'realizado'},
         {label:'proj.25*',value:59,color:C.gray,faint:true,note:'projeção'},
         {label:'piso 26',value:57,color:C.gray,faint:true},
-      ],{H:230,max:185,barW:42,axisFmt:v=>fmt(v),valFmt:v=>'R$'+fmt(v)});
+      ],{H:230,max:250,barW:42,axisFmt:v=>fmt(v),valFmt:v=>'R$'+fmt(Math.round(v))});
     });
     // GERAÇÃO: CAPEX por fonte (R$ mi/MW)
     render('chart-capex',m=>{
@@ -3126,7 +3171,7 @@
   // Regra: cada bloco novo recebe data-since="X.Y". Só as versões listadas em HIGHLIGHT ganham o selo "novo".
   // No próximo publish: troque HIGHLIGHT para a nova versão (ou deixe [] p/ nada) — os blocos antigos revertem sozinhos.
   (function(){
-    var HIGHLIGHT=['3.1'];
+    var HIGHLIGHT=['3.2','3.1'];
     document.querySelectorAll('[data-since]').forEach(function(el){
       if(HIGHLIGHT.indexOf(el.getAttribute('data-since'))<0)return;
       el.classList.add('is-new');
