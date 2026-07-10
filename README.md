@@ -40,4 +40,4 @@ ONS · ANEEL · EPE (BEN 2026) · CCEE · MME · Eletronuclear · Planalto/Congr
 
 ---
 
-*v3.1 · 03 jul 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
+*v3.3 · 08 jul 2026 — Próxima fase: empresas da cadeia (geração, transmissão, distribuição).*
